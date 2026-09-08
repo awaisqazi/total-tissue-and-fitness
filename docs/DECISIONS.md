@@ -26,6 +26,14 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 
 ---
 
+### CHG-2026-09-08-private-hosting — Keep review available after a hosting service failure
+
+- **Goal:** Deliver the working POC without changing the live business site or widening access.
+- **Change and rationale:** Saved source version 1 and attempted owner-private publication twice. Both attempts failed with the same service-side sign-in callback HTTP 409 conflict. Retain the local preview and full portable source as review deliverables; record exact service references in DEPLOYMENT_STATUS.md.
+- **Affected:** Private hosting status and handoff documentation only. Site behavior is unchanged.
+- **Validation:** Source push succeeded, version save succeeded, both deployment statuses were terminal failed; local site/build checks passed.
+- **Unresolved:** Hosting service callback registration needs resolution before a private hosted URL can be delivered.
+
 ### ADR-006 — Deliver a portable Astro POC with explicit operational boundaries
 
 - **Date:** 2026-09-08

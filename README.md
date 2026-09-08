@@ -4,6 +4,8 @@ A proof-of-concept migration of the public Webflow website into Astro. **Total T
 
 The project includes the marketing website, locally archived source content/media, a clearly labeled static operations-dashboard concept, and a documented path to a future client-owned Supabase backend.
 
+Private publishing encountered a hosting callback-registration conflict after source version 1 was saved. The local preview remains available; see [publication status](docs/DEPLOYMENT_STATUS.md).
+
 ## Start here
 
 - Maintainer instructions: [CLAUDE.md](CLAUDE.md).
