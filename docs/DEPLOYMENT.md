@@ -8,7 +8,7 @@ The POC URL is separate from the current Webflow domain. Neither DNS nor Webflow
 
 ## Configuration
 
-Copy `.env.example` to `.env` for local use. `SITE_URL` sets the Pages origin and `BASE_PATH` sets the project subpath. The authorized POC values are:
+Use `.env.example` as the variable reference. Pass the following variables in the shell for config and validation commands, as shown below. `SITE_URL` sets the Pages origin and `BASE_PATH` sets the project subpath. The authorized POC values are:
 
 ```text
 SITE_URL=https://awaisqazi.github.io
@@ -16,7 +16,7 @@ BASE_PATH=/total-tissue-and-fitness
 PUBLIC_SITE_INDEXABLE=false
 ```
 
-`PUBLIC_SITE_INDEXABLE=false` emits noindex/nofollow and a robots disallow for the entire site. Keep it false for the public POC. Only use `true` after production approval; admin and privacy-draft pages remain noindex.
+`PUBLIC_SITE_INDEXABLE=false` emits noindex/nofollow on each page and a robots disallow file. Crawlers only use robots.txt at the origin root, so the file under a GitHub project subpath is not an indexing control; the page-level noindex directives apply to this POC. Keep it false for the public POC. Only use `true` after production approval; admin and privacy-draft pages remain noindex.
 
 Static hosting has no runtime secret configuration in this build. Do not put private keys in `PUBLIC_` variables. Future Supabase public project URL/publishable keys may enter the client; service-role credentials must remain server-only.
 

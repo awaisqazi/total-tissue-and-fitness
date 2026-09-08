@@ -4,7 +4,7 @@
 
 - Astro type checking and static generation succeeded for 10 HTML pages plus robots and sitemap endpoints.
 - The built-site checker found no broken internal routes, section anchors, asset references, or Webflow runtime scripts.
-- Six Node tests cover page metadata/indexing, brand naming, contact non-delivery, fictional dashboard behavior contracts, sitemap exclusions, preserved testimonials/anchors, local media, and no forced video autoplay.
+- Seven Node tests cover page metadata/indexing, brand naming, contact non-delivery, fictional dashboard behavior contracts, sitemap exclusions, preserved testimonials/anchors, local media, and no forced video autoplay.
 - npm reported zero known dependency vulnerabilities at installation. This is a point-in-time result, not a permanent guarantee.
 - Original facility photographs and logo have optimized local derivatives. Raw originals remain archived. Normal site imagery and social-preview metadata no longer depend on the Webflow CDN.
 
@@ -36,3 +36,9 @@
 ## Final refinements
 
 The contact form uses `method="dialog"` and a disabled submit button until its preview handler is installed, preventing accidental form transmission when JavaScript is unavailable. A final browser check confirmed the preview message receives focus and the URL does not gain form data. Dashboard heading/spacing was compacted so its role controls, sample metrics and inquiry section are visible sooner. No Chromium error logs were reported for the inspected dashboard.
+
+## GitHub Pages publication
+
+Both root-hosted and `/total-tissue-and-fitness/` builds passed Astro checking with zero errors, warnings, or hints, static integrity checks for 10 HTML pages, and seven automated tests. The added contract verifies canonical/social/sitemap URLs use the deployment origin and repository base.
+
+GitHub Actions run 34257990834 passed installation, validation, artifact upload, and Pages deployment on Node 24. HTTPS verification passed for all 10 HTML routes and 19 referenced assets, canonical URLs, page-level noindex, sitemap/robots endpoints, and a branded HTTP 404 for an unknown route. The live in-app browser showed the original gold logo and colors without broken loaded images or desktop overflow. Manual Therapy navigation selected the correct active state; the dashboard New filter returned Alex and Jordan's fictional records. Existing form non-delivery contracts still pass; no real inquiry was sent.

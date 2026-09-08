@@ -12,6 +12,8 @@ This repository is the source of truth for the Total Tissue & Fitness Astro webs
 
 ## Content architecture rules
 
+- Pass site-owned links and public media paths through `withBase` from `src/lib/paths.ts`. Keep stored content paths root-relative and apply the helper at rendering. Astro handles imported/compiled assets. Validate both default root hosting and the Pages environment when changing links or metadata.
+
 - Shared site facts, service summaries, media references, FAQs and booking destinations live in typed `src/data/site.ts`. Longer page-specific copy lives in its Astro page. Keep duplicated business facts synchronized and add an explicit schema when introducing external/CMS data.
 - Keep common presentation in components and page-specific editorial copy in clearly named page files.
 - Use Astro pages for route composition, small focused components for reusable presentation, and client-side JavaScript only for interaction that cannot be achieved accessibly with HTML/CSS.

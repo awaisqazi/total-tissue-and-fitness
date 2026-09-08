@@ -29,13 +29,13 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 ### ADR-007 — Publish the non-indexable POC through public GitHub Pages
 
 - **Date:** 2026-09-08
-- **Status:** Accepted; deployment verification pending
+- **Status:** Accepted; published and verified
 - **Goal:** Give stakeholders a durable review URL and public source repository without changing the live business domain or representing the POC as production-ready.
 - **Decision:** Publish source publicly at `awaisqazi/total-tissue-and-fitness` and deploy `main` through GitHub Pages at `https://awaisqazi.github.io/total-tissue-and-fitness/`. Build with `SITE_URL=https://awaisqazi.github.io`, `BASE_PATH=/total-tissue-and-fitness`, and `PUBLIC_SITE_INDEXABLE=false`. Use `.github/workflows/deploy.yml` with Node 24 for validation and automatic Pages deployment.
 - **Rationale:** The user explicitly authorized public GitHub and GitHub Pages after the private Sites callback failure. The repository subpath requires base-aware links and canonical output. Keeping noindex preserves the review-only intent even though anyone with the URL can access the POC.
 - **Tradeoffs:** A public repository and Pages URL expose all committed source and static demo content. No secrets or real client data may be committed. Noindex is a crawler directive, not access control. GitHub Pages does not make the form, dashboard, authentication, or Supabase operational.
 - **Affected:** Repository visibility/delivery, GitHub Pages base path, build-time URL/indexing variables, CI workflow, README, deployment/status/operations documentation.
-- **Validation:** User authorization is explicit. The public repository exists, Pages is enabled, root and Pages-base-path Astro checks report zero errors/warnings/hints, 10 built pages pass link/asset/fragment checks, and seven tests pass. Workflow publication and deployed smoke tests remain pending.
+- **Validation:** User authorization is explicit. The public repository exists, Pages is enabled, root and Pages-base-path Astro checks report zero errors/warnings/hints, 10 built pages pass link/asset/fragment checks, and seven tests pass. GitHub Actions run 34257990834 succeeded for site-code commit 4b28a79. All 10 deployed HTML routes, 19 asset URLs, metadata and branded 404 checks passed, along with live browser navigation and demo dashboard filtering.
 - **Unresolved:** Record the published commit, workflow run, live Pages response, and deployed smoke-test evidence after deployment. Production hosting/domain, real forms, client-owned Supabase, roles, booking, legal, and business-content approvals remain deferred.
 
 ### CHG-2026-09-08-private-hosting — Keep review available after a hosting service failure

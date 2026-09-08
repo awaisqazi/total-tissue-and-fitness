@@ -4,7 +4,7 @@ A proof-of-concept migration of the public Webflow website into Astro. **Total T
 
 The project includes the marketing website, locally archived source content/media, a clearly labeled static operations-dashboard concept, and a documented path to a future client-owned Supabase backend.
 
-The user authorized a public proof-of-concept repository and GitHub Pages preview. The intended repository is `awaisqazi/total-tissue-and-fitness` and the expected preview URL is <https://awaisqazi.github.io/total-tissue-and-fitness/>. Deployment verification is pending; see [publication status](docs/DEPLOYMENT_STATUS.md). A previous private Sites attempt remains documented as historical context.
+The public proof of concept is live at <https://awaisqazi.github.io/total-tissue-and-fitness/>. Source and maintenance documentation are at <https://github.com/awaisqazi/total-tissue-and-fitness>. Publication and live checks passed; see [publication status](docs/DEPLOYMENT_STATUS.md).
 
 ## Start here
 

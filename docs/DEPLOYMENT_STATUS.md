@@ -2,14 +2,20 @@
 
 ## Current authorized target
 
-The user authorized a public GitHub repository and public GitHub Pages POC. The expected targets are:
+The user authorized a public GitHub repository and public GitHub Pages POC. The published targets are:
 
 - Repository: `https://github.com/awaisqazi/total-tissue-and-fitness`
 - Pages: `https://awaisqazi.github.io/total-tissue-and-fitness/`
 - Build environment: `SITE_URL=https://awaisqazi.github.io`, `BASE_PATH=/total-tissue-and-fitness`, `PUBLIC_SITE_INDEXABLE=false`
 - Automation: `.github/workflows/deploy.yml`, validation and automatic deployment from `main` using Node 24
 
-**Status: deployment verification pending.** The public repository has been created and GitHub Pages has been enabled. Root-path and Pages-base-path validation both pass: Astro reports zero errors, warnings, or hints; all 10 generated pages pass link/asset/fragment checks; and all seven automated tests pass. The workflow run, published Pages response, and deployed browser smoke tests must still be recorded after they succeed. The public POC remains non-indexable, uses fictional dashboard data, has a non-sending form, and does not change `totaltissueandfitness.com` or its DNS.
+**Status: published and verified.** The repository is PUBLIC, HTTPS is enforced, and GitHub Actions completed successfully.
+
+- Published site-code commit: `4b28a79dd46a6ce6ee94ba54223491e9ad7ea2e4`
+- Successful workflow: [34257990834](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/34257990834)
+- Deployed verification: all 10 HTML routes, 19 image/video/style/script/icon URLs, canonical URLs, page-level noindex, sitemap, robots endpoint, and branded HTTP 404 passed HTTPS checks.
+- Live browser: original gold branding and homepage layout verified; no broken loaded images or horizontal overflow at desktop width. Manual Therapy navigation and active state worked. Dashboard filtering showed the two expected fictional new inquiries.
+- The public POC retains fictional dashboard data and a non-sending form. `totaltissueandfitness.com` and its DNS are unchanged.
 
 ## Historical private Sites attempt
 
@@ -17,8 +23,8 @@ Before public GitHub Pages was authorized, source was pushed to a private Sites 
 
 ## Available deliverables
 
-- Expected Pages homepage: https://awaisqazi.github.io/total-tissue-and-fitness/ (verification pending)
-- Expected dashboard concept: https://awaisqazi.github.io/total-tissue-and-fitness/admin/ (verification pending)
+- Pages homepage: https://awaisqazi.github.io/total-tissue-and-fitness/
+- Dashboard concept: https://awaisqazi.github.io/total-tissue-and-fitness/admin/
 - Local homepage: http://127.0.0.1:4321/
 - Local dashboard concept: http://127.0.0.1:4321/admin/
 - Source: this project directory, with README.md and CLAUDE.md entry points.
@@ -34,6 +40,6 @@ Before public GitHub Pages was authorized, source was pushed to a private Sites 
 - Retry failed deployment: `appgdep_6aa041bb025881919010f9861c73a607`
 - Both failures: HTTP `409 Conflict` in the hosting service's SIWC sign-in callback registration.
 
-## Required verification record
+## Future updates
 
-After publication, replace “deployment verification pending” with the exact pushed commit SHA, workflow run URL/conclusion, Pages URL/status, and smoke-test results. Confirm `noindex` and robots disallow, base-path links/assets, non-sending form, fictional dashboard, and unchanged original domain. Do not report deployment as successful based only on a push or queued workflow.
+Push validated website changes to `main` to publish automatically. Record the successful run and live checks with each release. A documentation-only follow-up may use `[skip ci]` in its commit message; the deployed site remains the code commit listed above. A successful source push alone does not prove publication.
