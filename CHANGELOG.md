@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-08 — Synaptyx Manual Therapy rebrand and polish
+
+- Rebranded to Synaptyx Manual Therapy (ADR-008): Synaptyx mark lockup, blue/near-black palette, Inter type, favicon/touch icon/social card, and “formerly Total Tissue & Fitness” notices (announcement bar, home transition section, FAQ, footer, structured data).
+- Restored the original background video as the home hero with optimized encodes, poster fallback, reduced-motion handling and a pause control; added the mentorship clip with an MP4 fallback.
+- Added progressive scroll-reveal and hover motion, header sizing/breakpoint fixes, larger minimum label sizes, consistent section spacing, styled selects, mobile-menu CTA, CTA bands on booking/404, and link-arrow conventions.
+- Copy/QA: removed an unreviewed outcome testimonial, normalized service names, fixed 404/meta descriptions, and verified every live-site asset is present locally.
+
 ## 2026-09-08 — Public GitHub Pages delivery authorized
 
 - Authorized public repository target: `awaisqazi/total-tissue-and-fitness`.

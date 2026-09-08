@@ -1,10 +1,10 @@
 ---
 import { withBase } from '../../lib/paths';
+import { media, site } from '../../data/site';
 import '../../styles/admin.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
-import '@fontsource/manrope/500.css';
-import '@fontsource/manrope/700.css';
+import '@fontsource/inter/700.css';
 ---
 
 <!doctype html>
@@ -13,9 +13,9 @@ import '@fontsource/manrope/700.css';
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href={new URL(withBase('/admin/'), Astro.site)} /><link
       rel="icon"
-      href={withBase('/images/660ca351a18d35e961252c4a_jb-total--icon-32.png')}
+      href={withBase(media.favicon)}
     /><meta name="robots" content="noindex, nofollow" />
-    <title>Dashboard concept | Total Tissue & Fitness</title>
+    <title>Dashboard concept | {site.name}</title>
     <meta
       name="description"
       content="An interactive partner dashboard concept with fictional sample data. Changes are not saved."
@@ -25,15 +25,10 @@ import '@fontsource/manrope/700.css';
     <a class="admin-skip" href="#workspace-main">Skip to workspace</a>
     <header class="workspace-header">
       <a href={withBase('/')} class="workspace-brand"
-        ><img
-          src={withBase('/images/optimized/total-tissue-logo.webp')}
-          alt="Total Tissue & Fitness"
-          width="180"
-          height="60"
-        /></a
+        ><img src={withBase(media.logo)} alt={site.name} width="672" height="386" /></a
       >
       <div class="workspace-header-actions">
-        <span class="status-pill">CONCEPT PREVIEW</span><a href={withBase('/')}>View website ↗</a>
+        <span class="status-pill">CONCEPT PREVIEW</span><a href={withBase('/')}>View website →</a>
       </div>
     </header>
     <main id="workspace-main" class="workspace-main">
@@ -110,11 +105,11 @@ import '@fontsource/manrope/700.css';
           class="resource-grid"
         >
           <a href={withBase('/book/')}
-            ><span>Existing client pathways</span><strong>Booking options ↗</strong></a
+            ><span>Existing client pathways</span><strong>Booking options →</strong></a
           ><a href={withBase('/manual-therapy/')}
-            ><span>Public service information</span><strong>Review manual therapy ↗</strong></a
-          ><a href="https://www.synaptyxperformance.com/" target="_blank" rel="noopener noreferrer"
-            ><span>Our partner</span><strong>Synaptyx Health & Performance ↗</strong></a
+            ><span>Public service information</span><strong>Review manual therapy →</strong></a
+          ><a href={site.partnerUrl} target="_blank" rel="noopener noreferrer"
+            ><span>Sister company</span><strong>{site.sisterName} ↗</strong></a
           ><article>
             <span>Future website maintenance</span><strong>A clear handoff to Claude</strong><p>
               Review a draft, describe the desired outcome, and have Claude prepare a website change
@@ -150,7 +145,10 @@ import '@fontsource/manrope/700.css';
         </p>
       </section>
     </main>
-    <footer class="workspace-footer">Total Tissue & Fitness <span>Dashboard concept</span></footer>
+    <footer class="workspace-footer">
+      {site.name}
+      <span>Dashboard concept · formerly {site.legacyName}</span>
+    </footer>
     <script src="../../scripts/admin.ts"></script>
   </body>
 </html>

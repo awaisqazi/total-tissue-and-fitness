@@ -1,3 +1,3 @@
 # Design reference only
 
-The Synaptyx logo was downloaded from https://www.synaptyxperformance.com/logo.png during the initial partnership-name interpretation. It is not used by the Total Tissue website. Keep the current Total Tissue logo and gold identity per ADR-005. This directory is not deployed as public content.
+The Synaptyx logo was downloaded from https://www.synaptyxperformance.com/logo.png. Since ADR-008 (2026-09-08) the trimmed mark is deployed from `public/images/synaptyx/` as the site identity, with favicon, Apple touch icon and social card derived from it. This directory keeps the untouched original for provenance and is not deployed. Logo usage rights rest with Synaptyx Health & Performance; confirm approval of the lockup (“SYNAPTYX / Manual Therapy”) before production.

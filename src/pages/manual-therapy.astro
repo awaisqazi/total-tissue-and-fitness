@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Video from '../components/Video.astro';
 import CTA from '../components/CTA.astro';
-import { media } from '../data/site';
+import { media, site } from '../data/site';
 const techniques = [
   'Myotome testing',
   'Muscle pairing',
@@ -20,21 +20,21 @@ const techniques = [
 ---
 
 <BaseLayout
-  title="Manual Therapy in Oswego, IL | Total Tissue & Fitness"
-  description="Explore personalized tissue work, biomechanical assessment, and movement education at Total Tissue & Fitness, in Oswego."
+  title="Manual Therapy in Oswego, IL | Synaptyx Manual Therapy"
+  description="Explore personalized tissue work, biomechanical assessment, and movement education at Synaptyx Manual Therapy, formerly Total Tissue & Fitness, in Oswego, Illinois."
 >
   <PageHero
     eyebrow="01 / MANUAL THERAPY"
     title="Understand your body."
     accent="Move with purpose."
     description="Hands-on tissue work and movement education, connected through an individual approach to recovery and training."
-    ><a class="button" href={withBase('/book/')}>Plan your first visit ↗</a></PageHero
+    ><a class="button" href={withBase('/book/')}>Plan your first visit →</a></PageHero
   >
   <section class="container split-section section border-top">
     <div>
       <p class="eyebrow">OUR APPROACH</p><h2>More than<br />a single technique.</h2><p>
-        At Total Tissue & Fitness, the approach has always brought bodywork, biomechanics, and
-        education together. Every session builds on that foundation.
+        As Total Tissue & Fitness, this practice always brought bodywork, biomechanics, and
+        education together. As Synaptyx Manual Therapy, every session builds on that foundation.
       </p><p>
         Sessions combine assessment, soft tissue techniques, and integration exercise. Your
         practitioner uses what they learn about your movement to guide the work and help you
@@ -46,7 +46,7 @@ const techniques = [
       </h3><p>
         Understand the purpose of the work. Explore movement habits. Take that understanding into
         your training and everyday life.
-      </p><Video id="uBjppA4WRW4" title="The Total Tissue & Fitness approach" />
+      </p><Video id="uBjppA4WRW4" title="The approach, recorded as Total Tissue & Fitness" />
     </div>
   </section>
   <section class="section surface-section">
@@ -54,7 +54,7 @@ const techniques = [
       <p class="eyebrow">THE TOOLKIT</p><h2>
         Different tools.<br /><span class="gradient-text">One individual approach.</span>
       </h2><p class="measure">
-        The techniques offered by Total Tissue & Fitness include the following. Your practitioner
+        The techniques offered by Synaptyx Manual Therapy include the following. Your practitioner
         will discuss which are appropriate for your session.
       </p><div class="technique-grid">
         {
@@ -77,7 +77,7 @@ const techniques = [
       width="1798"
       height="1200"
       loading="lazy"
-      alt="Total Tissue & Fitness recovery space with plunge tubs and an infrared sauna"
+      alt="Synaptyx Manual Therapy recovery space in Oswego with plunge tubs and an infrared sauna"
     /><div>
       <p class="eyebrow">COMPLETE THE EXPERIENCE</p><h2>
         Tissue work.<br /><span class="gradient-text">Then time to recover.</span>
@@ -94,24 +94,22 @@ const techniques = [
           Hands-on care.<br /><span class="gradient-text">Rooted in understanding.</span>
         </h2>
       </div><p>
-        Total Tissue & Fitness brings tissue-focused work and biomechanics together to help clients
-        understand their movement and recovery.
+        Synaptyx Manual Therapy carries the tissue-focused work and biomechanics of Total Tissue &
+        Fitness forward as its own division within the Synaptyx family.
       </p>
     </div><div class="story-note">
       <img
-        src={withBase(media.logo)}
+        class="legacy-logo"
+        src={withBase(media.legacyLogo)}
         width="2236"
         height="1176"
         loading="lazy"
-        alt="Total Tissue & Fitness logo"
+        alt="Total Tissue & Fitness, the practice’s former name and logo"
       /><p>
-        Our home is Oswego, Illinois. We combine hands-on work, practical education, and contrast
-        therapy in one recovery experience.
-      </p><a
-        class="text-link"
-        href="https://www.synaptyxperformance.com/"
-        target="_blank"
-        rel="noopener noreferrer">Visit Synaptyx Health & Performance ↗</a
+        Formerly Total Tissue & Fitness. Our home is Oswego, Illinois, where we combine hands-on
+        work, practical education, and contrast therapy in one recovery experience.
+      </p><a class="text-link" href={site.partnerUrl} target="_blank" rel="noopener noreferrer"
+        >Visit our sister company, {site.sisterName} ↗</a
       >
     </div>
   </section><CTA />

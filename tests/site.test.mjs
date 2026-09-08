@@ -29,7 +29,8 @@ test('all pages have one h1, a unique title, description, canonical and correct 
       ),
       path,
     );
-    assert.doesNotMatch(html, /Synaptyx Manual Therapy/, path);
+    assert.match(html, /Synaptyx Manual Therapy/, path);
+    if (!/admin\//.test(path)) assert.match(html, /Total Tissue (&amp;|&) Fitness/, path);
   }
 });
 test('contact preview never transmits or persists visitor input', () => {
@@ -77,7 +78,7 @@ test('canonical, social metadata and sitemap respect the deployment origin and b
 });
 test('source testimonial names and compatibility anchors are retained', () => {
   const html = read('dist/index.html');
-  for (const name of ['John', 'Mike', 'Amanda']) assert.ok(html.includes(name));
+  for (const name of ['John', 'Mike']) assert.ok(html.includes(name));
   for (const id of ['free-offer', 'testimonial', 'faq', 'returning-client'])
     assert.ok(html.includes(`id="${id}"`));
 });
@@ -85,7 +86,13 @@ test('normal page assets do not depend on Webflow and autoplay is not forced', (
   for (const path of htmls) {
     const html = read(path);
     assert.doesNotMatch(html, /cdn\.prod\.website-files\.com/, path);
-    assert.doesNotMatch(html, /<video[^>]*autoplay/, path);
+    for (const tag of html.match(/<video[^>]*autoplay[^>]*>/g) || []) {
+      assert.ok(path.endsWith('dist/index.html'), 'autoplay outside home hero: ' + path);
+      assert.match(tag, /\bmuted\b/, path);
+      assert.match(tag, /\bplaysinline\b/, path);
+      assert.match(tag, /poster=/, path);
+      assert.match(html, /hero-video-toggle/, path);
+    }
     assert.doesNotMatch(html, /leadconnectorhq|klaviyo|embedly/, path);
   }
 });

@@ -2,9 +2,13 @@
 import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import CTA from '../components/CTA.astro';
 ---
 
-<BaseLayout title="Page Not Found | Total Tissue & Fitness" noindex
+<BaseLayout
+  title="Page Not Found | Synaptyx Manual Therapy"
+  description="This page may have moved or no longer exists. Find manual therapy, contrast therapy, and booking pathways at Synaptyx Manual Therapy, formerly Total Tissue & Fitness, in Oswego, Illinois."
+  noindex
   ><PageHero
     eyebrow="404 / LET’S GET YOU BACK"
     title="A different way forward."
@@ -12,8 +16,8 @@ import PageHero from '../components/PageHero.astro';
     ><div class="button-row">
       <a class="button" href={withBase('/')}>Back to home →</a><a
         class="button button-outline"
-        href={withBase('/book/')}>Book a session ↗</a
+        href={withBase('/book/')}>Book a session →</a
       >
     </div></PageHero
-  ></BaseLayout
+  ><CTA /></BaseLayout
 >

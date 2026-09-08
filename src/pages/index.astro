@@ -1,7 +1,7 @@
 ---
 import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { media, services } from '../data/site';
+import { media, services, site } from '../data/site';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import Video from '../components/Video.astro';
@@ -15,7 +15,6 @@ const testimonials = [
     quote: "The knowledge and professionalism... I'm dealing with someone who does their research",
   },
   { name: 'Mike', quote: 'It feels fantastic...It feels released, and overall feels better' },
-  { name: 'Amanda', quote: 'No more pain!' },
 ];
 ---
 
@@ -29,7 +28,27 @@ const testimonials = [
       alt=""
       fetchpriority="high"
     />
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster={withBase(media.poster)}
+      aria-hidden="true"
+      tabindex="-1"
+      ><source src={withBase(media.heroLoopWebm)} type="video/webm" /><source
+        src={withBase(media.heroLoopMp4)}
+        type="video/mp4"
+      /></video
+    >
     <div class="hero-overlay"></div>
+    <button class="hero-video-toggle" type="button" aria-pressed="true" hidden
+      ><span class="toggle-icon" aria-hidden="true">❚❚</span><span class="toggle-label"
+        >Pause video</span
+      ></button
+    >
     <div class="container hero-content">
       <p class="eyebrow pill">
         <span class="status-dot"></span> MANUAL THERAPY · MOVEMENT · RECOVERY
@@ -42,7 +61,7 @@ const testimonials = [
       </p>
       <div class="button-row">
         <a class="button" href={withBase('/book/')}
-          >Start your recovery <span aria-hidden="true">↗</span></a
+          >Start your recovery <span aria-hidden="true">→</span></a
         ><a class="button button-outline" href="#services"
           >Explore our approach <span aria-hidden="true">↓</span></a
         >
@@ -53,20 +72,58 @@ const testimonials = [
         </div><div><strong>Oswego, IL</strong><span>OUR HOME. YOUR COMMUNITY.</span></div>
       </div>
     </div>
-    <div class="hero-caption">
-      THE TOTAL TISSUE RECOVERY SPACE <span aria-hidden="true">↗</span>
-    </div>
+    <div class="hero-caption">FORMERLY TOTAL TISSUE & FITNESS · OSWEGO, IL</div>
   </section>
   <div class="partnership-strip">
     <div class="container">
       <span class="eyebrow">EDUCATION. MOVEMENT. RECOVERY.</span><p>
         Understand your body. <span class="plus">+</span> Build on what moves you.
       </p><a href={withBase('/manual-therapy/#our-story')}
-        >Our approach <span aria-hidden="true">↗</span></a
+        >Our approach <span aria-hidden="true">→</span></a
       >
     </div>
   </div>
-  <section class="section container" id="services">
+  <section class="section container transition-section" id="formerly">
+    <div>
+      <p class="eyebrow">A NEW NAME. THE SAME HANDS-ON APPROACH.</p><h2>
+        Formerly<br /><span class="gradient-text">Total Tissue & Fitness.</span>
+      </h2><p>
+        {site.legacyName} is now {site.name}, a separate sister company within the Synaptyx family
+        alongside {site.sisterName}. The Oswego practice, its manual therapy, contrast therapy, and
+        practitioner mentorship continue under the Synaptyx name.
+      </p><p>
+        Existing booking pathways remain listed on the booking page. If you arrived here looking for
+        Total Tissue & Fitness, you are in the right place.
+      </p><div class="button-row">
+        <a class="button button-outline" href={withBase('/book/')}>Booking options →</a><a
+          class="text-link"
+          href={site.partnerUrl}
+          target="_blank"
+          rel="noopener noreferrer">Our sister company, {site.sisterName} ↗</a
+        >
+      </div>
+    </div><div class="identity-panel">
+      <figure>
+        <img
+          class="legacy-logo"
+          src={withBase(media.legacyLogo)}
+          width="2236"
+          height="1176"
+          loading="lazy"
+          alt="Total Tissue & Fitness gold logo"
+        /><figcaption>Then · Total Tissue & Fitness</figcaption>
+      </figure><span class="identity-arrow" aria-hidden="true">→</span><figure>
+        <img
+          src={withBase(media.logo)}
+          width="672"
+          height="386"
+          loading="lazy"
+          alt="Synaptyx mark"
+        /><figcaption>Now · Synaptyx Manual Therapy</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section container border-top" id="services">
     <div class="section-heading">
       <div>
         <p class="eyebrow">CARE THAT CONNECTS</p><h2>
@@ -84,7 +141,7 @@ const testimonials = [
             <>
               <span class="service-number">
                 {service.number}
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true">→</span>
               </span>
               <p class="eyebrow">{service.subtitle}</p>
               <h3>{service.title}</h3>
@@ -106,7 +163,7 @@ const testimonials = [
   <section class="section surface-section">
     <div class="container split-section">
       <div>
-        <p class="eyebrow">THE TOTAL TISSUE APPROACH</p><h2>
+        <p class="eyebrow">THE SYNAPTYX APPROACH</p><h2>
           Understand.<br />Restore.<br /><span class="gradient-text">Keep moving.</span>
         </h2><p>
           Recovery is more than time away from training. We connect hands-on tissue work with an
@@ -119,13 +176,19 @@ const testimonials = [
           playsinline
           preload="none"
           poster={withBase(media.poster)}
-          aria-label="A tour of the Total Tissue & Fitness facility"
-          ><source src={withBase(media.overview)} type="video/mp4" /><p>
+          aria-label="A tour of the Synaptyx Manual Therapy facility in Oswego"
+          ><source src={withBase(media.overview)} type="video/mp4" /><source
+            src={withBase(media.overviewWebm)}
+            type="video/webm"
+          /><p>
             Your browser does not support this video. <a href={withBase(media.overview)}
               >Download the facility tour</a
             >.
           </p></video
-        ><Video id="uBjppA4WRW4" title="This is Total Tissue & Fitness" />
+        ><Video
+          id="uBjppA4WRW4"
+          title="This is Total Tissue & Fitness (now Synaptyx Manual Therapy)"
+        />
       </div>
     </div>
   </section>
@@ -135,7 +198,7 @@ const testimonials = [
         src={withBase(media.sauna)}
         width="1798"
         height="1200"
-        alt="Infrared sauna in the Total Tissue & Fitness recovery space"
+        alt="Infrared sauna in the Synaptyx Manual Therapy recovery space in Oswego"
         loading="lazy"
       /><div>
         <span class="eyebrow">RECOVERY, BUILT IN</span><strong>One hour.<br />Time for you.</strong>
@@ -149,7 +212,7 @@ const testimonials = [
       </p><div class="tags">
         <span>Cold plunge</span><span>Hot plunge</span><span>Infrared sauna</span>
       </div><a class="button button-outline" href={withBase('/contrast-therapy/')}
-        >Explore the recovery space ↗</a
+        >Explore the recovery space →</a
       >
     </div>
   </section>
@@ -161,7 +224,7 @@ const testimonials = [
         </h2><p>
           Learn how to take care of each other with hands-on instruction and a toolkit to take home.
           A 3–4 hour workshop for couples who take their fitness and recovery seriously.
-        </p><a class="button" href={withBase('/couples-workshop/')}>Discover the workshop ↗</a>
+        </p><a class="button" href={withBase('/couples-workshop/')}>Discover the workshop →</a>
       </div><div class="workshop-feature">
         <span class="eyebrow">MORE THAN A SESSION</span><h3>
           Practical knowledge.<br />A shared toolkit.<br /><span class="gradient-text"
@@ -180,8 +243,8 @@ const testimonials = [
           Real people.<br /><span class="gradient-text">Their own words.</span>
         </h2>
       </div><p>
-        Experiences shared by Total Tissue & Fitness clients. Every person’s experience is
-        individual.
+        Experiences shared by clients during our years as Total Tissue & Fitness. Every person’s
+        experience is individual.
       </p>
     </div><div class="testimonial-grid">
       {
@@ -203,7 +266,8 @@ const testimonials = [
       }
     </div><Video id="KmQdSmb7iec" title="Mike’s experience" /><details class="gallery-disclosure">
       <summary
-        >More stories from the Total Tissue community <span aria-hidden="true">+</span></summary
+        >More client stories from the Total Tissue & Fitness years <span aria-hidden="true">+</span
+        ></summary
       ><div class="testimonial-gallery">
         {
           gallery.map((image, i) => (
@@ -232,7 +296,7 @@ const testimonials = [
         Find your next appointment and the latest booking transition information.
       </p>
     </div><a class="button button-outline" href={withBase('/book/#returning-client')}
-      >Returning client booking ↗</a
+      >Returning client booking →</a
     >
-  </section><FAQ /><CTA />
+  </section><FAQ /><CTA /><script src="../scripts/hero-video.ts"></script>
 </BaseLayout>

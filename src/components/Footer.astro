@@ -9,7 +9,7 @@ import { site } from '../data/site';
     <div>
       <Brand /><p>
         Hands-on care. Purposeful movement.<br />A more complete approach to recovery.
-      </p><span class="muted small-text">Total Tissue & Fitness · Oswego, Illinois</span>
+      </p><span class="muted small-text">Formerly {site.legacyName} · Oswego, Illinois</span>
     </div>
     <div>
       <h2>Explore</h2><a href={withBase('/manual-therapy/')}>Manual Therapy</a><a
@@ -24,12 +24,12 @@ import { site } from '../data/site';
       ><a href={withBase('/#faq')}>FAQs</a><a
         href={site.partnerUrl}
         target="_blank"
-        rel="noopener noreferrer">Synaptyx Health & Performance ↗</a
+        rel="noopener noreferrer">{site.sisterName} (sister company) ↗</a
       >
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© {new Date().getFullYear()} Total Tissue & Fitness</span><div>
+    <span>© {new Date().getFullYear()} {site.name} · formerly {site.legacyName}</span><div>
       <a href={withBase('/privacy/')}>Privacy</a><a href={withBase('/admin/')}>Dashboard concept</a>
     </div>
   </div>

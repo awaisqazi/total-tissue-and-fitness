@@ -1,0 +1,174 @@
+/* Motion system. Everything here is progressive: no JS or reduced motion keeps content static and visible. */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 0.7s;
+}
+
+/* Scroll reveal (activated by src/scripts/reveal.ts) */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* Hero entrance */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.hero-image {
+  animation: hero-zoom 2.4s var(--ease-out) both;
+}
+.hero-content > *,
+.page-hero > * {
+  animation: rise-in 0.8s var(--ease-out) both;
+}
+.hero-content > :nth-child(1),
+.page-hero > :nth-child(1) {
+  animation-delay: 0.05s;
+}
+.hero-content > :nth-child(2),
+.page-hero > :nth-child(2) {
+  animation-delay: 0.15s;
+}
+.hero-content > :nth-child(3),
+.page-hero > :nth-child(3) {
+  animation-delay: 0.25s;
+}
+.hero-content > :nth-child(4),
+.page-hero > :nth-child(4) {
+  animation-delay: 0.35s;
+}
+.hero-content > :nth-child(5),
+.page-hero > :nth-child(5) {
+  animation-delay: 0.45s;
+}
+.hero-caption {
+  animation: fade-in 1s 0.9s var(--ease-out) both;
+}
+.status-dot {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 #70c1f666;
+  }
+  50% {
+    box-shadow: 0 0 0 5px #70c1f600;
+  }
+}
+
+/* Header elevation */
+.site-header {
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+.site-header.is-scrolled {
+  box-shadow: 0 10px 30px #00000059;
+}
+
+/* Interactive states */
+.button,
+.text-link,
+.service-card,
+.image-card,
+.booking-card,
+.testimonial-grid figure {
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out),
+    border-color 0.25s,
+    color 0.2s,
+    background-color 0.2s;
+}
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+.text-link span {
+  display: inline-block;
+  transition: transform 0.25s var(--ease-out);
+}
+.text-link:hover span {
+  transform: translateX(4px);
+}
+.service-card:hover,
+.image-card:hover,
+.booking-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px #00000059;
+}
+a,
+summary {
+  transition: color 0.2s;
+}
+
+/* Disclosures: FAQ, gallery, video, mobile menu */
+.faq-list summary span {
+  display: inline-block;
+  transition: transform 0.3s var(--ease-out);
+}
+.faq-list details[open] > p,
+.video-component details[open] > .video-frame,
+.gallery-disclosure[open] > .testimonial-gallery {
+  animation: rise-in 0.45s var(--ease-out) both;
+}
+.mobile-menu[open] > nav {
+  animation: rise-in 0.3s var(--ease-out) both;
+}
+
+/* Media */
+.recovery-image > img,
+.image-card img {
+  transition: transform 0.9s var(--ease-out);
+}
+.recovery-image:hover > img,
+.image-card:hover img {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-image,
+  .hero-content > *,
+  .page-hero > *,
+  .hero-caption,
+  .status-dot {
+    animation: none;
+  }
+}

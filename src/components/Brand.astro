@@ -1,14 +1,18 @@
 ---
 import { withBase } from '../lib/paths';
-import { media } from '../data/site';
+import { media, site } from '../data/site';
 ---
 
-<a href={withBase('/')} class="brand" aria-label="Total Tissue & Fitness home"
+<a href={withBase('/')} class="brand" aria-label={`${site.name} home`}
   ><img
+    class="brand-mark"
     src={withBase(media.logo)}
-    width="2236"
-    height="1176"
-    alt="Total Tissue & Fitness"
+    width="672"
+    height="386"
+    alt=""
     fetchpriority="high"
-  /></a
+  /><span class="brand-text"
+    ><span class="brand-name">SYNAPTYX</span><span class="brand-subtitle">Manual Therapy</span
+    ></span
+  ></a
 >

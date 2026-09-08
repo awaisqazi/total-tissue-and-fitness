@@ -3,11 +3,12 @@ import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { booking } from '../data/site';
+import CTA from '../components/CTA.astro';
 ---
 
 <BaseLayout
-  title="Book Your Session | Total Tissue & Fitness"
-  description="Find the right booking pathway for new and returning clients, contrast therapy, and couples workshops at Total Tissue & Fitness in Oswego."
+  title="Book Your Session | Synaptyx Manual Therapy"
+  description="Find the right booking pathway for new and returning clients, contrast therapy, and couples workshops at Synaptyx Manual Therapy, formerly Total Tissue & Fitness, in Oswego."
 >
   <PageHero
     eyebrow="YOUR NEXT STEP"
@@ -30,7 +31,7 @@ import { booking } from '../data/site';
         Start with a free educational session to discuss your goals and learn about the approach.
         The team will arrange your next appointment in Jane.
       </p><a class="button" href={withBase('/contact/?interest=new-client')}
-        >Arrange your first conversation ↗</a
+        >Arrange your first conversation →</a
       >
     </article><article class="booking-card" id="returning-client">
       <p class="eyebrow">WELCOME BACK</p><h2>Returning clients</h2><p>
@@ -43,7 +44,7 @@ import { booking } from '../data/site';
         rel="noopener noreferrer">Returning client booking ↗</a
       >
     </article><article class="booking-card" id="contrast">
-      <p class="eyebrow">RECOVERY TIME</p><h2>Contrast therapy</h2><p>
+      <p class="eyebrow">RECOVERY TIME</p><h2>Contrast Therapy</h2><p>
         Arrange your first contrast therapy visit using the existing calendar. If you’re unsure
         which appointment to select, contact the team.
       </p><a
@@ -53,7 +54,7 @@ import { booking } from '../data/site';
         rel="noopener noreferrer">Contrast therapy calendar ↗</a
       >
     </article><article class="booking-card">
-      <p class="eyebrow">LEARN TOGETHER</p><h2>Couples workshop</h2><p>
+      <p class="eyebrow">LEARN TOGETHER</p><h2>Couples Workshop</h2><p>
         A practical, 3–4 hour workshop for two, with take-home tools. Ask the team to confirm
         current dates, pricing, and the correct booking pathway.
       </p><a class="button button-outline" href={withBase('/contact/?interest=couples')}
@@ -69,5 +70,5 @@ import { booking } from '../data/site';
         href={withBase('/contact/')}>get in touch</a
       > for help.
     </p>
-  </div>
+  </div><CTA />
 </BaseLayout>

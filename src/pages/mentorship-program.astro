@@ -3,19 +3,20 @@ import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Video from '../components/Video.astro';
+import { media } from '../data/site';
 ---
 
 <BaseLayout
-  title="Practitioner Mentorship | Total Tissue & Fitness"
+  title="Practitioner Mentorship | Synaptyx Manual Therapy"
   description="Practical mentorship in soft tissue techniques, biomechanics, movement education, and contrast therapy for therapists and fitness professionals."
 >
   <PageHero
-    eyebrow="03 / PRACTITIONER EDUCATION"
+    eyebrow="03 / PRACTITIONER MENTORSHIP"
     title="Learn the approach."
     accent="Build your practice."
-    description="The Total Tissue Practitioner Mentorship Program brings together soft tissue techniques, biomechanical analysis, and recovery education for working professionals."
+    description="The Synaptyx Manual Therapy Practitioner Mentorship Program brings together soft tissue techniques, biomechanical analysis, and recovery education for working professionals."
     ><a class="button" href={withBase('/contact/?interest=mentorship')}
-      >Inquire about mentorship ↗</a
+      >Inquire about mentorship →</a
     ></PageHero
   >
   <section class="section container split-section border-top">
@@ -26,8 +27,8 @@ import Video from '../components/Video.astro';
         Designed for physical therapists, manual therapists, and fitness professionals looking to
         expand their practical toolkit.
       </p><p>
-        Learn how the Total Tissue approach connects assessment, hands-on work, corrective exercise,
-        and recovery protocols.
+        Learn how the Synaptyx Manual Therapy approach connects assessment, hands-on work,
+        corrective exercise, and recovery protocols.
       </p><div class="tags">
         <span>Physical therapists</span><span>Manual therapists</span><span
           >Fitness professionals</span
@@ -51,10 +52,31 @@ import Video from '../components/Video.astro';
           See the work<br /><span class="gradient-text">in practice.</span>
         </h2>
       </div><p>
-        Explore the workshop video from the Total Tissue library, then tell us about your
+        Explore the workshop video from our Total Tissue & Fitness years, then tell us about your
         professional background and what you hope to learn.
       </p>
-    </div><Video id="nKuis2o6GUI" title="Massage therapists workshop" />
+    </div><div class="media-split">
+      <video
+        class="portrait-video"
+        controls
+        playsinline
+        preload="none"
+        poster={withBase(media.mentorshipPoster)}
+        aria-label="Practitioner mentorship session, recorded as Total Tissue & Fitness"
+        ><source src={withBase(media.mentorshipMp4)} type="video/mp4" /><source
+          src={withBase(media.mentorshipWebm)}
+          type="video/webm"
+        /><p>
+          Your browser does not support this video. <a href={withBase(media.mentorshipMp4)}
+            >Download the mentorship clip</a
+          >.
+        </p></video
+      ><div>
+        <p class="eyebrow">FROM THE MENTORSHIP FLOOR</p><h3>Hands-on, from the first hour.</h3><p>
+          A short look at the mentorship environment, followed by the full workshop recording.
+        </p><Video id="nKuis2o6GUI" title="Massage therapists workshop" />
+      </div>
+    </div>
   </section>
   <section class="cta-section">
     <div class="container">
@@ -62,7 +84,7 @@ import Video from '../components/Video.astro';
         Bring your curiosity.<br /><span class="gradient-text">Build your next chapter.</span>
       </h2><p>Share your profession, experience, and learning goals with the team.</p><a
         class="button"
-        href={withBase('/contact/?interest=mentorship')}>Start a mentorship inquiry ↗</a
+        href={withBase('/contact/?interest=mentorship')}>Start a mentorship inquiry →</a
       >
     </div>
   </section>

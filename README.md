@@ -1,6 +1,6 @@
-# Total Tissue & Fitness — Astro website
+# Synaptyx Manual Therapy (formerly Total Tissue & Fitness) — Astro website
 
-A proof-of-concept migration of the public Webflow website into Astro. **Total Tissue & Fitness keeps its existing name, gold logo, and gold palette.** Synaptyx Performance inspires the layout, typography hierarchy, dark surfaces, and polished presentation. It is not a rebrand to Synaptyx Manual Therapy.
+A proof-of-concept migration of the public Total Tissue & Fitness Webflow website into Astro, rebranded as **Synaptyx Manual Therapy**, a separate sister company within the Synaptyx family alongside Synaptyx Health & Performance (ADR-008). The site uses the Synaptyx mark, blue/near-black palette and Inter typography, and carries clear “formerly Total Tissue & Fitness” notices. The original gold logo remains as the legacy mark in those notices.
 
 The project includes the marketing website, locally archived source content/media, a clearly labeled static operations-dashboard concept, and a documented path to a future client-owned Supabase backend.
 

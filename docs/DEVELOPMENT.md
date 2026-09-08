@@ -2,7 +2,7 @@
 
 ## Architecture
 
-Astro statically renders the marketing pages. No React framework or Webflow runtime is required. Minimal client scripts handle mobile navigation dismissal, click-to-load YouTube players, the non-sending inquiry preview, and the fictional dashboard UI. Main content, FAQ disclosures, navigation, original video controls, and external links work without client JavaScript.
+Astro statically renders the marketing pages. No React framework or Webflow runtime is required. Minimal client scripts handle mobile navigation dismissal, click-to-load YouTube players, the non-sending inquiry preview, the fictional dashboard UI, the scroll-reveal motion layer (`src/scripts/reveal.ts` + `src/styles/motion.css`), and the home hero loop control (`src/scripts/hero-video.ts`). Motion is progressive: without JavaScript or under `prefers-reduced-motion` every element stays static and visible. Main content, FAQ disclosures, navigation, original video controls, and external links work without client JavaScript.
 
 `src/layouts/BaseLayout.astro` owns page HTML, metadata, noindex state, typography imports, navigation and footer. `src/styles/global.css` owns design tokens, layout and responsive rules. `src/data/site.ts` is the source of service summaries, brand/location facts, media references, FAQs and booking destinations.
 
@@ -30,7 +30,7 @@ All external destinations are in `src/data/site.ts`. Update only from client-sup
 
 ### Media
 
-Use originals from `public/images` or `public/media`. Keep provenance in `docs/source-snapshot/manifest.json`. Run `npm run images:optimize` after changing the source photographs or logo to regenerate the smaller lossless-logo/WebP-photo derivatives. Give visible content images useful alt text and decorative images empty alt text. Declare dimensions, lazy-load below-fold imagery, and keep large native video downloads user-initiated (`preload="none"`). External YouTube players load only after disclosure is opened; closing the disclosure removes the player.
+Use originals from `public/images` or `public/media`. Keep provenance in `docs/source-snapshot/manifest.json`. Run `npm run images:optimize` after changing the source photographs or logo to regenerate the smaller lossless-logo/WebP-photo derivatives. Give visible content images useful alt text and decorative images empty alt text. Declare dimensions, lazy-load below-fold imagery, and keep large native video downloads user-initiated (`preload="none"`). The only autoplaying media is the silent home hero loop; keep it muted, inline, poster-backed, and paired with the pause control, and re-encode with ffmpeg (`-crf 29` H.264 + VP9) if the source changes. Use → for internal links and reserve ↗ for links that open an external site. External YouTube players load only after disclosure is opened; closing the disclosure removes the player.
 
 If replacing testimonial images, obtain text versions for equivalent screen-reader access. Current screenshot testimonials are retained as optional full-size historical images; primary quotes are HTML text. Never invent missing John/Amanda videos.
 

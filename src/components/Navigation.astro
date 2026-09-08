@@ -5,7 +5,7 @@ const path = Astro.url.pathname;
 const links = [
   { href: '/manual-therapy/', label: 'Manual Therapy' },
   { href: '/contrast-therapy/', label: 'Contrast Therapy' },
-  { href: '/mentorship-program/', label: 'Education' },
+  { href: '/mentorship-program/', label: 'Mentorship' },
   { href: '/#testimonial', label: 'Client Stories' },
 ];
 ---
@@ -26,7 +26,7 @@ const links = [
       }
     </nav>
     <a class="button button-small desktop-book" href={withBase('/book/')}
-      >Book a session <span aria-hidden="true">↗</span></a
+      >Book a session <span aria-hidden="true">→</span></a
     >
     <details class="mobile-menu">
       <summary aria-label="Open navigation"
@@ -35,7 +35,9 @@ const links = [
       <nav aria-label="Mobile navigation">
         {links.map((link) => <a href={withBase(link.href)}>{link.label}</a>)}<a
           href={withBase('/couples-workshop/')}>Couples Workshop</a
-        ><a href={withBase('/contact/')}>Contact</a><a href={withBase('/book/')}>Book a session ↗</a
+        ><a href={withBase('/contact/')}>Contact</a><a
+          class="button button-small"
+          href={withBase('/book/')}>Book a session →</a
         >
       </nav>
     </details>

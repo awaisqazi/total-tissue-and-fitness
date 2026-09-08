@@ -26,6 +26,26 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 
 ---
 
+### ADR-008 — Rebrand the site to Synaptyx Manual Therapy with legacy notices
+
+- **Date:** 2026-09-08
+- **Status:** Accepted; supersedes ADR-005 (identity clause) and realizes the intent of ADR-002
+- **Goal:** Present Total Tissue & Fitness as Synaptyx Manual Therapy, a separate sister company (subdivision) within the Synaptyx family alongside Synaptyx Health & Performance, while making sure existing clients recognize the practice.
+- **Decision:** The public identity is “Synaptyx Manual Therapy”. Use the Synaptyx mark (trimmed from the partner’s logo) in a “SYNAPTYX / Manual Therapy” lockup, the partner’s tokens (blue `#70c1f6`, near-black `#101010`, grey `#7c91a0`), and Inter for all type. Retire the gold palette and Manrope. Keep the original gold logo only as a legacy mark. Every public page carries a “formerly Total Tissue & Fitness” signal: a site-wide announcement bar, a home transition section (`/#formerly`), an FAQ entry, footer/copyright text, page descriptions, and JSON-LD `alternateName`, `brand`/`memberOf` Synaptyx, and `affiliation` with the sister company. Copy says “sister company”, never “partnership”.
+- **Rationale:** The user explicitly requested Synaptyx branding, colors and logos with notices about the former name, and clarified that the entity is a sister company within Synaptyx rather than a partnership with Synaptyx Health & Performance, which is the “later explicit user decision” the previous rule required. Legacy notices protect search recognition and returning clients during the transition.
+- **Tradeoffs:** Testimonials and videos were recorded under the former name and are attributed accordingly. Logo rights and the exact lockup wording belong to Synaptyx Health & Performance and need their approval before production. The gold identity remains in archived assets and can be restored by reverting tokens and the Brand component.
+- **Affected:** `src/data/site.ts`, `src/components/{Brand,Announcement,Footer,PageHero}.astro`, `src/layouts/BaseLayout.astro`, all pages, `src/styles/{global,admin,motion}.css`, `public/images/synaptyx/`, tests, CLAUDE.md, README, checklist, content map.
+- **Validation:** Astro check, build, built-link check and seven tests pass for root and Pages base paths; contrast of blue/grey/white text on `#101010` exceeds WCAG AA; desktop 1440 and mobile 375 browser checks of home, booking and 404 (lockup, announcement, menu CTA, transition section).
+- **Unresolved:** Synaptyx approval of logo usage, lockup, legal entity name and structured-data organization model, and when to retire the legacy notices (owner: Josh and Synaptyx principals). The practitioner’s name was supplied verbally as “Josh” only; it is not published until full name, credentials and headshot are approved. Old-domain redirects and SEO handling of the name change remain production gates.
+
+### CHG-2026-09-08-polish — Motion, hero video, media, copy and QA polish
+
+- **Goal:** Make the site feel finished on desktop and mobile with smooth motion, and bring every captured asset into use.
+- **Change and rationale:** Added a progressive scroll-reveal system and hero entrance (`reveal.ts`, `motion.css`) that stays static under reduced motion or without JavaScript. Restored the original background video as the home hero (re-encoded to ~2 MB MP4 / ~1.4 MB WebM, muted, looping, poster fallback, Save-Data/reduced-motion pause, visible pause control). Re-encoded the mentorship WebM to MP4+WebM and placed it on the Mentorship page. Applied Opus/Sonnet audit findings: header sizing and 760px nav breakpoint, full-height short pages, left-aligned privacy prose, label sizes floored at 10–11px, consistent section spacing, mobile-menu CTA button, styled selects, header-aware anchor offsets, CTA bands on booking and 404, → for internal links and ↗ only for external. Copy: removed the unreviewed “No more pain!” testimonial, Title Case service names, “Mentorship” nav label, distinct 404 description, partner URL sourced from data, removed unused `transitionDate` duplication.
+- **Affected:** Layout, components, all pages, styles, scripts, `public/media/optimized/`, tests, DEVELOPMENT.md, CONTENT_SOURCE_MAP.md.
+- **Validation:** Live site re-crawled 2026-09-08 and found byte-identical to the snapshot; all live assets confirmed present. Check/build/links/tests pass; browser checks as in ADR-008.
+- **Unresolved:** Practitioner to confirm “Voodoo flossing/Floss bands” wording and the integration-vs-corrective exercise term; owner sign-off on the $1,200 workshop package; captions if either native video has narration.
+
 ### ADR-007 — Publish the non-indexable POC through public GitHub Pages
 
 - **Date:** 2026-09-08
@@ -69,7 +89,7 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 ### ADR-005 — Retain Total Tissue identity and bound the dashboard to a static POC
 
 - **Date:** 2026-09-08
-- **Status:** Accepted
+- **Status:** Identity clause superseded by ADR-008; dashboard/Supabase clauses remain Accepted
 - **Goal:** Demonstrate the Astro redesign accurately without prematurely changing the public brand or implying production data infrastructure.
 - **Decision:** Keep the Total Tissue & Fitness name, existing gold logo, and gold colors `#d0a84c`/`#dabb6b`. Use Synaptyx Performance only as a layout/style reference. Keep the POC dashboard static and populated exclusively with fictional data. Do not create Supabase in the POC; a future operational dashboard is planned around a client-owned Supabase project with varying roles defined and enforced later.
 - **Rationale:** The user clarified that “Synaptyx Manual Therapy” is a future partnership discussion, not the current identity. Separating a static demonstration from production authentication/data work keeps the POC honest and avoids hard-coding unresolved roles or creating infrastructure under the wrong owner.

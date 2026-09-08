@@ -3,11 +3,12 @@ import { withBase } from '../lib/paths';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
-import '@fontsource/manrope/600.css';
-import '@fontsource/manrope/700.css';
-import '@fontsource/manrope/800.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
 import '../styles/global.css';
+import '../styles/motion.css';
 import Navigation from '../components/Navigation.astro';
+import Announcement from '../components/Announcement.astro';
 import Footer from '../components/Footer.astro';
 import { site, media } from '../data/site';
 interface Props {
@@ -33,7 +34,7 @@ const isPublic = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
       name="robots"
       content={isPublic ? 'index, follow' : 'noindex, nofollow'}
     />
-    <meta name="theme-color" content="#0b0f13" />
+    <meta name="theme-color" content="#101010" />
     <meta property="og:type" content="website" /><meta
       property="og:site_name"
       content={site.name}
@@ -51,7 +52,10 @@ const isPublic = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
       name="twitter:image"
       content={new URL(withBase(media.social), Astro.site)}
     />
-    <link rel="icon" type="image/png" href={withBase(media.favicon)} />
+    <link rel="icon" type="image/png" href={withBase(media.favicon)} /><link
+      rel="apple-touch-icon"
+      href={withBase(media.appleIcon)}
+    />
     <script
       is:inline
       type="application/ld+json"
@@ -60,6 +64,13 @@ const isPublic = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
         '@type': 'LocalBusiness',
         name: site.name,
         alternateName: site.legacyName,
+        brand: { '@type': 'Brand', name: site.familyName },
+        memberOf: { '@type': 'Organization', name: site.familyName },
+        affiliation: {
+          '@type': 'Organization',
+          name: site.sisterName,
+          url: site.partnerUrl,
+        },
         url: new URL(withBase('/'), Astro.site).href,
         description,
         areaServed: { '@type': 'City', name: 'Oswego, Illinois' },
@@ -67,8 +78,10 @@ const isPublic = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
     />
   </head>
   <body
-    ><a class="skip-link" href="#main">Skip to content</a><Navigation /><main id="main">
+    ><a class="skip-link" href="#main">Skip to content</a><Navigation /><Announcement /><main
+      id="main"
+    >
       <slot />
-    </main><Footer /></body
+    </main><Footer /><script src="../scripts/reveal.ts"></script></body
   >
 </html>

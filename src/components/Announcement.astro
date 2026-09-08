@@ -1,0 +1,12 @@
+---
+import { withBase } from '../lib/paths';
+import { site } from '../data/site';
+---
+
+<div class="announcement" role="region" aria-label="Name change notice">
+  <div class="container">
+    <strong>New name</strong><span
+      >{site.legacyName} is now {site.name}, a sister company of {site.sisterName}.</span
+    ><a href={withBase('/#formerly')}>What changed →</a>
+  </div>
+</div>

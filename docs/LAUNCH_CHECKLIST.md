@@ -4,9 +4,9 @@ The first section defines POC completion. The remaining sections are production 
 
 ## POC completion
 
-- [x] Public pages retain the Total Tissue & Fitness name and existing gold logo.
-- [x] Gold tokens preserve `#d0a84c` and `#dabb6b` with accessible text/background use.
-- [x] Synaptyx Performance influences layout and style only; the POC does not replace Total Tissue’s identity with “Synaptyx Manual Therapy” as its identity.
+- [x] Public pages present Synaptyx Manual Therapy with the Synaptyx mark and blue/near-black palette (ADR-008), with “formerly Total Tissue & Fitness” notices on every public page.
+- [x] Brand tokens `#70c1f6`, `#101010`, `#7c91a0` pass WCAG AA for text roles; the legacy gold logo appears only in transition notices.
+- [x] The home hero uses the original silent background video loop with poster fallback, reduced-motion pause, and a visible pause control.
 - [x] Representative home, service, mentorship, and dashboard views work at desktop, tablet, and mobile widths.
 - [x] Dashboard is clearly labeled as a static demo and uses fictional data exclusively.
 - [x] No Supabase project, authentication, real client data, or operational role claims are present.

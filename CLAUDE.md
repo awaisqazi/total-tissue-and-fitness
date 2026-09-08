@@ -1,6 +1,6 @@
 # Claude maintenance guide
 
-This repository is the source of truth for the Total Tissue & Fitness Astro website. Preserve the existing Total Tissue name, gold logo, and gold palette (`#d0a84c`, `#dabb6b`). Synaptyx Performance is a layout/style reference only. Do not introduce “Synaptyx Manual Therapy” or replace Total Tissue branding unless a later explicit user decision changes the identity.
+This repository is the source of truth for the Synaptyx Manual Therapy Astro website (formerly Total Tissue & Fitness; see ADR-008). The public identity is **Synaptyx Manual Therapy**, a separate sister company within the Synaptyx family alongside Synaptyx Health & Performance (not a partnership with it): Synaptyx mark, blue `#70c1f6`, near-black `#101010`, grey `#7c91a0`, Inter typography. Keep the “formerly Total Tissue & Fitness” notices (announcement bar, home transition section, footer, structured-data `alternateName`) until the owner decides to retire them. The original gold logo is retained only as the legacy mark in those notices. Do not revert to the gold identity or drop the legacy notices without a new recorded decision.
 
 ## Before changing anything
 
