@@ -1,0 +1,190 @@
+{
+  "capturedAt": "2026-09-08T16:42:45.173739+00:00",
+  "source": "https://www.totaltissueandfitness.com",
+  "pages": [
+    {
+      "path": "/",
+      "title": "JB-TOTAL TISSUE HAVOC | OSWEGO, IL",
+      "snapshot": "home.html"
+    },
+    {
+      "path": "",
+      "title": "JB-TOTAL TISSUE HAVOC | OSWEGO, IL",
+      "snapshot": "home.html"
+    },
+    {
+      "path": "/mentorship-program",
+      "title": "Mentorship Program",
+      "snapshot": "mentorship-program.html"
+    },
+    {
+      "path": "/contrast-therapy",
+      "title": "Contrast Therapy",
+      "snapshot": "contrast-therapy.html"
+    }
+  ],
+  "assets": [
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/66269de21a2f67537f7148ac_JB%20FINAL-webflow.jpg",
+      "local": "public/images/66269de21a2f67537f7148ac_JB-FINAL-webflow.jpg",
+      "bytes": 1088650,
+      "sha256": "b13b1d3557981cb02ba2544c40fb9853bf6fbcb9079c5a3d230b0260662e6adc"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/css/total-tissue-fitness.webflow.shared.dd5600447.css",
+      "local": "docs/source-snapshot/styles/total-tissue-fitness.webflow.shared.dd5600447.css",
+      "bytes": 71059,
+      "sha256": "deab55a438e7ee61ca765e43e736df78a940320fc46d35c81068af5e640062b8"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/660ca351a18d35e961252c4a_jb-total--icon-32.png",
+      "local": "public/images/660ca351a18d35e961252c4a_jb-total--icon-32.png",
+      "bytes": 3251,
+      "sha256": "157d21afdf5d870766b131713934241851ac2a06e806fb4d3cd30b73b9537983"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/660ca366751a5853dcbc95ae_jb-total-logo-gold-256.png",
+      "local": "public/images/660ca366751a5853dcbc95ae_jb-total-logo-gold-256.png",
+      "bytes": 65084,
+      "sha256": "3b4714dd9bd77211c609b2ae6278caf0295ee4b37e8a3797efa726a67a6a7cea"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/66269d3731c576e8399b078a_Total%20Tissue%20%26%20fitness%20-LOGO.png",
+      "local": "public/images/66269d3731c576e8399b078a_Total-Tissue---fitness--LOGO.png",
+      "bytes": 201216,
+      "sha256": "c29ce66d87a5565077541a127fdc28ee7956de4b263470b3bd5d9e1cad30860b"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/6625ab15d06cde3819d95ae7_jb-total-background-video-poster-00001.jpg",
+      "local": "public/images/6625ab15d06cde3819d95ae7_jb-total-background-video-poster-00001.jpg",
+      "bytes": 37064,
+      "sha256": "31526ba26057c8e38840630f90f0282b713281c47603c36adb7b3ad667f974eb"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/6625ab15d06cde3819d95ae7_jb-total-background-video-transcode.mp4,https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/6625ab15d06cde3819d95ae7_jb-total-background-video-transcode.webm",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/6625ab15d06cde3819d95ae7_jb-total-background-video-transcode.mp4",
+      "local": "public/media/6625ab15d06cde3819d95ae7_jb-total-background-video-transcode.mp4",
+      "bytes": 4725110,
+      "sha256": "559a8a6a6a4a572fb47c155ab1fe16c9b6f27702320c3024d9b9750e07790524"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/6625ab15d06cde3819d95ae7_jb-total-background-video-transcode.webm",
+      "local": "public/media/6625ab15d06cde3819d95ae7_jb-total-background-video-transcode.webm",
+      "bytes": 7619870,
+      "sha256": "0a848670d3db1024517b07fab85b6674600a0730ab60265becd44e9121a3272f"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1fc8cccc5d240ca715c03_ab1ba45b2858fa2fdb95965c25819fbc_1200_80.webp",
+      "local": "public/images/65f1fc8cccc5d240ca715c03_ab1ba45b2858fa2fdb95965c25819fbc_1200_80.webp",
+      "bytes": 57392,
+      "sha256": "4b043690e89f419af9865e8ccc02d6eae9a7dd05f4c55b470fecbb825a96dcdf"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1fc8c5e03493160f056d8_035cbd15e61ecf2e1066c8c9b748cb0c_1200_80.webp",
+      "local": "public/images/65f1fc8c5e03493160f056d8_035cbd15e61ecf2e1066c8c9b748cb0c_1200_80.webp",
+      "bytes": 85224,
+      "sha256": "573302df394dbc64bb3dbc6d59d3dfbcc731fc1b0845c38d02d759998176e9bf"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1fc8c16332b4eebd854a5_b06c5044ac7d05b668ca6a4b804b8979_1200_80.webp",
+      "local": "public/images/65f1fc8c16332b4eebd854a5_b06c5044ac7d05b668ca6a4b804b8979_1200_80.webp",
+      "bytes": 62482,
+      "sha256": "41ae38e745e98812552467d9b39b9bbd1cc6e412f5c9329cfc1acb866f9eb066"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1fc8c4a0d74b13ffc1d39_7cfb17566d3d31266ca568384b830f20_1200_80.webp",
+      "local": "public/images/65f1fc8c4a0d74b13ffc1d39_7cfb17566d3d31266ca568384b830f20_1200_80.webp",
+      "bytes": 72006,
+      "sha256": "664c0161a0c6a52c732c85750bac60b823c497f293d23710988dfe75ec10aaa2"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1fc8c09fcf7cd6d2254ff_fde1de6df4459efa70bf8a0ef944313b_1200_80.webp",
+      "local": "public/images/65f1fc8c09fcf7cd6d2254ff_fde1de6df4459efa70bf8a0ef944313b_1200_80.webp",
+      "bytes": 79634,
+      "sha256": "6916146cedca3f95b52e05011ae864b8ff842338662dc32d3dbca6415101096d"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1fc8c125e6249e34f0582_5a1c3f9116ebef8ec69e91a923686392_1200_80.webp",
+      "local": "public/images/65f1fc8c125e6249e34f0582_5a1c3f9116ebef8ec69e91a923686392_1200_80.webp",
+      "bytes": 61794,
+      "sha256": "54c6c0433419cc635ee13bc93e358a8e59fdd750df25ca4059a0eec72f6b91e2"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1fc8de70016420b87de5d_c74506b441ae3d3e4c94b5317cac0a18_1200_80.webp",
+      "local": "public/images/65f1fc8de70016420b87de5d_c74506b441ae3d3e4c94b5317cac0a18_1200_80.webp",
+      "bytes": 87236,
+      "sha256": "f5667fae8dd48c784b892498f8279347dfab30422417e99e107e0cd64c2d3d4d"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1fc8d3549eaed4856a238_64f8f9c6bddf58cee76565d06949ef26_1200_80.webp",
+      "local": "public/images/65f1fc8d3549eaed4856a238_64f8f9c6bddf58cee76565d06949ef26_1200_80.webp",
+      "bytes": 102028,
+      "sha256": "a29ecf473e6520d7a22ca1a67cef39673cab920b6e6c0582226b957abd1d265d"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1fc8c49d8418f7a8b0da4_f2e11f8a2e57f1940afca152be3007e2_1200_80.webp",
+      "local": "public/images/65f1fc8c49d8418f7a8b0da4_f2e11f8a2e57f1940afca152be3007e2_1200_80.webp",
+      "bytes": 103172,
+      "sha256": "0255507d98399754c9ba5e57e62e5ec7c5b023d74f9fccef21f2cc0ec45cb32e"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48%2F67c9e6e9d3b1a49af9199e97_video-output-9470F004-2040-489A-81D3-A0D5D1757FB9-poster-00001.jpg",
+      "local": "public/images/65f1cd38d5c13f0914954f48-67c9e6e9d3b1a49af9199e97_video-output-9470F004-2040-489A-81D3-A0D5D1757FB9-poster-00001.jpg",
+      "bytes": 23840,
+      "sha256": "faa91ad6ac361871d321aa01530951118be3d35898751dd0cd7b373bc238eee4"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48%2F67c9e6e9d3b1a49af9199e97_video-output-9470F004-2040-489A-81D3-A0D5D1757FB9-transcode.mp4,https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48%2F67c9e6e9d3b1a49af9199e97_video-output-9470F004-2040-489A-81D3-A0D5D1757FB9-transcode.webm",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48%2F67c9e6e9d3b1a49af9199e97_video-output-9470F004-2040-489A-81D3-A0D5D1757FB9-transcode.mp4",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48%2F67c9e6e9d3b1a49af9199e97_video-output-9470F004-2040-489A-81D3-A0D5D1757FB9-transcode.webm",
+      "local": "public/media/65f1cd38d5c13f0914954f48-67c9e6e9d3b1a49af9199e97_video-output-9470F004-2040-489A-81D3-A0D5D1757FB9-transcode.webm",
+      "bytes": 14287045,
+      "sha256": "fb26a8ae563b20934dee608d0719b29cc060bc5d1233bce2b9c33e82eac32e3b"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/6022af993a6b2191db3ed10c/628299f8aa233b83918e24fd_Pause.svg",
+      "local": "public/images/628299f8aa233b83918e24fd_Pause.svg",
+      "bytes": 310,
+      "sha256": "d3fb296b521350cd9bd1e46e79de6a19431efd594a552b0ca20408719c2c9d7a"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/6022af993a6b2191db3ed10c/628298b20ae0236682d4b87f_Play-24.svg",
+      "local": "public/images/628298b20ae0236682d4b87f_Play-24.svg",
+      "bytes": 423,
+      "sha256": "c1d83be6cadf7347fb393cb028e41a404bcee0868fb9229043965228b0493f24"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/65f1f26b0caa643a61931ad5_jb-total-logo-gold.webp",
+      "local": "public/images/65f1f26b0caa643a61931ad5_jb-total-logo-gold.webp",
+      "bytes": 58982,
+      "sha256": "0bb85c499484c7417952f960557593410368536c3662e18ecc9ccc770f34f37c"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/6625ad2dacfc4c76e4383baa_EGC_6179.jpg",
+      "local": "public/images/6625ad2dacfc4c76e4383baa_EGC_6179.jpg",
+      "bytes": 663410,
+      "sha256": "f07d22de0213b1470e69804cb5617d850d8c7df0f63bf037fde50e26890242a8"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/6625ad2dd9d453253f3d8c59_EGC_6234.jpg",
+      "local": "public/images/6625ad2dd9d453253f3d8c59_EGC_6234.jpg",
+      "bytes": 745252,
+      "sha256": "80083cfa8390578605bc988fcd403f75e8a580964ffb6fa7f6868e50f14d9463"
+    },
+    {
+      "source": "https://cdn.prod.website-files.com/65f1cd38d5c13f0914954f48/6625ad2dfea2d18504f6a9df_EGC_6167.jpg",
+      "local": "public/images/6625ad2dfea2d18504f6a9df_EGC_6167.jpg",
+      "bytes": 677339,
+      "sha256": "1a641da5d72c7d651dd9820dfb0a3b45c9a33d1b16b4498ccf86112c27731d35"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Video from '../components/Video.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import { media } from '../data/site';
+const steps = [
+  {
+    n: '01',
+    title: 'Cold plunge',
+    text: 'A cold-water immersion experience as part of your recovery session. Your practitioner will guide you through a suitable approach.',
+    image: media.plunge,
+    alt: 'Water-filled plunge tub in the Total Tissue recovery room',
+  },
+  {
+    n: '02',
+    title: 'Hot plunge',
+    text: 'Warm-water immersion provides time to unwind between activities. Ask the team how hot and cold immersion fit into your session.',
+    image: media.facility,
+    alt: 'The plunge tubs and treatment area in the Oswego recovery space',
+  },
+  {
+    n: '03',
+    title: 'Infrared sauna',
+    text: 'A dedicated infrared sauna rounds out the recovery space. Discuss the temperature and duration with your practitioner.',
+    image: media.sauna,
+    alt: 'Infrared sauna at Total Tissue & Fitness',
+  },
+];
+---
+
+<BaseLayout
+  title="Contrast Therapy in Oswego, IL | Total Tissue & Fitness"
+  description="Explore the cold plunge, hot plunge, and infrared sauna at Total Tissue & Fitness in Oswego. Learn what to expect and arrange a contrast therapy session."
+>
+  <PageHero
+    eyebrow="02 / CONTRAST THERAPY"
+    title="Recover with intention."
+    accent="Come back ready."
+    description="Cold plunge. Hot plunge. Infrared sauna. Three experiences, brought together in a dedicated recovery space."
+    ><a class="button" href="/book/#contrast">Arrange a contrast session ↗</a></PageHero
+  >
+  <section class="container">
+    <img
+      class="wide-image"
+      src={media.facility}
+      width="1798"
+      height="1200"
+      alt="The Oswego contrast therapy space with plunge tubs, treatment table, and infrared sauna"
+      fetchpriority="high"
+    />
+  </section>
+  <section class="section container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">THE EXPERIENCE</p><h2>
+          A change of pace.<br /><span class="gradient-text">A space to reset.</span>
+        </h2>
+      </div><p>
+        Contrast therapy is part of the Total Tissue approach to recovery. Your practitioner can
+        explain how the experience fits your goals and whether it is appropriate for you.
+      </p>
+    </div><div class="image-card-grid">
+      {
+        steps.map((s) => (
+          <article class="image-card">
+            <>
+              <img src={s.image} width="1798" height="1200" loading="lazy" alt={s.alt} />
+              <div>
+                <>
+                  <p class="eyebrow">{s.n} / THE PROCESS</p>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </>
+              </div>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section class="container section border-top split-section">
+    <div>
+      <p class="eyebrow">BEFORE YOUR SESSION</p><h2>Start with<br />the right guidance.</h2><p>
+        Let the team know about relevant health conditions and ask about preparation, session
+        length, and what to bring when arranging your visit.
+      </p>
+    </div><div>
+      <Video id="gRatHeEvmPw" title="What is contrast therapy?" /><p class="small-text">
+        This video comes from the Total Tissue & Fitness library.
+      </p>
+    </div>
+  </section><FAQ /><CTA />
+</BaseLayout>

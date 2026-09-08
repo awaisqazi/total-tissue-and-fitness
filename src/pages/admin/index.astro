@@ -1,0 +1,155 @@
+---
+import '../../styles/admin.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/manrope/500.css';
+import '@fontsource/manrope/700.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={new URL('admin/', Astro.site)} /><link
+      rel="icon"
+      href="/images/660ca351a18d35e961252c4a_jb-total--icon-32.png"
+    /><meta name="robots" content="noindex, nofollow" />
+    <title>Dashboard concept | Total Tissue & Fitness</title>
+    <meta
+      name="description"
+      content="An interactive partner dashboard concept with fictional sample data. Changes are not saved."
+    />
+  </head>
+  <body class="admin-body">
+    <a class="admin-skip" href="#workspace-main">Skip to workspace</a>
+    <header class="workspace-header">
+      <a href="/" class="workspace-brand"
+        ><img
+          src="/images/optimized/total-tissue-logo.webp"
+          alt="Total Tissue & Fitness"
+          width="180"
+          height="60"
+        /></a
+      >
+      <div class="workspace-header-actions">
+        <span class="status-pill">CONCEPT PREVIEW</span><a href="/">View website ↗</a>
+      </div>
+    </header>
+    <main id="workspace-main" class="workspace-main">
+      <div class="workspace-intro">
+        <p class="eyebrow">PARTNER WORKSPACE / A FIRST LOOK</p><h1>Practice dashboard</h1><p>
+          Inquiries, service content, and the tools behind your practice.
+        </p>
+      </div>
+      <div class="workspace-message concept-banner">
+        <strong>Dashboard concept · fictional sample data · changes are not saved</strong><p>
+          This is an interactive preview. No accounts are connected, no messages are sent, and every
+          edit resets when you reload the page.
+        </p>
+      </div>
+      <noscript
+        ><p class="workspace-message">
+          JavaScript is required to explore the interactive concept. No live operations are
+          available here.
+        </p></noscript
+      >
+      <div class="workspace-toolbar">
+        <label class="compact-label"
+          >Preview a future role<select id="preview-role"
+            ><option value="owner">Practice owner</option><option value="partner">Partner</option
+            ><option value="viewer">Read-only collaborator</option></select
+          ></label
+        ><p id="role-description">
+          Concept: access to inquiries, service drafts, and team planning.
+        </p><button id="reset-preview" class="quiet-button">Reset preview</button>
+      </div>
+      <div class="concept-metrics">
+        <article>
+          <span>Sample inquiries</span><strong id="sample-inquiry-count">03</strong><p>
+            Fictional entries to explore
+          </p>
+        </article><article>
+          <span>Draft concepts</span><strong>02</strong><p>Try editing service copy</p>
+        </article><article>
+          <span>Future access</span><strong>03</strong><p>Proposed role levels</p>
+        </article>
+      </div>
+      <nav class="workspace-tabs" aria-label="Workspace sections">
+        <a href="#inquiries">Inquiry inbox</a><a href="#service-drafts">Service drafts</a><a
+          href="#resources">Practice resources</a
+        ><a href="#access-plan">Access plan</a>
+      </nav>
+      <div id="workspace-message" role="status" aria-live="polite" class="preview-feedback"></div>
+      <section id="inquiries" class="workspace-card">
+        <div class="section-heading">
+          <div><p class="eyebrow">KEEP THE CONVERSATION MOVING</p><h2>Inquiry inbox</h2></div><label
+            class="compact-label"
+            >Show<select id="inquiry-filter"
+              ><option value="all">All sample inquiries</option><option value="new">New</option
+              ><option value="contacted">Contacted</option><option value="closed">Closed</option
+              ></select
+            ></label
+          >
+        </div><p class="workspace-muted">
+          These people and messages are fictional. Status changes affect this preview only.
+        </p><div id="inquiry-list" class="inquiry-list"></div>
+      </section>
+      <section id="service-drafts" class="workspace-card">
+        <div class="section-heading">
+          <div><p class="eyebrow">SHAPE THE NEXT UPDATE</p><h2>Service drafts</h2></div><span
+            class="status-pill">Demo · not saved</span
+          >
+        </div><p>
+          Try adjusting the copy below, then preview the result. A future workflow could pass
+          reviewed drafts to Claude for a website update.
+        </p><div id="draft-list"></div>
+      </section>
+      <section id="resources" class="workspace-card">
+        <p class="eyebrow">YOUR PRACTICE, CONNECTED</p><h2>Practice resources</h2><div
+          class="resource-grid"
+        >
+          <a href="/book/"
+            ><span>Existing client pathways</span><strong>Booking options ↗</strong></a
+          ><a href="/manual-therapy/"
+            ><span>Public service information</span><strong>Review manual therapy ↗</strong></a
+          ><a href="https://www.synaptyxperformance.com/" target="_blank" rel="noopener noreferrer"
+            ><span>Our partner</span><strong>Synaptyx Health & Performance ↗</strong></a
+          ><article>
+            <span>Future website maintenance</span><strong>A clear handoff to Claude</strong><p>
+              Review a draft, describe the desired outcome, and have Claude prepare a website change
+              for approval. This concept has no connected publishing workflow.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section id="access-plan" class="workspace-card">
+        <p class="eyebrow">DESIGNED FOR INDIVIDUAL ACCESS</p><h2>A place for every partner.</h2><p>
+          Proposed permissions for a future secure dashboard. The role selector above only changes
+          this demonstration; it does not authenticate or authorize anyone.
+        </p><div class="access-table-wrap">
+          <table class="access-table">
+            <thead
+              ><tr
+                ><th scope="col">Future capability</th><th scope="col">Owner</th><th scope="col"
+                  >Partner</th
+                ><th scope="col">Read-only</th></tr
+              ></thead
+            ><tbody
+              ><tr><th scope="row">Review inquiries</th><td>Yes</td><td>Yes</td><td>Yes</td></tr><tr
+                ><th scope="row">Update inquiry status</th><td>Yes</td><td>Yes</td><td>—</td></tr
+              ><tr><th scope="row">Prepare service drafts</th><td>Yes</td><td>Yes</td><td>—</td></tr
+              ><tr><th scope="row">Manage team access</th><td>Yes</td><td>—</td><td>—</td></tr><tr
+                ><th scope="row">Approve publication</th><td>Yes</td><td>—</td><td>—</td></tr
+              ></tbody
+            >
+          </table>
+        </div><p class="workspace-muted">
+          Future implementation: individual accounts, database-enforced roles, a private inquiry
+          inbox, and a reviewed publishing process. Setup is deferred until the concept is approved.
+        </p>
+      </section>
+    </main>
+    <footer class="workspace-footer">Total Tissue & Fitness <span>Dashboard concept</span></footer>
+    <script src="../../scripts/admin.ts"></script>
+  </body>
+</html>

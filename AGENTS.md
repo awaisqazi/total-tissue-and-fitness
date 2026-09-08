@@ -1,0 +1,3 @@
+# Agent instructions
+
+Read CLAUDE.md, README.md and the latest accepted entry in docs/DECISIONS.md before editing. Total Tissue & Fitness's existing name, gold logo and gold colors are required. Synaptyx Performance is a layout reference only. This is a proof of concept: no real inquiries, account authentication, database, or client records. Never provision Supabase or replace the live domain without explicit authorization. Keep demo labels accurate. Every substantive change must update docs/DECISIONS.md and CHANGELOG.md with concise rationale, sources, validation and remaining issues. Use npm and preserve its lockfile. Run appropriate validation before delivery.

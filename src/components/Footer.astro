@@ -1,0 +1,30 @@
+---
+import Brand from './Brand.astro';
+import { site } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div>
+      <Brand /><p>
+        Hands-on care. Purposeful movement.<br />A more complete approach to recovery.
+      </p><span class="muted small-text">Total Tissue & Fitness · Oswego, Illinois</span>
+    </div>
+    <div>
+      <h2>Explore</h2><a href="/manual-therapy/">Manual Therapy</a><a href="/contrast-therapy/"
+        >Contrast Therapy</a
+      ><a href="/couples-workshop/">Couples Workshop</a><a href="/mentorship-program/"
+        >Practitioner Mentorship</a>
+    </div>
+    <div>
+      <h2>Your next step</h2><a href="/book/">Book a Session</a><a href="/contact/">Get in Touch</a
+      ><a href="/#faq">FAQs</a><a href={site.partnerUrl} target="_blank" rel="noopener noreferrer"
+        >Synaptyx Health & Performance ↗</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {new Date().getFullYear()} Total Tissue & Fitness</span><div>
+      <a href="/privacy/">Privacy</a><a href="/admin/">Dashboard concept</a>
+    </div>
+  </div>
+</footer>

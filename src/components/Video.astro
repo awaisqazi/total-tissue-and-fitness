@@ -1,0 +1,40 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+const { id, title } = Astro.props;
+---
+
+<div class="video-component">
+  <details>
+    <summary
+      ><span class="play-symbol" aria-hidden="true">▶</span><span>Watch: {title}</span><span
+        class="small-text muted">YouTube ↗</span
+      ></summary
+    ><div class="video-frame" data-video-id={id} data-video-title={title}></div>
+  </details><a
+    class="video-fallback"
+    href={`https://www.youtube.com/watch?v=${id}`}
+    target="_blank"
+    rel="noopener noreferrer">Open video on YouTube ↗</a>
+</div>
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('.video-component details').forEach((detail) => {
+    detail.addEventListener('toggle', () => {
+      const frame = detail.querySelector<HTMLElement>('[data-video-id]');
+      if (!frame) return;
+      if (detail.open && !frame.querySelector('iframe')) {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${frame.dataset.videoId}`;
+        iframe.title = frame.dataset.videoTitle || 'Video';
+        iframe.allowFullscreen = true;
+        iframe.allow = 'encrypted-media; picture-in-picture';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        frame.append(iframe);
+      } else if (!detail.open) {
+        frame.replaceChildren();
+      }
+    });
+  });
+</script>

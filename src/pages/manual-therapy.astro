@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Video from '../components/Video.astro';
+import CTA from '../components/CTA.astro';
+import { media } from '../data/site';
+const techniques = [
+  'Myotome testing',
+  'Muscle pairing',
+  'Neuromuscular activation therapy',
+  'Fascial adhesion hydration / release',
+  'Cupping',
+  'Graston',
+  'Body tempering',
+  'Voodoo flossing',
+  'Myofascial release',
+  'Integration exercise',
+];
+---
+
+<BaseLayout
+  title="Manual Therapy in Oswego, IL | Total Tissue & Fitness"
+  description="Explore personalized tissue work, biomechanical assessment, and movement education at Total Tissue & Fitness, in Oswego."
+>
+  <PageHero
+    eyebrow="01 / MANUAL THERAPY"
+    title="Understand your body."
+    accent="Move with purpose."
+    description="Hands-on tissue work and movement education, connected through an individual approach to recovery and training."
+    ><a class="button" href="/book/">Plan your first visit ↗</a></PageHero
+  >
+  <section class="container split-section section border-top">
+    <div>
+      <p class="eyebrow">OUR APPROACH</p><h2>More than<br />a single technique.</h2><p>
+        At Total Tissue & Fitness, the approach has always brought bodywork, biomechanics, and
+        education together. Every session builds on that foundation.
+      </p><p>
+        Sessions combine assessment, soft tissue techniques, and integration exercise. Your
+        practitioner uses what they learn about your movement to guide the work and help you
+        understand how it fits your goals.
+      </p><a href="/contact/" class="text-link">Ask about your goals →</a>
+    </div><div class="feature-panel">
+      <span class="feature-index">ASSESS → WORK → INTEGRATE</span><h3>
+        Education is part<br />of the session.
+      </h3><p>
+        Understand the purpose of the work. Explore movement habits. Take that understanding into
+        your training and everyday life.
+      </p><Video id="uBjppA4WRW4" title="The Total Tissue & Fitness approach" />
+    </div>
+  </section>
+  <section class="section surface-section">
+    <div class="container">
+      <p class="eyebrow">THE TOOLKIT</p><h2>
+        Different tools.<br /><span class="gradient-text">One individual approach.</span>
+      </h2><p class="measure">
+        The techniques offered by Total Tissue & Fitness include the following. Your practitioner
+        will discuss which are appropriate for your session.
+      </p><div class="technique-grid">
+        {
+          techniques.map((t, i) => (
+            <div>
+              <>
+                <span>{String(i + 1).padStart(2, '0')}</span>
+                <h3>{t}</h3>
+              </>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section container split-section">
+    <img
+      class="rounded-image"
+      src={media.facility}
+      width="1798"
+      height="1200"
+      loading="lazy"
+      alt="Total Tissue & Fitness recovery space with plunge tubs and an infrared sauna"
+    /><div>
+      <p class="eyebrow">COMPLETE THE EXPERIENCE</p><h2>
+        Tissue work.<br /><span class="gradient-text">Then time to recover.</span>
+      </h2><p>
+        The current tissue-work offering includes one hour of contrast therapy: cold plunge, hot
+        tub, and infrared sauna. Confirm the details of your appointment with the team.
+      </p><a class="text-link" href="/contrast-therapy/">Explore contrast therapy →</a>
+    </div>
+  </section>
+  <section class="section container border-top" id="our-story">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">THE NEXT CHAPTER</p><h2>
+          Hands-on care.<br /><span class="gradient-text">Rooted in understanding.</span>
+        </h2>
+      </div><p>
+        Total Tissue & Fitness brings tissue-focused work and biomechanics together to help clients
+        understand their movement and recovery.
+      </p>
+    </div><div class="story-note">
+      <img
+        src={media.logo}
+        width="2236"
+        height="1176"
+        loading="lazy"
+        alt="Total Tissue & Fitness logo"
+      /><p>
+        Our home is Oswego, Illinois. We combine hands-on work, practical education, and contrast
+        therapy in one recovery experience.
+      </p><a
+        class="text-link"
+        href="https://www.synaptyxperformance.com/"
+        target="_blank"
+        rel="noopener noreferrer">Visit Synaptyx Health & Performance ↗</a>
+    </div>
+  </section><CTA />
+</BaseLayout>

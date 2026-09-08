@@ -1,0 +1,24 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  accent?: string;
+  description: string;
+}
+const { eyebrow, title, accent, description } = Astro.props;
+---
+
+<section class="page-hero container">
+  <a href="/" class="back-link">← Total Tissue & Fitness</a><p class="eyebrow">{eyebrow}</p><h1>
+    {title}{
+      accent && (
+        <>
+          <>
+            <br />
+            <span class="gradient-text">{accent}</span>
+          </>
+        </>
+      )
+    }
+  </h1><p class="page-lead">{description}</p><slot />
+</section>
