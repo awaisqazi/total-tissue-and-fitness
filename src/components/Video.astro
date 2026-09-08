@@ -17,7 +17,8 @@ const { id, title } = Astro.props;
     class="video-fallback"
     href={`https://www.youtube.com/watch?v=${id}`}
     target="_blank"
-    rel="noopener noreferrer">Open video on YouTube ↗</a>
+    rel="noopener noreferrer">Open video on YouTube ↗</a
+  >
 </div>
 <script>
   document.querySelectorAll<HTMLDetailsElement>('.video-component details').forEach((detail) => {

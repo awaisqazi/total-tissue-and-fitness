@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-08 — Public GitHub Pages delivery authorized
+
+- Authorized public repository target: `awaisqazi/total-tissue-and-fitness`.
+- Authorized GitHub Pages target: `https://awaisqazi.github.io/total-tissue-and-fitness/`.
+- Defined the Pages validation environment: `SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_SITE_INDEXABLE=false`.
+- Kept the public POC non-indexable, the dashboard fictional/static, the inquiry form non-sending, and the original domain unchanged.
+- Recorded the earlier failed private Sites deployment as historical context and superseded its private-only delivery rule.
+- Public repository creation, Pages enablement, root/base-path Astro checks, 10-page integrity checks, and seven automated tests are complete. Workflow publication and deployed smoke tests remain pending.
+
 ## 2026-09-08 — Initial Astro proof of concept
 
 - Migrated the public Webflow content into service, recovery, workshop, mentorship, booking, and inquiry-preview pages.

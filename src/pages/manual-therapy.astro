@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Video from '../components/Video.astro';
@@ -27,7 +28,7 @@ const techniques = [
     title="Understand your body."
     accent="Move with purpose."
     description="Hands-on tissue work and movement education, connected through an individual approach to recovery and training."
-    ><a class="button" href="/book/">Plan your first visit ↗</a></PageHero
+    ><a class="button" href={withBase('/book/')}>Plan your first visit ↗</a></PageHero
   >
   <section class="container split-section section border-top">
     <div>
@@ -38,7 +39,7 @@ const techniques = [
         Sessions combine assessment, soft tissue techniques, and integration exercise. Your
         practitioner uses what they learn about your movement to guide the work and help you
         understand how it fits your goals.
-      </p><a href="/contact/" class="text-link">Ask about your goals →</a>
+      </p><a href={withBase('/contact/')} class="text-link">Ask about your goals →</a>
     </div><div class="feature-panel">
       <span class="feature-index">ASSESS → WORK → INTEGRATE</span><h3>
         Education is part<br />of the session.
@@ -72,7 +73,7 @@ const techniques = [
   <section class="section container split-section">
     <img
       class="rounded-image"
-      src={media.facility}
+      src={withBase(media.facility)}
       width="1798"
       height="1200"
       loading="lazy"
@@ -83,7 +84,7 @@ const techniques = [
       </h2><p>
         The current tissue-work offering includes one hour of contrast therapy: cold plunge, hot
         tub, and infrared sauna. Confirm the details of your appointment with the team.
-      </p><a class="text-link" href="/contrast-therapy/">Explore contrast therapy →</a>
+      </p><a class="text-link" href={withBase('/contrast-therapy/')}>Explore contrast therapy →</a>
     </div>
   </section>
   <section class="section container border-top" id="our-story">
@@ -98,7 +99,7 @@ const techniques = [
       </p>
     </div><div class="story-note">
       <img
-        src={media.logo}
+        src={withBase(media.logo)}
         width="2236"
         height="1176"
         loading="lazy"
@@ -110,7 +111,8 @@ const techniques = [
         class="text-link"
         href="https://www.synaptyxperformance.com/"
         target="_blank"
-        rel="noopener noreferrer">Visit Synaptyx Health & Performance ↗</a>
+        rel="noopener noreferrer">Visit Synaptyx Health & Performance ↗</a
+      >
     </div>
   </section><CTA />
 </BaseLayout>

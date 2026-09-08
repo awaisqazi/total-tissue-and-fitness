@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../lib/paths';
 import '../../styles/admin.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
@@ -10,9 +11,9 @@ import '@fontsource/manrope/700.css';
 <html lang="en">
   <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="canonical" href={new URL('admin/', Astro.site)} /><link
+    <link rel="canonical" href={new URL(withBase('/admin/'), Astro.site)} /><link
       rel="icon"
-      href="/images/660ca351a18d35e961252c4a_jb-total--icon-32.png"
+      href={withBase('/images/660ca351a18d35e961252c4a_jb-total--icon-32.png')}
     /><meta name="robots" content="noindex, nofollow" />
     <title>Dashboard concept | Total Tissue & Fitness</title>
     <meta
@@ -23,16 +24,16 @@ import '@fontsource/manrope/700.css';
   <body class="admin-body">
     <a class="admin-skip" href="#workspace-main">Skip to workspace</a>
     <header class="workspace-header">
-      <a href="/" class="workspace-brand"
+      <a href={withBase('/')} class="workspace-brand"
         ><img
-          src="/images/optimized/total-tissue-logo.webp"
+          src={withBase('/images/optimized/total-tissue-logo.webp')}
           alt="Total Tissue & Fitness"
           width="180"
           height="60"
         /></a
       >
       <div class="workspace-header-actions">
-        <span class="status-pill">CONCEPT PREVIEW</span><a href="/">View website ↗</a>
+        <span class="status-pill">CONCEPT PREVIEW</span><a href={withBase('/')}>View website ↗</a>
       </div>
     </header>
     <main id="workspace-main" class="workspace-main">
@@ -108,9 +109,9 @@ import '@fontsource/manrope/700.css';
         <p class="eyebrow">YOUR PRACTICE, CONNECTED</p><h2>Practice resources</h2><div
           class="resource-grid"
         >
-          <a href="/book/"
+          <a href={withBase('/book/')}
             ><span>Existing client pathways</span><strong>Booking options ↗</strong></a
-          ><a href="/manual-therapy/"
+          ><a href={withBase('/manual-therapy/')}
             ><span>Public service information</span><strong>Review manual therapy ↗</strong></a
           ><a href="https://www.synaptyxperformance.com/" target="_blank" rel="noopener noreferrer"
             ><span>Our partner</span><strong>Synaptyx Health & Performance ↗</strong></a

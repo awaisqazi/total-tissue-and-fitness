@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Static post-build QA for this Astro site. Run after `npm run build`:
- *   node /tmp/total-tissue-tests.mjs [dist-directory]
+ *   BASE_PATH=/your-repo node scripts/check-built-site.mjs [dist-directory]
  * Uses only Node built-ins; exits nonzero on a broken local link, fragment,
  * asset reference, or legacy Webflow runtime reference.
  */
@@ -9,7 +9,16 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 
 const root = resolve(process.argv[2] ?? 'dist');
+const base = '/' + (process.env.BASE_PATH || '').replace(/^\/+|\/+$/g, '');
+const prefix = base === '/' ? '/' : base + '/';
 const errors = [];
+const unbase = (pathname) => {
+  if (!pathname.startsWith(prefix)) {
+    errors.push(`Local URL escapes configured base ${prefix}: ${pathname}`);
+    return pathname;
+  }
+  return '/' + pathname.slice(prefix.length);
+};
 const walk = (directory) =>
   readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
@@ -22,7 +31,7 @@ if (!existsSync(root)) {
 }
 const htmlFiles = localFiles.filter((file) => file.endsWith('.html'));
 const outputPath = (pathname) => {
-  const decoded = decodeURIComponent(pathname);
+  const decoded = decodeURIComponent(unbase(pathname));
   const clean = decoded.replace(/^\/+/, '');
   if (!clean) return join(root, 'index.html');
   const direct = join(root, clean);
@@ -34,7 +43,7 @@ const assetExists = (htmlFile, value) => {
   const pathname = value.split(/[?#]/, 1)[0];
   if (!pathname || isExternal(pathname) || pathname.startsWith('#')) return true;
   const candidate = pathname.startsWith('/')
-    ? join(root, pathname.slice(1))
+    ? join(root, unbase(pathname).slice(1))
     : resolve(join(htmlFile, '..'), pathname);
   return candidate.startsWith(root + '/') && existsSync(candidate);
 };
@@ -54,6 +63,12 @@ for (const htmlFile of htmlFiles) {
   for (const match of html.matchAll(/\b(href|src|poster)=(?:"([^"]+)"|'([^']+)')/g)) {
     const attribute = match[1];
     const raw = match[2] ?? match[3];
+    if (
+      attribute === 'href' &&
+      /\.[a-z\d]{2,6}(?:[?#]|$)/i.test(raw) &&
+      !assetExists(htmlFile, raw)
+    )
+      errors.push(`${label}: missing linked asset ${raw}`);
     if (attribute !== 'href' && !assetExists(htmlFile, raw))
       errors.push(`${label}: missing local asset ${raw}`);
     if (

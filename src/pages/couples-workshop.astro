@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CTA from '../components/CTA.astro';
@@ -13,7 +14,8 @@ import CTA from '../components/CTA.astro';
     title="Better recovery."
     accent="Together."
     description="For partners who train hard, take recovery seriously, and want to learn how to take care of each other."
-    ><a class="button" href="/contact/?interest=couples">Ask about the workshop →</a></PageHero
+    ><a class="button" href={withBase('/contact/?interest=couples')}>Ask about the workshop →</a
+    ></PageHero
   >
   <section class="section container split-section border-top">
     <div>
@@ -25,7 +27,9 @@ import CTA from '../components/CTA.astro';
       </p><p>
         The workshop is designed for fitness-minded couples who want a shared understanding of their
         recovery routines.
-      </p><a class="text-link" href="/contact/?interest=couples">Ask a workshop question →</a>
+      </p><a class="text-link" href={withBase('/contact/?interest=couples')}
+        >Ask a workshop question →</a
+      >
     </div><div class="feature-panel">
       <p class="eyebrow">THE CURRENT WORKSHOP OFFERING</p><div class="price">
         $1,200 <span>per couple</span>
@@ -35,7 +39,9 @@ import CTA from '../components/CTA.astro';
         </li><li>Instruction on how and when to use them</li>
       </ul><p class="small-text">
         Confirm pricing, the equipment package, and availability with the team before booking.
-      </p><a class="button" href="/contact/?interest=couples">Preview a workshop inquiry →</a>
+      </p><a class="button" href={withBase('/contact/?interest=couples')}
+        >Preview a workshop inquiry →</a
+      >
     </div>
   </section><CTA />
 </BaseLayout>

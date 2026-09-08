@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Video from '../components/Video.astro';
@@ -13,7 +14,9 @@ import Video from '../components/Video.astro';
     title="Learn the approach."
     accent="Build your practice."
     description="The Total Tissue Practitioner Mentorship Program brings together soft tissue techniques, biomechanical analysis, and recovery education for working professionals."
-    ><a class="button" href="/contact/?interest=mentorship">Inquire about mentorship ↗</a></PageHero
+    ><a class="button" href={withBase('/contact/?interest=mentorship')}
+      >Inquire about mentorship ↗</a
+    ></PageHero
   >
   <section class="section container split-section border-top">
     <div>
@@ -27,7 +30,8 @@ import Video from '../components/Video.astro';
         and recovery protocols.
       </p><div class="tags">
         <span>Physical therapists</span><span>Manual therapists</span><span
-          >Fitness professionals</span>
+          >Fitness professionals</span
+        >
       </div>
     </div><div class="feature-panel">
       <p class="eyebrow">WHAT YOU’LL EXPLORE</p><ul class="check-list">
@@ -58,7 +62,8 @@ import Video from '../components/Video.astro';
         Bring your curiosity.<br /><span class="gradient-text">Build your next chapter.</span>
       </h2><p>Share your profession, experience, and learning goals with the team.</p><a
         class="button"
-        href="/contact/?interest=mentorship">Start a mentorship inquiry ↗</a>
+        href={withBase('/contact/?interest=mentorship')}>Start a mentorship inquiry ↗</a
+      >
     </div>
   </section>
 </BaseLayout>

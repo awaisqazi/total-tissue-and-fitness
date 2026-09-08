@@ -1,11 +1,26 @@
 # Proof-of-concept publication status — September 8, 2026
 
-The complete Astro site is built and validated locally. Source was pushed to its private Sites repository, and **version 1 was saved successfully**. Private publishing failed twice because the hosting service returned an HTTP 409 conflict while registering its sign-in callback. This is a hosting configuration failure; no site-code build failure was reported. No public URL was activated and no audience access was widened.
+## Current authorized target
+
+The user authorized a public GitHub repository and public GitHub Pages POC. The expected targets are:
+
+- Repository: `https://github.com/awaisqazi/total-tissue-and-fitness`
+- Pages: `https://awaisqazi.github.io/total-tissue-and-fitness/`
+- Build environment: `SITE_URL=https://awaisqazi.github.io`, `BASE_PATH=/total-tissue-and-fitness`, `PUBLIC_SITE_INDEXABLE=false`
+- Automation: `.github/workflows/deploy.yml`, validation and automatic deployment from `main` using Node 24
+
+**Status: deployment verification pending.** The public repository has been created and GitHub Pages has been enabled. Root-path and Pages-base-path validation both pass: Astro reports zero errors, warnings, or hints; all 10 generated pages pass link/asset/fragment checks; and all seven automated tests pass. The workflow run, published Pages response, and deployed browser smoke tests must still be recorded after they succeed. The public POC remains non-indexable, uses fictional dashboard data, has a non-sending form, and does not change `totaltissueandfitness.com` or its DNS.
+
+## Historical private Sites attempt
+
+Before public GitHub Pages was authorized, source was pushed to a private Sites repository and **version 1 was saved successfully**. Private publishing failed twice because the hosting service returned an HTTP 409 conflict while registering its sign-in callback. This was a hosting configuration failure; no site-code build failure was reported. No Sites public URL was activated. ADR-007 supersedes the previous private-only delivery rule while preserving this history.
 
 ## Available deliverables
 
+- Expected Pages homepage: https://awaisqazi.github.io/total-tissue-and-fitness/ (verification pending)
+- Expected dashboard concept: https://awaisqazi.github.io/total-tissue-and-fitness/admin/ (verification pending)
 - Local homepage: http://127.0.0.1:4321/
-- Static dashboard concept: http://127.0.0.1:4321/admin/
+- Local dashboard concept: http://127.0.0.1:4321/admin/
 - Source: this project directory, with README.md and CLAUDE.md entry points.
 - Validated public build: dist/ (regenerate with npm run build).
 - Original live Webflow website and DNS: unchanged.
@@ -19,6 +34,6 @@ The complete Astro site is built and validated locally. Source was pushed to its
 - Retry failed deployment: `appgdep_6aa041bb025881919010f9861c73a607`
 - Both failures: HTTP `409 Conflict` in the hosting service's SIWC sign-in callback registration.
 
-## Next publication action
+## Required verification record
 
-Resolve the Sites callback-registration conflict and retry the existing saved version through its owner-private deployment operation. Do not create another Site, expose the preview publicly, or modify the live domain to bypass the private-hosting problem. If the owner prefers another host, follow DEPLOYMENT.md; the Astro build is portable. The local preview remains available for review in the meantime.
+After publication, replace “deployment verification pending” with the exact pushed commit SHA, workflow run URL/conclusion, Pages URL/status, and smoke-test results. Confirm `noindex` and robots disallow, base-path links/assets, non-sending form, fictional dashboard, and unchanged original domain. Do not report deployment as successful based only on a push or queued workflow.

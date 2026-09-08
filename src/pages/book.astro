@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { booking } from '../data/site';
@@ -28,8 +29,9 @@ import { booking } from '../data/site';
       <p class="eyebrow">FIRST TIME HERE?</p><h2>New clients</h2><p>
         Start with a free educational session to discuss your goals and learn about the approach.
         The team will arrange your next appointment in Jane.
-      </p><a class="button" href="/contact/?interest=new-client"
-        >Arrange your first conversation ↗</a>
+      </p><a class="button" href={withBase('/contact/?interest=new-client')}
+        >Arrange your first conversation ↗</a
+      >
     </article><article class="booking-card" id="returning-client">
       <p class="eyebrow">WELCOME BACK</p><h2>Returning clients</h2><p>
         Your existing profile helps the team follow your session history and progress. Use the
@@ -38,7 +40,8 @@ import { booking } from '../data/site';
         class="button button-outline"
         href={booking.returning}
         target="_blank"
-        rel="noopener noreferrer">Returning client booking ↗</a>
+        rel="noopener noreferrer">Returning client booking ↗</a
+      >
     </article><article class="booking-card" id="contrast">
       <p class="eyebrow">RECOVERY TIME</p><h2>Contrast therapy</h2><p>
         Arrange your first contrast therapy visit using the existing calendar. If you’re unsure
@@ -47,13 +50,15 @@ import { booking } from '../data/site';
         class="button button-outline"
         href={booking.contrast}
         target="_blank"
-        rel="noopener noreferrer">Contrast therapy calendar ↗</a>
+        rel="noopener noreferrer">Contrast therapy calendar ↗</a
+      >
     </article><article class="booking-card">
       <p class="eyebrow">LEARN TOGETHER</p><h2>Couples workshop</h2><p>
         A practical, 3–4 hour workshop for two, with take-home tools. Ask the team to confirm
         current dates, pricing, and the correct booking pathway.
-      </p><a class="button button-outline" href="/contact/?interest=couples"
-        >Preview a workshop inquiry →</a>
+      </p><a class="button button-outline" href={withBase('/contact/?interest=couples')}
+        >Preview a workshop inquiry →</a
+      >
     </article>
   </section>
   <div class="container secondary-note">
@@ -61,7 +66,7 @@ import { booking } from '../data/site';
       >View the existing service calendar ↗</a
     ><p>
       Booking calendars open on external providers. If a calendar is unavailable, <a
-        href="/contact/">get in touch</a
+        href={withBase('/contact/')}>get in touch</a
       > for help.
     </p>
   </div>

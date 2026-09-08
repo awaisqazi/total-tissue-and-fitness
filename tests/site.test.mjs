@@ -8,6 +8,8 @@ const walk = (dir) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)],
   );
 const indexable = process.env.PUBLIC_SITE_INDEXABLE === 'true';
+const base = '/' + (process.env.BASE_PATH || '').replace(/^\/+|\/+$/g, '');
+const prefix = base === '/' ? '/' : base + '/';
 const htmls = walk('dist').filter((path) => path.endsWith('.html'));
 test('all pages have one h1, a unique title, description, canonical and correct indexing policy', () => {
   const titles = new Set();
@@ -52,8 +54,26 @@ test('dashboard is explicitly fictional, temporary, and has no network/storage a
   assert.match(script, /textContent = text/);
 });
 test('preview indexing is blocked and admin is excluded from sitemap', () => {
-  assert.match(read('dist/robots.txt'), indexable ? /Disallow: \/admin\// : /Disallow: \/\s*$/);
+  assert.ok(
+    read('dist/robots.txt').includes(indexable ? `Disallow: ${prefix}admin/` : 'Disallow: /\n'),
+  );
   assert.doesNotMatch(read('dist/sitemap.xml'), /admin/);
+});
+test('canonical, social metadata and sitemap respect the deployment origin and base', () => {
+  const origin = process.env.SITE_URL || 'https://www.totaltissueandfitness.com';
+  const home = new URL(prefix, origin).href;
+  for (const path of htmls) {
+    const html = read(path);
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+    assert.ok(canonical?.startsWith(home), `${path}: ${canonical}`);
+    for (const match of html.matchAll(
+      /<meta (?:property="og:image"|name="twitter:image") content="([^"]+)"/g,
+    ))
+      assert.ok(match[1].startsWith(home + 'images/'), match[1]);
+  }
+  const locations = [...read('dist/sitemap.xml').matchAll(/<loc>(.*?)<\/loc>/g)];
+  assert.equal(locations.length, 7);
+  for (const [, url] of locations) assert.ok(url.startsWith(home), url);
 });
 test('source testimonial names and compatibility anchors are retained', () => {
   const html = read('dist/index.html');

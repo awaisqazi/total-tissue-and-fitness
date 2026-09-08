@@ -4,7 +4,7 @@ A proof-of-concept migration of the public Webflow website into Astro. **Total T
 
 The project includes the marketing website, locally archived source content/media, a clearly labeled static operations-dashboard concept, and a documented path to a future client-owned Supabase backend.
 
-Private publishing encountered a hosting callback-registration conflict after source version 1 was saved. The local preview remains available; see [publication status](docs/DEPLOYMENT_STATUS.md).
+The user authorized a public proof-of-concept repository and GitHub Pages preview. The intended repository is `awaisqazi/total-tissue-and-fitness` and the expected preview URL is <https://awaisqazi.github.io/total-tissue-and-fitness/>. Deployment verification is pending; see [publication status](docs/DEPLOYMENT_STATUS.md). A previous private Sites attempt remains documented as historical context.
 
 ## Start here
 
@@ -32,6 +32,12 @@ npm run validate   # Astro type checking, static build, and integrity tests
 npm run preview    # Inspect the production build locally
 ```
 
+To validate the exact GitHub Pages build, provide all three build-time variables to the full validation command:
+
+```sh
+SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_SITE_INDEXABLE=false npm run validate
+```
+
 ## What exists
 
 | Route                  | Purpose                                                                     |
@@ -53,7 +59,7 @@ No real inquiry is sent or saved. The admin concept has no real accounts, permis
 
 The public source does not provide confirmed practitioner biographies, street address, phone, email, social URLs, or a Jane booking URL. These are not invented. Vagaro and the first-contrast Calendly URL are retained as legacy destinations, subject to client confirmation. The source link labeled a couples workshop opens an event whose metadata calls it a contrast trial; that link is preserved in the audit/config but withheld from visitor CTAs. Workshop CTAs lead to the inquiry preview until the correct destination is supplied.
 
-Do not call this production-ready until the remaining business, legal, inquiry, booking, and access gates in the launch checklist are resolved. Keep the proof of concept private and non-indexable.
+Do not call this production-ready until the remaining business, legal, inquiry, booking, and access gates in the launch checklist are resolved. The GitHub Pages POC is intentionally public so stakeholders can review it, but remains non-indexable. Public access does not authorize real submissions, production data, Supabase, or a change to the live domain.
 
 ## Source and ownership
 

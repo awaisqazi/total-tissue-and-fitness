@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Video from '../components/Video.astro';
@@ -39,12 +40,12 @@ const steps = [
     title="Recover with intention."
     accent="Come back ready."
     description="Cold plunge. Hot plunge. Infrared sauna. Three experiences, brought together in a dedicated recovery space."
-    ><a class="button" href="/book/#contrast">Arrange a contrast session ↗</a></PageHero
+    ><a class="button" href={withBase('/book/#contrast')}>Arrange a contrast session ↗</a></PageHero
   >
   <section class="container">
     <img
       class="wide-image"
-      src={media.facility}
+      src={withBase(media.facility)}
       width="1798"
       height="1200"
       alt="The Oswego contrast therapy space with plunge tubs, treatment table, and infrared sauna"
@@ -66,7 +67,7 @@ const steps = [
         steps.map((s) => (
           <article class="image-card">
             <>
-              <img src={s.image} width="1798" height="1200" loading="lazy" alt={s.alt} />
+              <img src={withBase(s.image)} width="1798" height="1200" loading="lazy" alt={s.alt} />
               <div>
                 <>
                   <p class="eyebrow">{s.n} / THE PROCESS</p>

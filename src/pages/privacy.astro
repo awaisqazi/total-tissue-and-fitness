@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 ---
@@ -30,9 +31,9 @@ import PageHero from '../components/PageHero.astro';
       have real accounts or permissions. Changes remain in the current page only and reset when you
       reload; no records are stored in a database or browser storage.
     </p><h2>Questions</h2><p>
-      The <a href="/contact/">contact page</a> previews the future inquiry experience. Existing booking
-      pathways are listed on the <a href="/book/">booking page</a>. A production privacy contact
-      will be added before the site launches.
+      The <a href={withBase('/contact/')}>contact page</a> previews the future inquiry experience. Existing
+      booking pathways are listed on the <a href={withBase('/book/')}>booking page</a>. A production
+      privacy contact will be added before the site launches.
     </p>
   </article>
 </BaseLayout>

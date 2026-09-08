@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/paths';
 import Brand from './Brand.astro';
 import { site } from '../data/site';
 ---
@@ -11,20 +12,25 @@ import { site } from '../data/site';
       </p><span class="muted small-text">Total Tissue & Fitness · Oswego, Illinois</span>
     </div>
     <div>
-      <h2>Explore</h2><a href="/manual-therapy/">Manual Therapy</a><a href="/contrast-therapy/"
-        >Contrast Therapy</a
-      ><a href="/couples-workshop/">Couples Workshop</a><a href="/mentorship-program/"
-        >Practitioner Mentorship</a>
+      <h2>Explore</h2><a href={withBase('/manual-therapy/')}>Manual Therapy</a><a
+        href={withBase('/contrast-therapy/')}>Contrast Therapy</a
+      ><a href={withBase('/couples-workshop/')}>Couples Workshop</a><a
+        href={withBase('/mentorship-program/')}>Practitioner Mentorship</a
+      >
     </div>
     <div>
-      <h2>Your next step</h2><a href="/book/">Book a Session</a><a href="/contact/">Get in Touch</a
-      ><a href="/#faq">FAQs</a><a href={site.partnerUrl} target="_blank" rel="noopener noreferrer"
-        >Synaptyx Health & Performance ↗</a>
+      <h2>Your next step</h2><a href={withBase('/book/')}>Book a Session</a><a
+        href={withBase('/contact/')}>Get in Touch</a
+      ><a href={withBase('/#faq')}>FAQs</a><a
+        href={site.partnerUrl}
+        target="_blank"
+        rel="noopener noreferrer">Synaptyx Health & Performance ↗</a
+      >
     </div>
   </div>
   <div class="container footer-bottom">
     <span>© {new Date().getFullYear()} Total Tissue & Fitness</span><div>
-      <a href="/privacy/">Privacy</a><a href="/admin/">Dashboard concept</a>
+      <a href={withBase('/privacy/')}>Privacy</a><a href={withBase('/admin/')}>Dashboard concept</a>
     </div>
   </div>
 </footer>

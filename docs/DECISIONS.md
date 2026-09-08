@@ -26,20 +26,32 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 
 ---
 
+### ADR-007 — Publish the non-indexable POC through public GitHub Pages
+
+- **Date:** 2026-09-08
+- **Status:** Accepted; deployment verification pending
+- **Goal:** Give stakeholders a durable review URL and public source repository without changing the live business domain or representing the POC as production-ready.
+- **Decision:** Publish source publicly at `awaisqazi/total-tissue-and-fitness` and deploy `main` through GitHub Pages at `https://awaisqazi.github.io/total-tissue-and-fitness/`. Build with `SITE_URL=https://awaisqazi.github.io`, `BASE_PATH=/total-tissue-and-fitness`, and `PUBLIC_SITE_INDEXABLE=false`. Use `.github/workflows/deploy.yml` with Node 24 for validation and automatic Pages deployment.
+- **Rationale:** The user explicitly authorized public GitHub and GitHub Pages after the private Sites callback failure. The repository subpath requires base-aware links and canonical output. Keeping noindex preserves the review-only intent even though anyone with the URL can access the POC.
+- **Tradeoffs:** A public repository and Pages URL expose all committed source and static demo content. No secrets or real client data may be committed. Noindex is a crawler directive, not access control. GitHub Pages does not make the form, dashboard, authentication, or Supabase operational.
+- **Affected:** Repository visibility/delivery, GitHub Pages base path, build-time URL/indexing variables, CI workflow, README, deployment/status/operations documentation.
+- **Validation:** User authorization is explicit. The public repository exists, Pages is enabled, root and Pages-base-path Astro checks report zero errors/warnings/hints, 10 built pages pass link/asset/fragment checks, and seven tests pass. Workflow publication and deployed smoke tests remain pending.
+- **Unresolved:** Record the published commit, workflow run, live Pages response, and deployed smoke-test evidence after deployment. Production hosting/domain, real forms, client-owned Supabase, roles, booking, legal, and business-content approvals remain deferred.
+
 ### CHG-2026-09-08-private-hosting — Keep review available after a hosting service failure
 
 - **Goal:** Deliver the working POC without changing the live business site or widening access.
 - **Change and rationale:** Saved source version 1 and attempted owner-private publication twice. Both attempts failed with the same service-side sign-in callback HTTP 409 conflict. Retain the local preview and full portable source as review deliverables; record exact service references in DEPLOYMENT_STATUS.md.
 - **Affected:** Private hosting status and handoff documentation only. Site behavior is unchanged.
 - **Validation:** Source push succeeded, version save succeeded, both deployment statuses were terminal failed; local site/build checks passed.
-- **Unresolved:** Hosting service callback registration needs resolution before a private hosted URL can be delivered.
+- **Unresolved:** Superseded for POC delivery by ADR-007. The callback failure remains historical evidence; no further Sites retry is planned.
 
 ### ADR-006 — Deliver a portable Astro POC with explicit operational boundaries
 
 - **Date:** 2026-09-08
 - **Status:** Accepted
 - **Goal:** Demonstrate the migrated website and future admin workflow while making Claude maintenance straightforward.
-- **Decision:** Use Astro static pages, self-hosted Inter/Manrope fonts, original gold branding, optimized local media, minimal client scripts and no Webflow runtime. Preserve original page paths and useful home anchors. Publish privately with noindex defaults. Provide a non-sending contact form and a fictional, memory-only dashboard concept.
+- **Decision:** Use Astro static pages, self-hosted Inter/Manrope fonts, original gold branding, optimized local media, minimal client scripts and no Webflow runtime. Preserve original page paths and useful home anchors. Provide a non-sending contact form and a fictional, memory-only dashboard concept. The private-only publication clause is superseded by ADR-007; noindex remains required for the public POC.
 - **Rationale:** This satisfies the corrected visual and POC scope with a portable build and minimal operational overhead. Real account/data work remains with the future client-owned Supabase project.
 - **Tradeoffs:** Long-form copy lives in its route file; shared facts and destinations live in typed configuration. Dashboard drafts do not change public pages or persist. The original social artwork remains rather than inventing new branding.
 - **Affected:** src/, public/, scripts/, tests/, README.md, CLAUDE.md, development/deployment/operations documentation.

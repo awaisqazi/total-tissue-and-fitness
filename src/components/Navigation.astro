@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/paths';
 import Brand from './Brand.astro';
 const path = Astro.url.pathname;
 const links = [
@@ -15,13 +16,16 @@ const links = [
     <nav class="desktop-nav" aria-label="Primary navigation">
       {
         links.map((link) => (
-          <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>
+          <a
+            href={withBase(link.href)}
+            aria-current={path === withBase(link.href) ? 'page' : undefined}
+          >
             {link.label}
           </a>
         ))
       }
     </nav>
-    <a class="button button-small desktop-book" href="/book/"
+    <a class="button button-small desktop-book" href={withBase('/book/')}
       >Book a session <span aria-hidden="true">↗</span></a
     >
     <details class="mobile-menu">
@@ -29,9 +33,10 @@ const links = [
         ><span>Menu</span><span aria-hidden="true">☰</span></summary
       >
       <nav aria-label="Mobile navigation">
-        {links.map((link) => <a href={link.href}>{link.label}</a>)}<a href="/couples-workshop/"
-          >Couples Workshop</a
-        ><a href="/contact/">Contact</a><a href="/book/">Book a session ↗</a>
+        {links.map((link) => <a href={withBase(link.href)}>{link.label}</a>)}<a
+          href={withBase('/couples-workshop/')}>Couples Workshop</a
+        ><a href={withBase('/contact/')}>Contact</a><a href={withBase('/book/')}>Book a session ↗</a
+        >
       </nav>
     </details>
   </div>

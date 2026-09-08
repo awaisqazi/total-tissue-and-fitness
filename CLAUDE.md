@@ -20,6 +20,9 @@ This repository is the source of truth for the Total Tissue & Fitness Astro webs
 - Prefer locally owned, optimized media. Record source, rights owner, alt-text facts, and usage limits when adding an asset.
 - Keep the POC dashboard static, visibly demonstrative, and populated exclusively with fictional data.
 - Do not create or connect Supabase during the POC. A later production system must use a client-owned Supabase project and an approved variable-role/RLS design.
+- The authorized POC delivery target is the public GitHub repository `awaisqazi/total-tissue-and-fitness` and GitHub Pages URL `https://awaisqazi.github.io/total-tissue-and-fitness/`. Keep `PUBLIC_SITE_INDEXABLE=false`; public reachability is not production approval.
+- Preserve GitHub Pages base-path behavior. Validate with `SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_SITE_INDEXABLE=false npm run validate` before merging a deployable change.
+- `.github/workflows/deploy.yml` is expected to validate and deploy `main` using Node 24. Keep deployment documentation aligned if the workflow or target changes.
 
 ## Required change record
 
@@ -57,6 +60,7 @@ For a routine copy correction or dependency patch with no durable design/archite
 - Do not create a developer-owned Supabase project for production. The client must own the project, billing, recovery access, and administrator accounts.
 - Do not remove redirects, old-domain support, policies, or accessible fallbacks merely because current pages still load.
 - Do not publish placeholders such as `TBD`, `#` links, fake practitioner records, or guessed contact details.
+- Do not enable indexing, connect the non-sending form, replace fictional dashboard data, configure Supabase, or point the original domain at GitHub Pages without a later explicit decision.
 
 ## Maintaining the living record
 

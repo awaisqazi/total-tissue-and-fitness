@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 ---
@@ -23,11 +24,11 @@ import PageHero from '../components/PageHero.astro';
       </p><div class="contact-resource">
         <span class="eyebrow">APPOINTMENTS</span><h3>Ready to plan a visit?</h3><p>
           Find the current booking links and information for new and returning clients.
-        </p><a class="text-link" href="/book/">View booking options →</a>
+        </p><a class="text-link" href={withBase('/book/')}>View booking options →</a>
       </div><div class="contact-resource">
         <span class="eyebrow">PRACTITIONER EDUCATION</span><h3>Bring your experience.</h3><p>
           Learn about the mentorship program and the techniques covered.
-        </p><a class="text-link" href="/mentorship-program/">Explore mentorship →</a>
+        </p><a class="text-link" href={withBase('/mentorship-program/')}>Explore mentorship →</a>
       </div>
     </div>
     <div class="inquiry-panel">
