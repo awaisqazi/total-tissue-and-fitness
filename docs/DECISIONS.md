@@ -26,6 +26,16 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 
 ---
 
+### CHG-2026-09-22-social-cards — Designed link-preview cards per key route
+
+- **Goal:** Make shared links (iMessage, Slack, Facebook, LinkedIn, X) show a clear, on-brand Synaptyx preview instead of a generic card.
+- **Change and rationale:** Added `scripts/make-social-cards.mjs` (`npm run images:social`), which builds 1200 × 630 JPEG cards as SVG and rasterizes them with sharp. Each card has a #101010 base, a local facility photo on the right under a 60% dark overlay that fades fully into the dark side by x≈525, a soft blue glow, a 6 px blue top bar, the Synaptyx mark and wordmark, a two-line Inter 800 headline (white and blue), an Inter 500 sub line, and the "Oakbrook Terrace, IL · Formerly Total Tissue & Fitness" line. All copy is reused from existing pages; no new claims. Text stays left of x=640; headlines that would not fit at 84 px are scaled down to fit rather than wrapped (Manual Therapy and Contrast Therapy 55 px, Mentorship 63 px, Book 83 px). Cards: default (`social-card.jpg`, plus a 1080 × 1080 `social-card-square.jpg` for manual posting), Manual Therapy, Contrast Therapy, Mentorship and Book. The script decodes the repo's `@fontsource/inter` WOFF files to temporary TTFs and forces Pango's fontconfig backend, because on macOS librsvg otherwise uses CoreText and silently falls back to Helvetica. `BaseLayout` now takes optional `image`/`imageAlt` props (root-relative, rendered through `withBase` and `Astro.site`, defaulting to `media.social`) and emits `og:image:width`/`height` (1200/630), `og:image:alt` and `twitter:image:alt`.
+- **Affected:** `/`, `/manual-therapy/`, `/contrast-therapy/`, `/mentorship-program/`, `/book/` (and all other routes via the default card); `src/layouts/BaseLayout.astro`, `src/data/site.ts` (`media.social*`), the four page files, `public/images/synaptyx/social-*.jpg`, `package.json`, content map.
+- **Validation:** Every card was viewed after rendering: Inter confirmed (not Helvetica), no clipped text, undistorted mark, smooth fade, copy within the 72 px margins. `npm run format`; root and Pages `npm run validate`; built `og:image` URLs resolve to files in `dist`.
+- **Unresolved:** The Mentorship card uses the 404 × 720 mentorship video poster, which is upscaled and soft under the overlay; Josh can supply a higher-resolution mentorship photo to replace it. Social platforms cache previews, so already-shared links may show the old card until re-scraped (owner, optional).
+
+---
+
 ### CHG-2026-09-22-engagement-pass — Photo-led cards, quote-first stories, and a shared panel idiom
 
 - **Goal:** Make the site feel more engaging on phones and closer in rhythm to the sister site, using only existing approved copy and local media.

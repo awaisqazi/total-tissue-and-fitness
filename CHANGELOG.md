@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-22 — Link-preview cards
+
+- Shared links now show a designed Synaptyx preview card, with page-specific cards for Manual Therapy, Contrast Therapy, Mentorship and Booking, plus a square version of the main card for manual posting.
+
 ## 2026-09-22 — Engagement pass
 
 - Service cards on the home page now open with a photo, and on phones services, client stories and contrast steps scroll sideways as swipeable cards.
