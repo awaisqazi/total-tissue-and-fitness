@@ -1,14 +1,24 @@
 ---
 import { withBase } from '../lib/paths';
+import { media } from '../data/site';
 ---
 
 <section class="cta-section">
+  <img
+    class="cta-bg"
+    src={withBase(media.sauna)}
+    alt=""
+    width="1200"
+    height="801"
+    loading="lazy"
+    decoding="async"
+  />
   <div class="container">
     <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p><h2>
       Get back to<br /><span class="gradient-text">what moves you.</span>
-    </h2><p>Start with a conversation. Find the right next step for your body.</p><div
-      class="button-row"
-    >
+    </h2><p>
+      Start with a conversation. We’ll help you find the right next step for your body.
+    </p><div class="button-row">
       <a class="button" href={withBase('/book/')}>Book a session →</a><a
         class="button button-outline"
         href={withBase('/contact/')}>Get in touch →</a

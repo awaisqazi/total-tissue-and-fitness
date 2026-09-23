@@ -1,6 +1,12 @@
 # QA record — September 8, 2026
 
-The September 8 sections below record the original POC release. The September 22 sections record successive Vagaro changes; the newest layout supersedes the earlier pale-panel appearance.
+The September 8 sections below record the original POC release. The September 22 sections record successive Vagaro changes; the newest layout supersedes the earlier pale-panel and full-width white appearances.
+
+## September 22, 2026 — Dark-theme integration cards (ADR-013)
+
+- `/book/` now uses a dark section; only the unchanged Vagaro embed sits in a centered white card with a blue top edge. Vagaro's empty title block is hidden and its "Powered by Vagaro" footer remains visible in Inter.
+- `/contact/` gained a "General inquiries" eyebrow, a matching blue top edge, a reserved Turnstile height, a full-width phone submit button, and a warm error color for status messages.
+- `npm run format` plus root and Pages `npm run validate` passed. Browser-pane checks at 1280, 768, 430, and 320 px showed no `/book/` page overflow. `/contact/` fits from 354 px; at 320 px Turnstile's 300 px minimum still overflows by about 22 px. No booking, purchase, or inquiry was sent.
 
 ## September 22, 2026 — Simplified booking layout
 

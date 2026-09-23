@@ -5,23 +5,59 @@ interface Props {
   title: string;
   accent?: string;
   description: string;
+  /** Optional root-relative image shown at right on desktop and as a banner on mobile. */
+  image?: string;
+  /** Describe only what is visible in the image. Required when `image` is set. */
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
-const { eyebrow, title, accent, description } = Astro.props;
+const {
+  eyebrow,
+  title,
+  accent,
+  description,
+  image,
+  imageAlt = '',
+  imageWidth = 1200,
+  imageHeight = 801,
+} = Astro.props;
+const hasActions = Astro.slots.has('default');
 ---
 
-<section class="page-hero container">
-  <a href={withBase('/')} class="back-link">← Synaptyx Manual Therapy</a><p class="eyebrow">
-    {eyebrow}
-  </p><h1>
-    {title}{
-      accent && (
-        <>
-          <>
-            <br />
-            <span class="gradient-text">{accent}</span>
-          </>
-        </>
+<section class:list={['page-hero container', { 'page-hero--media': image }]}>
+  <a href={withBase('/')} class="back-link">← Synaptyx Manual Therapy</a>
+  <div class="page-hero-inner">
+    <div class="page-hero-text">
+      <p class="eyebrow">{eyebrow}</p><h1>
+        {title}{
+          accent && (
+            <>
+              <br />
+              <span class="gradient-text">{accent}</span>
+            </>
+          )
+        }
+      </h1><p class="page-lead">{description}</p>{
+        hasActions && (
+          <div class="page-hero-actions">
+            <slot />
+          </div>
+        )
+      }
+    </div>{
+      image && (
+        <figure class="page-hero-media">
+          <img
+            src={withBase(image)}
+            alt={imageAlt}
+            width={imageWidth}
+            height={imageHeight}
+            fetchpriority="high"
+            decoding="async"
+          />
+        </figure>
       )
     }
-  </h1><p class="page-lead">{description}</p><slot />
+  </div>
 </section>

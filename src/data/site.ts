@@ -46,6 +46,7 @@ export const media = {
     '/images/65f1cd38d5c13f0914954f48-67c9e6e9d3b1a49af9199e97_video-output-9470F004-2040-489A-81D3-A0D5D1757FB9-poster-00001.jpg',
   mentorshipWebm: '/media/optimized/mentorship-session.webm',
 };
+// `image` is a root-relative public path; render it through withBase. Card images are decorative.
 export const services = [
   {
     id: 'manual-therapy',
@@ -55,6 +56,7 @@ export const services = [
     description:
       'Individual assessment, hands-on soft tissue work, and movement education. An approach built around your body and your goals.',
     href: '/manual-therapy/',
+    image: media.facility,
     tags: ['Soft tissue work', 'Movement education'],
   },
   {
@@ -65,6 +67,7 @@ export const services = [
     description:
       'Cold plunge, hot plunge, and infrared sauna in our Oakbrook Terrace recovery space. A dedicated hour to complement your tissue work.',
     href: '/contrast-therapy/',
+    image: media.sauna,
     tags: ['Cold plunge', 'Hot plunge', 'Infrared sauna'],
   },
   {
@@ -75,6 +78,7 @@ export const services = [
     description:
       'Practical education in soft tissue techniques, biomechanics, and recovery protocols for therapists and fitness professionals.',
     href: '/mentorship-program/',
+    image: media.mentorshipPoster,
     tags: ['Practitioner education', 'Applied techniques'],
   },
 ];
@@ -82,35 +86,35 @@ export const faqs = [
   {
     question: 'Is this the same practice as Total Tissue & Fitness?',
     answer:
-      'Yes. Total Tissue & Fitness is now Synaptyx Manual Therapy, a separate sister company within the Synaptyx family alongside Synaptyx Health & Performance. The manual therapy, contrast therapy, and mentorship services described here continue under the new name.',
+      'Yes. Total Tissue & Fitness is now Synaptyx Manual Therapy, a separate sister company within the Synaptyx family alongside Synaptyx Health & Performance. The manual therapy, contrast therapy, and mentorship you know continue under the new name.',
   },
   {
     question: 'Where are you located?',
-    answer: `Appointments are at ${site.address}. Check your Vagaro confirmation for visit details.`,
+    answer: `You’ll find us at ${site.address}. Your Vagaro confirmation has everything you need for your visit.`,
   },
   {
     question: 'What happens at my first visit?',
     answer:
-      'The first-session listing in Vagaro asks new clients to schedule a call first. Follow its contact instructions, then book the first session in Vagaro with Josh or Casey after the call.',
+      'It starts with a quick call. The first-session listing in Vagaro tells you how to reach the team, and once you’ve talked, you can book your first session with Josh or Casey.',
   },
   {
     question: 'How do returning clients book?',
     answer:
-      'Use the live Vagaro booking widget on this site to choose a service, Josh or Casey where available, and an appointment time.',
+      'Head to the booking page, pick your service and a time with Josh or Casey, and you’re set.',
   },
   {
     question: 'How often should I schedule a session?',
     answer:
-      'Session frequency is individualized. Discuss your goals, activity, health history, and response to previous sessions with your practitioner to agree on a schedule.',
+      'That depends on you. Your practitioner will talk through your goals, activity, health history, and how you’ve responded so far, and you’ll work out a rhythm together.',
   },
   {
     question: 'Is contrast therapy included?',
     answer:
-      'The current service description includes one hour of contrast therapy with tissue work, using a cold plunge, hot tub, and infrared sauna. Confirm the details of your selected appointment with the team.',
+      'Right now, the tissue-work listing includes an hour of contrast therapy with the cold plunge, hot tub, and infrared sauna. Double-check what’s included in your appointment with the team when you book.',
   },
   {
     question: 'Can I discuss a specific condition?',
     answer:
-      'Yes. Share your questions directly with the practitioner during your consultation. They can discuss whether the services fit your needs and how they relate to your existing care plan.',
+      'Absolutely. Bring your questions to your practitioner. They’ll talk through whether our services are a good fit for you and how they sit alongside any care you’re already receiving.',
   },
 ];

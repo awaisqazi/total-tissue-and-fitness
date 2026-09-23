@@ -18,6 +18,7 @@ const REVEAL_SELECTOR = [
   '.video-component',
   '.gallery-disclosure',
   '.partnership-strip .container',
+  '.story-video',
 ].join(',');
 const root = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -38,8 +39,14 @@ if (!reduced && 'IntersectionObserver' in window) {
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+        // Cards in a horizontal snap row sit outside the viewport horizontally, so reveal the
+        // whole row (still staggered by --reveal-delay) once any card in it is visible.
+        const row = entry.target.closest('.snap-row');
+        const targets = row ? row.querySelectorAll<HTMLElement>(':scope > [data-reveal]') : [];
+        for (const el of [entry.target, ...targets]) {
+          el.classList.add('is-visible');
+          observer.unobserve(el);
+        }
       }
     },
     { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },

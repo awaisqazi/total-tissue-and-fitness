@@ -1,5 +1,6 @@
 ---
 import { withBase } from '../lib/paths';
+import { site } from '../data/site';
 import Brand from './Brand.astro';
 const path = Astro.url.pathname;
 const links = [
@@ -8,6 +9,15 @@ const links = [
   { href: '/mentorship-program/', label: 'Mentorship' },
   { href: '/#testimonial', label: 'Client Stories' },
 ];
+const mobileLinks = [
+  { href: '/manual-therapy/', label: 'Manual Therapy' },
+  { href: '/contrast-therapy/', label: 'Contrast Therapy' },
+  { href: '/mentorship-program/', label: 'Mentorship' },
+  { href: '/couples-workshop/', label: 'Couples Workshop' },
+  { href: '/#testimonial', label: 'Client Stories' },
+  { href: '/contact/', label: 'Contact' },
+];
+const current = (href: string) => (path === withBase(href) ? 'page' : undefined);
 ---
 
 <header class="site-header">
@@ -16,10 +26,7 @@ const links = [
     <nav class="desktop-nav" aria-label="Primary navigation">
       {
         links.map((link) => (
-          <a
-            href={withBase(link.href)}
-            aria-current={path === withBase(link.href) ? 'page' : undefined}
-          >
+          <a href={withBase(link.href)} aria-current={current(link.href)}>
             {link.label}
           </a>
         ))
@@ -28,32 +35,64 @@ const links = [
     <a class="button button-small desktop-book" href={withBase('/book/')}
       >Book a session <span aria-hidden="true">→</span></a
     >
-    <details class="mobile-menu">
-      <summary aria-label="Open navigation"
-        ><span>Menu</span><span aria-hidden="true">☰</span></summary
-      >
-      <nav aria-label="Mobile navigation">
-        {links.map((link) => <a href={withBase(link.href)}>{link.label}</a>)}<a
-          href={withBase('/couples-workshop/')}>Couples Workshop</a
-        ><a href={withBase('/contact/')}>Contact</a><a
-          class="button button-small"
-          href={withBase('/book/')}>Book a session →</a
+    <div class="mobile-actions">
+      <a class="button nav-book" href={withBase('/book/')}>Book</a>
+      <details class="mobile-menu">
+        <summary class="menu-toggle" aria-label="Navigation menu"
+          ><span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span
+          ><span class="visually-hidden">Menu</span></summary
         >
-      </nav>
-    </details>
+        <div class="mobile-panel">
+          <div class="container mobile-panel-inner">
+            <nav aria-label="Mobile navigation">
+              <p class="eyebrow mobile-eyebrow" aria-hidden="true">Explore</p>
+              <ul class="mobile-links">
+                {
+                  mobileLinks.map((link, i) => (
+                    <li style={`--i: ${i}`}>
+                      <a href={withBase(link.href)} aria-current={current(link.href)}>
+                        {link.label}
+                        <span aria-hidden="true">→</span>
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+            <div class="mobile-panel-footer">
+              <a class="button" href={withBase('/book/')}
+                >Book a session <span aria-hidden="true">→</span></a
+              >
+              <a class="mobile-call" href={`tel:${site.phone}`}>Call {site.phoneDisplay}</a>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
   </div>
 </header>
 <script>
   const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
-  menu?.querySelectorAll('a').forEach((link) =>
-    link.addEventListener('click', () => {
+  if (menu) {
+    const root = document.documentElement;
+    const close = (restoreFocus = false) => {
+      if (!menu.open) return;
       menu.open = false;
-    }),
-  );
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu?.open) {
-      menu.open = false;
-      menu.querySelector('summary')?.focus();
-    }
-  });
+      if (restoreFocus) menu.querySelector('summary')?.focus();
+    };
+    menu.addEventListener('toggle', () => root.classList.toggle('menu-open', menu.open));
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => close()));
+    // Tapping the empty backdrop area of the panel closes the menu.
+    menu.querySelector('.mobile-panel')?.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('a, nav, .mobile-panel-footer')) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.open) close(true);
+    });
+    // Leaving the mobile layout (rotation, resize) must not leave the page scroll-locked.
+    matchMedia('(min-width: 901px)').addEventListener('change', (e) => {
+      if (e.matches) close();
+    });
+  }
 </script>

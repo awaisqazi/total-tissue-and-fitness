@@ -45,7 +45,7 @@ test('contact form uses Turnstile and keeps its delivery provider out of page ou
   assert.match(html, /data-action="contact"/);
   assert.match(html, /challenges\.cloudflare\.com\/turnstile\/v0\/api\.js/);
   assert.match(html, /We use the details you submit to respond/);
-  assert.match(html, /Please do not include medical/);
+  assert.match(html, /Please (?:do not include|leave out) medical/);
   assert.doesNotMatch(html, /Google Forms|Google Form directly|docs\.google\.com|entry\.\d+/);
   assert.doesNotMatch(html, /FORM PREVIEW|Messages are not sent or saved/);
 });

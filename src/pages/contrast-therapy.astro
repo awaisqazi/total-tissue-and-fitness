@@ -10,21 +10,21 @@ const steps = [
   {
     n: '01',
     title: 'Cold plunge',
-    text: 'A cold-water immersion experience as part of your recovery session. Your practitioner will guide you through a suitable approach.',
+    text: 'Cold-water immersion as part of your recovery session. Your practitioner will guide you through it at a pace that suits you.',
     image: media.plunge,
     alt: 'Water-filled plunge tub in the Synaptyx Manual Therapy recovery room',
   },
   {
     n: '02',
     title: 'Hot plunge',
-    text: 'Warm-water immersion provides time to unwind between activities. Ask the team how hot and cold immersion fit into your session.',
+    text: 'Warm-water immersion gives you time to unwind between activities. Ask the team how hot and cold fit together in your session.',
     image: media.facility,
     alt: 'The plunge tubs and treatment area in the Oakbrook Terrace recovery space',
   },
   {
     n: '03',
     title: 'Infrared sauna',
-    text: 'A dedicated infrared sauna rounds out the recovery space. Discuss the temperature and duration with your practitioner.',
+    text: 'The infrared sauna rounds out the space. Your practitioner will help you settle on temperature and time.',
     image: media.sauna,
     alt: 'Infrared sauna at Synaptyx Manual Therapy in Oakbrook Terrace',
   },
@@ -40,6 +40,8 @@ const steps = [
     title="Recover with intention."
     accent="Come back ready."
     description="Cold plunge. Hot plunge. Infrared sauna. Three experiences, brought together in a dedicated recovery space."
+    image={media.plunge}
+    imageAlt="Water-filled plunge tub in the Synaptyx Manual Therapy recovery room"
     ><a class="button" href={withBase('/book/#booking-widget')}>View booking options →</a></PageHero
   >
   <section class="container section-tight">
@@ -49,7 +51,7 @@ const steps = [
       width="1798"
       height="1200"
       alt="The Oakbrook Terrace contrast therapy space with plunge tubs, treatment table, and infrared sauna"
-      fetchpriority="high"
+      loading="lazy"
     />
   </section>
   <section class="section container">
@@ -59,16 +61,26 @@ const steps = [
           A change of pace.<br /><span class="gradient-text">A space to reset.</span>
         </h2>
       </div><p>
-        Contrast therapy is part of the Synaptyx Manual Therapy approach to recovery. Your
-        practitioner can explain how the experience fits your goals and whether it is appropriate
-        for you.
+        Contrast therapy is a core part of how we think about recovery. Your practitioner will walk
+        you through how it fits your goals and whether it’s right for you.
       </p>
-    </div><div class="image-card-grid">
+    </div><div class="image-card-grid snap-row">
       {
         steps.map((s) => (
           <article class="image-card">
             <>
-              <img src={withBase(s.image)} width="1798" height="1200" loading="lazy" alt={s.alt} />
+              <div class="image-card-media">
+                <img
+                  src={withBase(s.image)}
+                  width="1798"
+                  height="1200"
+                  loading="lazy"
+                  alt={s.alt}
+                />
+                <span class="image-card-index" aria-hidden="true">
+                  {s.n}/{String(steps.length).padStart(2, '0')}
+                </span>
+              </div>
               <div>
                 <>
                   <p class="eyebrow">{s.n} / THE PROCESS</p>
@@ -85,11 +97,13 @@ const steps = [
   <section class="container section border-top split-section">
     <div>
       <p class="eyebrow">BEFORE YOUR SESSION</p><h2>Start with<br />the right guidance.</h2><p>
-        Let the team know about relevant health conditions and ask about preparation, session
-        length, and what to bring when arranging your visit.
+        When you arrange your visit, tell the team about any health conditions we should know about,
+        and ask anything you like about preparation, session length, and what to bring.
       </p>
     </div><div>
-      <Video id="gRatHeEvmPw" title="What is contrast therapy?" /><p class="small-text">
+      <Video id="gRatHeEvmPw" title="What is contrast therapy?" poster={media.sauna} /><p
+        class="small-text"
+      >
         This video was recorded when the practice operated as Total Tissue & Fitness.
       </p>
     </div>

@@ -28,17 +28,21 @@ const techniques = [
     title="Understand your body."
     accent="Move with purpose."
     description="Hands-on tissue work and movement education, connected through an individual approach to recovery and training."
+    image={media.facility}
+    imageAlt="Synaptyx Manual Therapy recovery space in Oakbrook Terrace with plunge tubs and an infrared sauna"
+    imageWidth={1600}
+    imageHeight={1068}
     ><a class="button" href={withBase('/book/')}>Plan your first visit →</a></PageHero
   >
   <section class="container split-section section border-top">
     <div>
       <p class="eyebrow">OUR APPROACH</p><h2>More than<br />a single technique.</h2><p>
-        As Total Tissue & Fitness, this practice always brought bodywork, biomechanics, and
-        education together. As Synaptyx Manual Therapy, every session builds on that foundation.
+        We’ve always brought bodywork, biomechanics, and education together, first as Total Tissue &
+        Fitness and now as Synaptyx Manual Therapy. Every session builds on that foundation.
       </p><p>
-        Sessions combine assessment, soft tissue techniques, and integration exercise. Your
-        practitioner uses what they learn about your movement to guide the work and help you
-        understand how it fits your goals.
+        Each session combines assessment, soft tissue techniques, and integration exercise. What
+        your practitioner learns about how you move guides the hands-on work, and they’ll explain
+        how it connects to your goals along the way.
       </p><a href={withBase('/contact/')} class="text-link">Ask about your goals →</a>
     </div><div class="feature-panel">
       <span class="feature-index">ASSESS → WORK → INTEGRATE</span><h3>
@@ -46,7 +50,11 @@ const techniques = [
       </h3><p>
         Understand the purpose of the work. Explore movement habits. Take that understanding into
         your training and everyday life.
-      </p><Video id="uBjppA4WRW4" title="The approach, recorded as Total Tissue & Fitness" />
+      </p><Video
+        id="uBjppA4WRW4"
+        title="The approach, recorded as Total Tissue & Fitness"
+        poster={media.poster}
+      />
     </div>
   </section>
   <section class="section surface-section">
@@ -54,14 +62,14 @@ const techniques = [
       <p class="eyebrow">THE TOOLKIT</p><h2>
         Different tools.<br /><span class="gradient-text">One individual approach.</span>
       </h2><p class="measure">
-        The techniques offered by Synaptyx Manual Therapy include the following. Your practitioner
-        will discuss which are appropriate for your session.
+        These are the techniques we work with. Your practitioner will choose the ones that fit you
+        and your session, and talk you through why.
       </p><div class="technique-grid">
         {
           techniques.map((t, i) => (
             <div>
               <>
-                <span>{String(i + 1).padStart(2, '0')}</span>
+                <span aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 <h3>{t}</h3>
               </>
             </div>
@@ -82,8 +90,8 @@ const techniques = [
       <p class="eyebrow">COMPLETE THE EXPERIENCE</p><h2>
         Tissue work.<br /><span class="gradient-text">Then time to recover.</span>
       </h2><p>
-        The current tissue-work offering includes one hour of contrast therapy: cold plunge, hot
-        tub, and infrared sauna. Confirm the details of your appointment with the team.
+        Tissue-work sessions currently come with an hour of contrast therapy: cold plunge, hot tub,
+        and infrared sauna. Check what’s included when you book.
       </p><a class="text-link" href={withBase('/contrast-therapy/')}>Explore contrast therapy →</a>
     </div>
   </section>
@@ -95,7 +103,7 @@ const techniques = [
         </h2>
       </div><p>
         Synaptyx Manual Therapy carries the tissue-focused work and biomechanics of Total Tissue &
-        Fitness forward as its own division within the Synaptyx family.
+        Fitness forward as its own sister company within the Synaptyx family.
       </p>
     </div><div class="story-note">
       <img

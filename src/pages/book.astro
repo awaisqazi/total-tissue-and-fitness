@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import { booking, site } from '../data/site';
+import { withBase } from '../lib/paths';
+import { booking, media, site } from '../data/site';
 ---
 
 <BaseLayout
@@ -12,17 +13,21 @@ import { booking, site } from '../data/site';
     eyebrow="YOUR NEXT STEP"
     title="Book with Josh"
     accent="or Casey."
-    description="Choose from current services and appointment times in Vagaro. Gift cards are available there too."
+    description="Pick a service and a time that suits you. Gift cards are here too."
   />
-  <section class="booking-live" id="booking-widget" aria-labelledby="booking-heading">
-    <div class="container booking-live-inner" id="returning-client">
-      <div class="booking-live-heading">
+  <section
+    class="section container booking-section border-top"
+    id="booking-widget"
+    aria-labelledby="booking-heading"
+  >
+    <div id="returning-client">
+      <div class="booking-intro">
         <div>
           <p class="eyebrow">LIVE BOOKING</p>
           <h2 id="booking-heading">Find a service, time, or gift card.</h2>
           <p>
-            Choose Josh or Casey where available. Vagaro handles booking, checkout, and
-            confirmation.
+            Choose Josh or Casey where available. Booking, checkout, and confirmation all happen
+            right here through Vagaro.
           </p>
         </div>
         <a class="text-link" href={booking.services} target="_blank" rel="noopener noreferrer"
@@ -33,19 +38,24 @@ import { booking, site } from '../data/site';
       <div class="booking-first-visit" id="first-visit">
         <h3>Before your first session</h3>
         <p>
-          Vagaro asks new clients to schedule a call before booking a first session. Select the
-          first-session listing in the widget for its current contact instructions, then book with
-          Josh or Casey after the call. For help, call <a href={`tel:${site.phone}`}
-            >{site.phoneDisplay}</a
+          New here? We start with a quick call. Open the first-session listing below for how to
+          reach the team, then book with Josh or Casey once you’ve talked. Questions? Call <a
+            href={`tel:${site.phone}`}>{site.phoneDisplay}</a
           >.
         </p>
       </div>
 
-      <div class="vagaro-widget-shell" set:html={booking.widgetHtml} />
+      <div class="vagaro-widget-card">
+        <div class="panel-bar">
+          <img src={withBase(media.logo)} alt="" width="49" height="28" loading="lazy" />
+          <p class="eyebrow">SECURE ONLINE BOOKING</p>
+        </div>
+        <div class="vagaro-widget-body" set:html={booking.widgetHtml} />
+      </div>
 
       <div class="booking-after-widget">
         <p class="booking-help">
-          If the widget does not load or you do not see the service you need, <a
+          Don’t see what you’re looking for, or the widget won’t load? <a
             href={booking.services}
             target="_blank"
             rel="noopener noreferrer">open Vagaro directly</a
@@ -53,7 +63,7 @@ import { booking, site } from '../data/site';
         </p>
         <p class="booking-location">
           <strong>Visit us in Oakbrook Terrace</strong><br />
-          {site.address}. Check your Vagaro confirmation for the details of your visit.
+          {site.address}. Your Vagaro confirmation has everything you need for your visit.
         </p>
         <nav class="booking-more" aria-label="More about Synaptyx on Vagaro">
           <span>More about us on Vagaro:</span>

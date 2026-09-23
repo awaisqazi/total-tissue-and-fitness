@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-09-22 — Engagement pass
+
+- Service cards on the home page now open with a photo, and on phones services, client stories and contrast steps scroll sideways as swipeable cards.
+- Client quotes are larger and lead each card, and Mike's video sits right next to his quote.
+- Videos show a poster tile with a large play button and load YouTube's privacy-enhanced player only when you press play.
+- Service pages have a hero photo, the toolkit is shown as numbered tiles, and the home page has an "Assess → Work → Integrate → Recover" strip.
+- The booking widget and contact form share a slim Synaptyx header bar, and the closing call-to-action sits over a darkened sauna photo.
+- Fixed the oversized "Complete the experience" photo on the Manual Therapy page on phones.
+
+## 2026-09-22 — Compact mobile navigation
+
+- Phones and tablets up to 900 px now get a slimmer 64 px header: the logo, a small "Book" button, and a round menu button that turns into an X.
+- The menu opens as a full-screen panel with large links, the current page highlighted, a "Book a session" button, and a call link. It closes on link tap, Escape, or a tap on empty space, and the page behind it does not scroll.
+- The name-change notice is more compact on phones, and in-page links such as "What changed" and "Client Stories" now stop just below the header instead of leaving a large gap.
+
+## 2026-09-22 — Dark-theme booking and inquiry cards
+
+- Replaced the full-width white booking section with a dark section and a centered white Vagaro card with a Synaptyx blue top edge (ADR-013). Tidied Vagaro's footer attribution and hid its empty title block.
+- Added a "General inquiries" eyebrow, matching blue edge, status-state colors, a reserved Turnstile height, and a full-width phone button to the contact form.
+
 ## 2026-09-22 — Simplified Vagaro booking page
 
 - Removed separate Services and Gift Cards link cards because both already appear in Vagaro's widget. Kept About and Staff as smaller links below it.

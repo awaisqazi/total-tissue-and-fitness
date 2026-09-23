@@ -1,41 +1,42 @@
 ---
+import { withBase } from '../lib/paths';
+import { media } from '../data/site';
 interface Props {
   id: string;
   title: string;
+  /** Root-relative local poster image. Decorative: the play button carries the video title. */
+  poster?: string;
 }
-const { id, title } = Astro.props;
+const { id, title, poster = media.poster } = Astro.props;
 ---
 
 <div class="video-component">
-  <details>
-    <summary
-      ><span class="play-symbol" aria-hidden="true">▶</span><span>Watch: {title}</span><span
-        class="small-text muted">YouTube ↗</span
-      ></summary
-    ><div class="video-frame" data-video-id={id} data-video-title={title}></div>
-  </details><a
+  <div class="video-tile" data-video-id={id} data-video-title={title}>
+    <img src={withBase(poster)} alt="" width="1280" height="720" loading="lazy" decoding="async" />
+    <button type="button" class="video-play" aria-label={`Play video: ${title}`}
+      ><span class="video-play-icon" aria-hidden="true"></span></button
+    ><span class="video-tile-label" aria-hidden="true">{title}</span>
+  </div><a
     class="video-fallback"
     href={`https://www.youtube.com/watch?v=${id}`}
     target="_blank"
-    rel="noopener noreferrer">Open video on YouTube ↗</a
+    rel="noopener noreferrer">Open on YouTube ↗</a
   >
 </div>
 <script>
-  document.querySelectorAll<HTMLDetailsElement>('.video-component details').forEach((detail) => {
-    detail.addEventListener('toggle', () => {
-      const frame = detail.querySelector<HTMLElement>('[data-video-id]');
-      if (!frame) return;
-      if (detail.open && !frame.querySelector('iframe')) {
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube-nocookie.com/embed/${frame.dataset.videoId}`;
-        iframe.title = frame.dataset.videoTitle || 'Video';
-        iframe.allowFullscreen = true;
-        iframe.allow = 'encrypted-media; picture-in-picture';
-        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-        frame.append(iframe);
-      } else if (!detail.open) {
-        frame.replaceChildren();
-      }
+  // Swap the local poster tile for the privacy-enhanced YouTube player only after a click.
+  document.querySelectorAll<HTMLElement>('.video-tile[data-video-id]').forEach((tile) => {
+    const button = tile.querySelector<HTMLButtonElement>('.video-play');
+    button?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${tile.dataset.videoId}?autoplay=1`;
+      iframe.title = tile.dataset.videoTitle || 'Video';
+      iframe.allowFullscreen = true;
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      tile.classList.add('is-playing');
+      tile.replaceChildren(iframe);
+      iframe.focus();
     });
   });
 </script>

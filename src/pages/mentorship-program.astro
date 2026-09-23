@@ -15,6 +15,10 @@ import { media } from '../data/site';
     title="Learn the approach."
     accent="Build your practice."
     description="The Synaptyx Manual Therapy Practitioner Mentorship Program brings together soft tissue techniques, biomechanical analysis, and recovery education for working professionals."
+    image={media.mentorshipPoster}
+    imageAlt="A bearded instructor in a cap and T-shirt explains a technique to the camera, with an anatomical skeleton model behind him"
+    imageWidth={404}
+    imageHeight={720}
     ><a class="button" href={withBase('/book/#booking-widget')}>Book a mentorship consultation →</a
     ></PageHero
   >
@@ -23,11 +27,11 @@ import { media } from '../data/site';
       <p class="eyebrow">WHO IT’S FOR</p><h2>
         For people who<br /><span class="gradient-text">help people move.</span>
       </h2><p>
-        Designed for physical therapists, manual therapists, and fitness professionals looking to
-        expand their practical toolkit.
+        Built for physical therapists, manual therapists, and fitness professionals who want to
+        expand their hands-on toolkit.
       </p><p>
-        Learn how the Synaptyx Manual Therapy approach connects assessment, hands-on work,
-        corrective exercise, and recovery protocols.
+        See how our approach connects assessment, hands-on work, corrective exercise, and recovery
+        protocols, then take it back to your own practice.
       </p><div class="tags">
         <span>Physical therapists</span><span>Manual therapists</span><span
           >Fitness professionals</span
@@ -51,8 +55,8 @@ import { media } from '../data/site';
           See the work<br /><span class="gradient-text">in practice.</span>
         </h2>
       </div><p>
-        Explore the workshop video from our Total Tissue & Fitness years, then tell us about your
-        professional background and what you hope to learn.
+        Watch the workshop footage from our Total Tissue & Fitness years, then tell us about your
+        background and what you’d like to learn.
       </p>
     </div><div class="media-split">
       <video
@@ -73,7 +77,7 @@ import { media } from '../data/site';
       ><div>
         <p class="eyebrow">FROM THE MENTORSHIP FLOOR</p><h3>Hands-on, from the first hour.</h3><p>
           A short look at the mentorship environment, followed by the full workshop recording.
-        </p><Video id="nKuis2o6GUI" title="Massage therapists workshop" />
+        </p><Video id="nKuis2o6GUI" title="Massage therapists workshop" poster={media.poster} />
       </div>
     </div>
   </section>
@@ -81,10 +85,10 @@ import { media } from '../data/site';
     <div class="container">
       <p class="eyebrow">LET’S TALK ABOUT YOUR PRACTICE</p><h2>
         Bring your curiosity.<br /><span class="gradient-text">Build your next chapter.</span>
-      </h2><p>Find the Practitioner Mentorship consultation in Vagaro.</p><a
-        class="button"
-        href={withBase('/book/#booking-widget')}>View consultation times →</a
-      >
+      </h2><p>
+        Book a Practitioner Mentorship consultation in Vagaro and let’s talk about where you want to
+        take your practice.
+      </p><a class="button" href={withBase('/book/#booking-widget')}>View consultation times →</a>
     </div>
   </section>
 </BaseLayout>
