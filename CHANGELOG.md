@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-22 — Simplified Vagaro booking page
+
+- Removed separate Services and Gift Cards link cards because both already appear in Vagaro's widget. Kept About and Staff as smaller links below it.
+- Replaced the pale outer panel and white inset with one continuous white booking section, a Synaptyx blue top edge, and tighter mobile spacing around the widget.
+- Kept first-session call instructions, Oakbrook Terrace visit address, and direct Vagaro and phone fallbacks visible.
+
 ## 2026-09-22 — Vagaro sections and integrated gift cards
 
 - Added Gift Cards to the Vagaro website widget and replaced the generated embed; Services and Book Now remain available.

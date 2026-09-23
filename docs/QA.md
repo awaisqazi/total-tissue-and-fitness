@@ -1,6 +1,13 @@
 # QA record — September 8, 2026
 
-The September 8 sections below record the original POC release. The September 22 section records the current Vagaro changes.
+The September 8 sections below record the original POC release. The September 22 sections record successive Vagaro changes; the newest layout supersedes the earlier pale-panel appearance.
+
+## September 22, 2026 — Simplified booking layout
+
+- Services and Gift Cards remain in Vagaro's generated widget; the redundant external cards were removed. About and Staff remain as links below the widget.
+- The surrounding booking section is now white with a blue top edge and minimal phone-width inset. First-session instructions, Oakbrook Terrace address, direct Vagaro link, and phone fallback remain in the page.
+- The generated widget HTML is unchanged. `npm run format:check` and root and Pages `npm run validate` passed: Astro check, ten-page build, link/fragment/asset check, and eleven tests.
+- Chrome visual checks covered desktop, 768 px, and 320, 390, and 430 px phone widths. At a fresh 320 px load, the widget used its mobile layout without page overflow. Its menu exposed Services, Gift Cards, and Book Now; Gift Cards displayed categories, and Book Now's provider picker showed Josh Bruning and Casey Thayer. No booking or purchase was made.
 
 ## September 22, 2026 — Vagaro section and theme update
 

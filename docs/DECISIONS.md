@@ -26,10 +26,22 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 
 ---
 
+### ADR-012 — Let Vagaro's own tabs lead the booking page
+
+- **Date:** 2026-09-22
+- **Status:** Accepted; supersedes the `/book/` link-card and pale-panel layout in ADR-011
+- **Goal:** Make booking and gift card purchase clear without repeating Vagaro navigation or framing its white interface against dark page cards.
+- **Decision:** Keep Vagaro's Services, Gift Cards, and Book Now tabs in the unchanged generated widget. Remove the separate Services and Gift Cards cards and the extra introductory cards. Put the widget in one full-width white section with a Synaptyx blue top edge; use minimal horizontal inset on phones. Keep first-session call instructions before the widget, a direct Vagaro fallback, the Oakbrook Terrace visit address, and small About and Staff links after the widget.
+- **Rationale:** Services and Gift Cards already work inside the widget. Vagaro's cross-origin iframe controls its own white background, so surrounding it with the same white surface removes the visible color boundary without fragile iframe styling. About and Staff are not available as widget tabs, so links remain useful but secondary.
+- **Tradeoffs:** The white booking section differs from the site's dark sections; Vagaro's internal layout and marketplace listing retain their own styling. The widget depends on third-party loading, so the direct link and phone remain visible.
+- **Affected:** `/book/`, `src/styles/global.css`, README, booking content map, QA and launch checklist.
+- **Validation:** `npm run format:check` and both root and Pages `npm run validate` passed (Astro check, ten-page build, link/fragment/asset check, and eleven tests). Chrome visual checks covered desktop, 768 px, and fresh 320, 390, and 430 px phone widths without page overflow; at 320 px the widget menu opened Services, Gift Cards, and Book Now, and the provider picker showed Josh and Casey. No booking or purchase was made.
+- **Unresolved:** Owner review of Vagaro's service menu, provider assignments, gift card terms, and Synaptyx mark remains required before production launch.
+
 ### ADR-011 — Surface Vagaro's public sections beside the live booking widget
 
 - **Date:** 2026-09-22
-- **Status:** Accepted; extends ADR-009 and the Vagaro branding change
+- **Status:** Superseded by ADR-012 for the `/book/` page layout; widget tab configuration remains accepted
 - **Goal:** Let visitors reach the practice's About, Staff, Services, and Gift Cards information from the booking page while making the white third-party booking form feel intentional in the dark Synaptyx site.
 - **Decision:** Add Gift Cards to the existing Vagaro widget alongside Services and Book Now, save the widget settings, and replace the embed with Vagaro's regenerated HTML. Add four clearly labeled links on `/book/` to the corresponding live Vagaro public sections. Present the entire booking module as a pale blue panel with dark text and a white widget inset, using the Synaptyx blue accent.
 - **Rationale:** Vagaro's widget builder offered Services, Gift Cards, and Book Now, but no About or Staff tabs. Linking the public listing keeps staff and practice information current in Vagaro without duplicating unapproved biographies or business facts. The light panel makes the vendor's fixed white form a planned part of the page. Vagaro's [widget instructions](https://support.vagaro.com/hc/en-us/articles/204347860-Add-the-Booking-Widget-to-Your-Site) require regenerated code when selections change.

@@ -29,7 +29,7 @@ The first section defines POC completion. The remaining sections are production 
 ## Booking, forms, and operations
 
 - [x] Vagaro selected for the site's live booking widget and direct-link fallback (ADR-009); the business-wide widget includes both providers and all currently bookable Vagaro services.
-- [x] Gift Cards added to the Vagaro widget; booking page links to live About, Staff, Services, and Gift Cards sections (ADR-011).
+- [x] Gift Cards added to the Vagaro widget alongside Services and Book Now; About and Staff remain as secondary links, with a direct Vagaro fallback (ADR-012).
 - [ ] Gift card designs, values, purchase terms, and checkout flow reviewed by the owner before production use.
 - [x] Vagaro's first-session description updated from Jane to Vagaro booking after the required call, preserving its existing contact methods; both Josh and Casey are enabled for that service.
 - [ ] Vagaro's full service menu, provider assignments, prices, and booking rules reviewed by the owner.

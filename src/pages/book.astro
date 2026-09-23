@@ -12,82 +12,55 @@ import { booking, site } from '../data/site';
     eyebrow="YOUR NEXT STEP"
     title="Book with Josh"
     accent="or Casey."
-    description="Choose from the current services and appointment times in Vagaro."
+    description="Choose from current services and appointment times in Vagaro. Gift cards are available there too."
   />
-  <section class="container booking-notice" id="first-visit">
-    <span class="notice-icon" aria-hidden="true">i</span><div>
-      <h2>Before your first session</h2><p>
-        Vagaro asks new clients to schedule a call before booking a first session. Open the
-        first-session listing below for its current contact instructions, then book with Josh or
-        Casey in Vagaro after the call. For help, call our business line at <a
-          href={`tel:${site.phone}`}>{site.phoneDisplay}</a
-        >.
-      </p>
-    </div>
-  </section>
-  <section class="section container booking-grid booking-intro" aria-label="Booking guidance">
-    <article class="booking-card" id="returning-client">
-      <p class="eyebrow">READY TO BOOK</p><h2>Choose your appointment</h2><p>
-        Browse all currently bookable Vagaro services, then choose Josh or Casey where available.
-        Service details and appointment times are managed in Vagaro.
-      </p><a class="button" href="#booking-widget">See live availability →</a>
-    </article><article class="booking-card">
-      <p class="eyebrow">VISIT LOCATION</p><h2>Oakbrook Terrace</h2><p>
-        {site.address}. Check your Vagaro confirmation for the details of your visit.
-      </p><a
-        class="button button-outline"
-        href={booking.services}
-        target="_blank"
-        rel="noopener noreferrer">Open Vagaro directly ↗</a
-      >
-    </article>
-  </section>
-  <section
-    class="section container booking-live"
-    id="booking-widget"
-    aria-labelledby="booking-heading"
-  >
-    <div class="booking-live-heading">
-      <div>
-        <p class="eyebrow">LIVE BOOKING</p><h2 id="booking-heading">
-          Find a service or gift card.
-        </h2><p>
-          Browse services and gift cards in the Vagaro widget. For appointments, choose Josh or
-          Casey where available. Vagaro handles booking, checkout, and confirmation.
+  <section class="booking-live" id="booking-widget" aria-labelledby="booking-heading">
+    <div class="container booking-live-inner" id="returning-client">
+      <div class="booking-live-heading">
+        <div>
+          <p class="eyebrow">LIVE BOOKING</p>
+          <h2 id="booking-heading">Find a service, time, or gift card.</h2>
+          <p>
+            Choose Josh or Casey where available. Vagaro handles booking, checkout, and
+            confirmation.
+          </p>
+        </div>
+        <a class="text-link" href={booking.services} target="_blank" rel="noopener noreferrer"
+          >Open Vagaro directly ↗</a
+        >
+      </div>
+
+      <div class="booking-first-visit" id="first-visit">
+        <h3>Before your first session</h3>
+        <p>
+          Vagaro asks new clients to schedule a call before booking a first session. Select the
+          first-session listing in the widget for its current contact instructions, then book with
+          Josh or Casey after the call. For help, call <a href={`tel:${site.phone}`}
+            >{site.phoneDisplay}</a
+          >.
         </p>
       </div>
-      <a class="text-link" href={booking.services} target="_blank" rel="noopener noreferrer"
-        >Open booking in Vagaro ↗</a
-      >
-    </div>
-    <nav class="vagaro-destinations" aria-label="Explore Synaptyx on Vagaro">
-      <p class="vagaro-destinations-title">Explore on Vagaro</p>
-      <div class="vagaro-destinations-grid">
-        <a href={booking.about} target="_blank" rel="noopener noreferrer">
-          <strong>About <span aria-hidden="true">↗</span></strong>
-          <span>Practice and visit details</span>
-        </a>
-        <a href={booking.staff} target="_blank" rel="noopener noreferrer">
-          <strong>Staff <span aria-hidden="true">↗</span></strong>
-          <span>Josh and Casey</span>
-        </a>
-        <a href={booking.services} target="_blank" rel="noopener noreferrer">
-          <strong>Services <span aria-hidden="true">↗</span></strong>
-          <span>Current service menu</span>
-        </a>
-        <a href={booking.giftCards} target="_blank" rel="noopener noreferrer">
-          <strong>Gift Cards <span aria-hidden="true">↗</span></strong>
-          <span>Browse available cards</span>
-        </a>
+
+      <div class="vagaro-widget-shell" set:html={booking.widgetHtml} />
+
+      <div class="booking-after-widget">
+        <p class="booking-help">
+          If the widget does not load or you do not see the service you need, <a
+            href={booking.services}
+            target="_blank"
+            rel="noopener noreferrer">open Vagaro directly</a
+          > or call <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a>.
+        </p>
+        <p class="booking-location">
+          <strong>Visit us in Oakbrook Terrace</strong><br />
+          {site.address}. Check your Vagaro confirmation for the details of your visit.
+        </p>
+        <nav class="booking-more" aria-label="More about Synaptyx on Vagaro">
+          <span>More about us on Vagaro:</span>
+          <a href={booking.about} target="_blank" rel="noopener noreferrer">About ↗</a>
+          <a href={booking.staff} target="_blank" rel="noopener noreferrer">Staff ↗</a>
+        </nav>
       </div>
-    </nav>
-    <div class="vagaro-widget-shell" set:html={booking.widgetHtml} />
-    <p class="booking-help">
-      If the widget does not load or you do not see the service you need, <a
-        href={booking.services}
-        target="_blank"
-        rel="noopener noreferrer">open Vagaro directly</a
-      > or call <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a>.
-    </p>
+    </div>
   </section>
 </BaseLayout>
