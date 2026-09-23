@@ -1,7 +1,7 @@
 ---
 import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { media, services, site } from '../data/site';
+import { media, practitionerProgram, services, site } from '../data/site';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import Video from '../components/Video.astro';
@@ -51,13 +51,12 @@ const testimonials = [
     >
     <div class="container hero-content">
       <p class="eyebrow pill">
-        <span class="status-dot"></span> MANUAL THERAPY · MOVEMENT · RECOVERY
+        <span class="status-dot"></span> MANUAL THERAPY · TRAINING · RECOVERY
       </p>
       <h1>Move better.<br /><span class="gradient-text">Live fully.</span></h1>
       <p class="hero-description">
-        A whole-body approach to feeling your best.<br />Hands-on tissue work, movement education,<br
-          class="desktop-break"
-        /> and purposeful recovery in Oakbrook Terrace, Illinois.
+        Hands-on tissue work, personal and group training,<br class="desktop-break" /> and purposeful
+        recovery in Oakbrook Terrace, Illinois.
       </p>
       <div class="button-row">
         <a class="button" href={withBase('/book/')}
@@ -68,7 +67,7 @@ const testimonials = [
       </div>
       <div class="hero-facts">
         <div><strong>Hands-on</strong><span>PERSONALIZED CARE</span></div><div>
-          <strong>Whole-body</strong><span>MOVEMENT & RECOVERY</span>
+          <strong>Train</strong><span>PERSONAL & GROUP</span>
         </div><div><strong>Oakbrook Terrace, IL</strong><span>OUR HOME. YOUR COMMUNITY.</span></div>
       </div>
     </div>
@@ -146,18 +145,24 @@ const testimonials = [
       <div class="service-grid snap-row">
         {
           services.map((service) => (
-            <article class="service-card">
+            <article class:list={['service-card', { 'service-card--band': !service.image }]}>
               <>
-                <div class="service-media">
-                  <img
-                    src={withBase(service.image)}
-                    alt=""
-                    width="1200"
-                    height="801"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
+                {service.image ? (
+                  <div class="service-media">
+                    <img
+                      src={withBase(service.image)}
+                      alt=""
+                      width="1200"
+                      height="801"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ) : (
+                  <div class="service-media service-card-band" aria-hidden="true">
+                    <span>{service.number}</span>
+                  </div>
+                )}
                 <span class="service-number">
                   {service.number}
                   <span aria-hidden="true">→</span>
@@ -239,6 +244,34 @@ const testimonials = [
           >Explore the recovery space →</a
         >
       </div>
+    </div>
+  </section>
+  <section class="section" id="for-practitioners">
+    <div class="container practitioner-band">
+      <div>
+        <p class="eyebrow">FOR PRACTITIONERS</p><h2>
+          {practitionerProgram.title}<br /><span class="gradient-text"
+            >{practitionerProgram.subtitle}</span
+          >
+        </h2><p>{practitionerProgram.description}</p><div class="tags">
+          {practitionerProgram.tags.map((tag) => <span>{tag}</span>)}
+        </div><a class="button button-outline" href={withBase(practitionerProgram.href)}
+          >Explore practitioner mentorship <span aria-hidden="true">→</span></a
+        >
+      </div>{
+        practitionerProgram.image && (
+          <div class="practitioner-media">
+            <img
+              src={withBase(practitionerProgram.image)}
+              alt=""
+              width="404"
+              height="720"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )
+      }
     </div>
   </section>
   <section class="section" id="free-offer">

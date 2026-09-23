@@ -51,8 +51,23 @@ export const media = {
     '/images/65f1cd38d5c13f0914954f48-67c9e6e9d3b1a49af9199e97_video-output-9470F004-2040-489A-81D3-A0D5D1757FB9-poster-00001.jpg',
   mentorshipWebm: '/media/optimized/mentorship-session.webm',
 };
-// `image` is a root-relative public path; render it through withBase. Card images are decorative.
-export const services = [
+/** Shape shared by the home service cards and the practitioner band. */
+export interface ServiceEntry {
+  id: string;
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  href: string;
+  /**
+   * Root-relative public path, rendered through withBase; card images are decorative.
+   * Leave undefined when no photo of the actual offer exists: the card then renders a
+   * non-photo band instead of a misleading facility image.
+   */
+  image?: string;
+  tags: string[];
+}
+export const services: ServiceEntry[] = [
   {
     id: 'manual-therapy',
     number: '01',
@@ -64,9 +79,31 @@ export const services = [
     image: media.treatmentTable,
     tags: ['Soft tissue work', 'Movement education'],
   },
+  // Owner-requested 2026-09-23 (ADR-014). No sourced descriptions, pricing, schedule or
+  // Vagaro listings yet: keep this copy call-to-ask only until Josh supplies details.
+  {
+    id: 'personal-training',
+    number: '02',
+    title: 'Personal Training',
+    subtitle: 'Train with purpose.',
+    description:
+      'One-on-one training in our Oakbrook Terrace space. Call us to talk through your goals and current availability.',
+    href: '/training/',
+    tags: ['One-on-one', 'Oakbrook Terrace'],
+  },
+  {
+    id: 'group-fitness',
+    number: '03',
+    title: 'Group Fitness Classes',
+    subtitle: 'Move together.',
+    description:
+      'Group fitness classes in Oakbrook Terrace. Call for the current schedule and how to join.',
+    href: '/training/',
+    tags: ['Group classes', 'Current schedule by phone'],
+  },
   {
     id: 'contrast-therapy',
-    number: '02',
+    number: '04',
     title: 'Contrast Therapy',
     subtitle: 'Make space for recovery.',
     description:
@@ -75,18 +112,19 @@ export const services = [
     image: media.facility,
     tags: ['Cold plunge', 'Hot plunge', 'Infrared sauna'],
   },
-  {
-    id: 'mentorship',
-    number: '03',
-    title: 'Practitioner Mentorship',
-    subtitle: 'Take your practice further.',
-    description:
-      'Practical education in soft tissue techniques, biomechanics, and recovery protocols for therapists and fitness professionals.',
-    href: '/mentorship-program/',
-    image: media.mentorshipPoster,
-    tags: ['Practitioner education', 'Applied techniques'],
-  },
 ];
+/** Practitioner education renders as its own home band, separate from client services. */
+export const practitionerProgram: ServiceEntry = {
+  id: 'mentorship',
+  number: '',
+  title: 'Practitioner Mentorship',
+  subtitle: 'Take your practice further.',
+  description:
+    'Practical education in soft tissue techniques, biomechanics, and recovery protocols for therapists and fitness professionals.',
+  href: '/mentorship-program/',
+  image: media.mentorshipPoster,
+  tags: ['Practitioner education', 'Applied techniques'],
+};
 export const faqs = [
   {
     question: 'Is this the same practice as Total Tissue & Fitness?',
@@ -121,5 +159,9 @@ export const faqs = [
     question: 'Can I discuss a specific condition?',
     answer:
       'Absolutely. Bring your questions to your practitioner. They’ll talk through whether our services are a good fit for you and how they sit alongside any care you’re already receiving.',
+  },
+  {
+    question: 'Do you offer personal training or group classes?',
+    answer: `Yes. Personal training and group fitness classes are offered in Oakbrook Terrace alongside manual therapy and contrast therapy. Call ${site.phoneDisplay} for current options, schedule, and pricing.`,
   },
 ];

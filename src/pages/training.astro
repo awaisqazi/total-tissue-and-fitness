@@ -1,0 +1,88 @@
+---
+import { withBase } from '../lib/paths';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTA from '../components/CTA.astro';
+import { services, site } from '../data/site';
+// Owner-requested offers (ADR-014). Copy comes only from the data entries; no pricing,
+// schedule, format, or outcome details until Josh supplies them.
+const offers = services.filter((s) => s.href === '/training/');
+const tel = `tel:${site.phone}`;
+---
+
+<BaseLayout
+  title="Personal Training & Group Fitness | Synaptyx Manual Therapy"
+  description="Personal training and group fitness classes at Synaptyx Manual Therapy, formerly Total Tissue & Fitness, in Oakbrook Terrace, Illinois. Call to ask about current options and the class schedule."
+>
+  <PageHero
+    eyebrow="02 / TRAINING"
+    title="Train with purpose."
+    accent="Move together."
+    description="Alongside manual therapy and contrast therapy, we offer personal training and group fitness classes in our Oakbrook Terrace space. Give us a call to ask about current options."
+    ><a class="button" href={tel}>Call about training <span aria-hidden="true">→</span></a><a
+      class="button button-outline"
+      href="#offers">See both options <span aria-hidden="true">↓</span></a
+    ></PageHero
+  >
+  <section class="section container border-top" id="offers">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">TWO WAYS TO TRAIN</p><h2>
+          One-on-one.<br /><span class="gradient-text">Or as a group.</span>
+        </h2>
+      </div><p>
+        For current options and the class schedule, the quickest way to find out is a call to the
+        team.
+      </p>
+    </div><div class="training-grid">
+      {
+        offers.map((offer) => (
+          <article class="training-card" id={offer.id}>
+            <span class="training-index" aria-hidden="true">
+              {offer.number}
+            </span>
+            <p class="eyebrow">{offer.subtitle}</p>
+            <h3>{offer.title}</h3>
+            <p>{offer.description}</p>
+            <div class="tags">
+              {offer.tags.map((tag) => (
+                <span>{tag}</span>
+              ))}
+            </div>
+            <a class="text-link" href={tel}>
+              Call {site.phoneDisplay} <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section class="section surface-section">
+    <div class="container">
+      <p class="eyebrow">HOW IT FITS</p><h2>
+        Training.<br /><span class="gradient-text">Alongside the work you know.</span>
+      </h2><p class="measure">
+        Hands-on tissue work, movement education, and contrast therapy are already part of the
+        practice. Personal training and group classes sit alongside them, in the same Oakbrook
+        Terrace space.
+      </p><ul class="fit-list">
+        <li>
+          <span>MANUAL THERAPY</span>Hands-on tissue work and movement education. <a
+            class="text-link"
+            href={withBase('/manual-therapy/')}>Explore →</a
+          >
+        </li><li>
+          <span>TRAINING</span>Personal training and group fitness classes. <a
+            class="text-link"
+            href={tel}>Call to ask →</a
+          >
+        </li><li>
+          <span>CONTRAST THERAPY</span>Cold plunge, hot plunge, and infrared sauna. <a
+            class="text-link"
+            href={withBase('/contrast-therapy/')}>Explore →</a
+          >
+        </li>
+      </ul>
+    </div>
+  </section><CTA />
+</BaseLayout>

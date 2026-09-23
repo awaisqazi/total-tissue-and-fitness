@@ -81,7 +81,7 @@ test('canonical, social metadata and sitemap respect the deployment origin and b
       assert.ok(match[1].startsWith(home + 'images/'), match[1]);
   }
   const locations = [...read('dist/sitemap.xml').matchAll(/<loc>(.*?)<\/loc>/g)];
-  assert.equal(locations.length, 7);
+  assert.equal(locations.length, 8);
   for (const [, url] of locations) assert.ok(url.startsWith(home), url);
 });
 test('source testimonial names and compatibility anchors are retained', () => {

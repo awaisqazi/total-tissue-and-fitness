@@ -4,6 +4,7 @@ export const GET: APIRoute = ({ site }) => {
   const routes = [
     '',
     'manual-therapy/',
+    'training/',
     'contrast-therapy/',
     'mentorship-program/',
     'couples-workshop/',

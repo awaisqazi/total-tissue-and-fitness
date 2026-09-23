@@ -42,8 +42,9 @@ SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_
 
 | Route                  | Purpose                                                                      |
 | ---------------------- | ---------------------------------------------------------------------------- |
-| `/`                    | Services, approach, recovery, couples workshop, original testimonials, FAQs  |
+| `/`                    | Services, approach, recovery, practitioners, workshop, testimonials, FAQs    |
 | `/manual-therapy/`     | Assessment, tissue techniques, movement education, original explainer        |
+| `/training/`           | Personal training and group fitness classes; call-to-ask until details exist |
 | `/contrast-therapy/`   | Cold plunge, hot plunge, infrared sauna, original photos and explainer       |
 | `/mentorship-program/` | Practitioner program overview and inquiry pathway                            |
 | `/couples-workshop/`   | Original workshop offering, equipment, published price                       |

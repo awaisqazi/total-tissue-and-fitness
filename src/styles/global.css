@@ -2483,3 +2483,191 @@ img {
     align-items: stretch;
   }
 }
+
+/* ------------------------------------------------------------------
+   Training offers and practitioner band (ADR-014)
+   ------------------------------------------------------------------ */
+
+/* Four client services: 2 × 2 from tablet up (4-up crams the titles at 1200 px). */
+@media (min-width: 761px) {
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .service-media {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+/* Non-photo band for offers without an approved photo, so the row stays consistent
+   without implying a facility image shows that offer. */
+.service-card-band {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse 70% 90% at 70% 20%, #70c1f62e, transparent 70%),
+    radial-gradient(ellipse 50% 70% at 15% 100%, #70c1f614, transparent 70%),
+    linear-gradient(135deg, #1b2229, #111418);
+}
+.service-card-band::after {
+  background:
+    repeating-linear-gradient(90deg, #ffffff06 0 1px, transparent 1px 48px),
+    linear-gradient(0deg, #141414aa, transparent 55%);
+}
+.service-card-band span {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(88px, 11vw, 132px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #70c1f6a6;
+}
+.service-card--band .service-number {
+  visibility: hidden;
+}
+.service-card--band .service-number span {
+  visibility: visible;
+}
+
+/* Home: For practitioners split band. */
+.practitioner-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+  padding: 48px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(ellipse 55% 80% at 100% 0, #70c1f614, transparent 70%),
+    linear-gradient(135deg, #1b2229, #131313);
+}
+.practitioner-band h2 {
+  margin-bottom: 20px;
+}
+.practitioner-band p:not(.eyebrow) {
+  max-width: 520px;
+  font-size: 14px;
+}
+.practitioner-band .tags {
+  margin: 22px 0 30px;
+}
+.practitioner-media {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  aspect-ratio: 4 / 3;
+  background: #0b0b0b;
+}
+.practitioner-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
+  filter: saturate(0.75);
+}
+@media (max-width: 900px) {
+  .practitioner-band {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px;
+  }
+  .practitioner-media {
+    aspect-ratio: 16 / 9;
+    order: -1;
+  }
+}
+@media (max-width: 560px) {
+  .practitioner-band {
+    padding: 24px 20px;
+  }
+  .practitioner-band .button {
+    width: 100%;
+  }
+}
+
+/* /training/: two offer cards. */
+.training-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.training-card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(ellipse 60% 70% at 100% 0, #70c1f612, transparent 70%),
+    linear-gradient(150deg, #1a1f24, #131313);
+}
+.training-card .training-index {
+  margin-bottom: 26px;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--accent);
+}
+.training-card .eyebrow {
+  font-size: 10px;
+  margin-bottom: 13px;
+}
+.training-card h3 {
+  margin-bottom: 16px;
+  font-size: 26px;
+}
+.training-card p:not(.eyebrow) {
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+.training-card .text-link {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  justify-content: space-between;
+}
+.fit-list {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.fit-list li {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #141414;
+  font-size: 14px;
+  color: #dce3e8;
+}
+.fit-list li span {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+@media (max-width: 760px) {
+  .training-grid,
+  .fit-list {
+    grid-template-columns: 1fr;
+  }
+  .training-card {
+    padding: 24px;
+  }
+}
+.fit-list .text-link {
+  display: flex;
+  margin-top: 14px;
+}
+/* Hero action rows can hold more than one button (e.g. /training/). */
+.page-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

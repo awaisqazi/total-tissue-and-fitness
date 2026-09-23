@@ -19,6 +19,8 @@ const REVEAL_SELECTOR = [
   '.gallery-disclosure',
   '.partnership-strip .container',
   '.story-video',
+  '.practitioner-band',
+  '.training-card',
 ].join(',');
 const root = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;

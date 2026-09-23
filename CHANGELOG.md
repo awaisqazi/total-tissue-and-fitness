@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23 — Training offers up front
+
+- Personal Training and Group Fitness Classes now sit next to Manual Therapy at the top of the services list, with Contrast Therapy fourth. Both lead to a new Training page and ask visitors to call for current options, schedule and pricing, since those details haven't been supplied yet.
+- The home hero now mentions personal and group training, and the navigation and footer include Training.
+- Practitioner Mentorship has its own "For practitioners" band on the home page instead of a service card.
+- Added a FAQ about personal training and group classes.
+
 ## 2026-09-22 — Link-preview cards
 
 - Manual Therapy now uses a treatment-table crop (`optimized/treatment-table.webp`) on its service card, page header and link card; the Contrast Therapy sign photo moves to the Contrast Therapy service card.
