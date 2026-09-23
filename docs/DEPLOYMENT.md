@@ -14,11 +14,18 @@ Use `.env.example` as the variable reference. Pass the following variables in th
 SITE_URL=https://awaisqazi.github.io
 BASE_PATH=/total-tissue-and-fitness
 PUBLIC_SITE_INDEXABLE=false
+PUBLIC_CONTACT_ENDPOINT=https://synaptyx-contact.shiny-paper-ae5f.workers.dev/
 ```
 
 `PUBLIC_SITE_INDEXABLE=false` emits noindex/nofollow on each page and a robots disallow file. Crawlers only use robots.txt at the origin root, so the file under a GitHub project subpath is not an indexing control; the page-level noindex directives apply to this POC. Keep it false for the public POC. Only use `true` after production approval; admin and privacy-draft pages remain noindex.
 
-Static hosting has no runtime secret configuration in this build. Do not put private keys in `PUBLIC_` variables. Future Supabase public project URL/publishable keys may enter the client; service-role credentials must remain server-only.
+Static hosting has no runtime secret configuration in this build. `PUBLIC_CONTACT_ENDPOINT` is a public Worker URL; set it in the Pages build only after the Worker has been deployed and tested. Store `TURNSTILE_SECRET` and `GOOGLE_FORM_ID` as Cloudflare Worker secrets. Do not put private keys in `PUBLIC_` variables. Future Supabase public project URL/publishable keys may enter the client; service-role credentials must remain server-only.
+
+## Contact Worker
+
+Deploy `workers/contact/index.js` as the `synaptyx-contact` Worker in Joshua's Cloudflare account; `workers/contact/wrangler.jsonc` contains the matching code configuration. Add `TURNSTILE_SECRET` (the private key for the contact Turnstile widget) and `GOOGLE_FORM_ID` (the published responder ID) as **Secret** bindings in Worker Settings > Variables and Secrets. The widget's public site key is in `src/data/contactForm.ts`. The Worker must return 403 for a request without a valid Turnstile token, and a nonpersonal end-to-end test must appear in the Joshua-owned Form before setting `PUBLIC_CONTACT_ENDPOINT` in the Pages build. Google Forms' native notification email links to the response; it does not contain all answers.
+
+If the Worker is unavailable, leave the endpoint unset so the site disables its submit button and shows the business phone. Rotate the Turnstile secret if exposed; update the Worker binding, then retest. Direct submissions to the public Google Form bypass this Worker, so monitor the Form's response and spam counts.
 
 ## Release sequence
 
@@ -36,12 +43,12 @@ Static hosting has no runtime secret configuration in this build. Do not put pri
 7. Commit the exact validated source, including package-lock.json, to the public repository.
 8. Merge/push to `main`; `.github/workflows/deploy.yml` validates and deploys with Node 24 through GitHub Pages.
 9. Inspect the workflow conclusion and Pages environment URL.
-10. Smoke-test the deployed homepage, assets, navigation, representative routes, non-sending form, fictional dashboard, 404 behavior, canonical/base-path output, and `noindex`/robots state.
+10. Smoke-test the deployed homepage, assets, navigation, representative routes, Turnstile-protected contact submission with a clearly marked nonpersonal test identity, fictional dashboard, 404 behavior, canonical/base-path output, and `noindex`/robots state.
 11. Record the verified deployment commit, workflow run, URL, and checks in `CHANGELOG.md` and `docs/DEPLOYMENT_STATUS.md`.
 
 ## Production cutover — deferred
 
-Before cutover, the business must confirm branding, address/contact/practitioner data, Jane and other booking destinations, workshop offer/price, image rights, legal policy, production inquiry backend, account ownership, and role permissions. See LAUNCH_CHECKLIST.md.
+Before cutover, the business must confirm branding, address/contact/practitioner data, Vagaro service and provider settings, workshop offer/price, image rights, legal policy, production inquiry workflow, account ownership, and role permissions. See LAUNCH_CHECKLIST.md.
 
 GitHub Pages is authorized only for the public POC. For production, confirm the long-term client-owned hosting/account arrangement. Record current DNS and email records, lower TTL if appropriate, and preserve MX/TXT records. Configure the domain and TLS at the chosen production host, test on its temporary URL, and only then change website DNS after explicit launch authorization. Keep Webflow recoverable until the new site is confirmed. Do not cancel Webflow or domain renewals during this prototype.
 

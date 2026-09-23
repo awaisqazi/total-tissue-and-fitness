@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/wrangler.json",
+  "name": "synaptyx-contact",
+  "main": "index.js",
+  "compatibility_date": "2026-09-22",
+  "workers_dev": true,
+  "secrets": {
+    "required": ["TURNSTILE_SECRET", "GOOGLE_FORM_ID"],
+  },
+}

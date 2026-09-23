@@ -33,13 +33,21 @@ test('all pages have one h1, a unique title, description, canonical and correct 
     if (!/admin\//.test(path)) assert.match(html, /Total Tissue (&amp;|&) Fitness/, path);
   }
 });
-test('contact preview never transmits or persists visitor input', () => {
-  const source = read('src/pages/contact.astro');
-  assert.match(source, /Messages are not sent or saved/);
-  assert.match(source, /event.preventDefault\(\)/);
-  assert.doesNotMatch(source, /\bfetch\s*\(|localStorage|sessionStorage|XMLHttpRequest|sendBeacon/);
-  assert.match(source, /type="email"/);
-  assert.match(source, /required\s+minlength="10"/);
+test('contact form uses Turnstile and keeps its delivery provider out of page output', () => {
+  const html = read('dist/contact/index.html');
+  const form = html.match(/<form id="contact-form"[^>]+>/)?.[0];
+  if (process.env.PUBLIC_CONTACT_ENDPOINT)
+    assert.ok(form?.includes(`action="${process.env.PUBLIC_CONTACT_ENDPOINT}"`));
+  assert.match(form || '', /method="post"/);
+  for (const name of ['name', 'email', 'interest', 'profession', 'message'])
+    assert.match(html, new RegExp(`name="${name}"`));
+  assert.match(html, /class="cf-turnstile"/);
+  assert.match(html, /data-action="contact"/);
+  assert.match(html, /challenges\.cloudflare\.com\/turnstile\/v0\/api\.js/);
+  assert.match(html, /We use the details you submit to respond/);
+  assert.match(html, /Please do not include medical/);
+  assert.doesNotMatch(html, /Google Forms|Google Form directly|docs\.google\.com|entry\.\d+/);
+  assert.doesNotMatch(html, /FORM PREVIEW|Messages are not sent or saved/);
 });
 test('dashboard is explicitly fictional, temporary, and has no network/storage authentication facade', () => {
   const page = read('src/pages/admin/index.astro');

@@ -47,7 +47,7 @@ const sampleDrafts: Draft[] = [
   {
     title: 'Contrast therapy',
     summary: 'Make space for recovery.',
-    body: 'Cold plunge, hot plunge, and infrared sauna in our Oswego recovery space. A dedicated hour to complement your tissue work.',
+    body: 'Cold plunge, hot plunge, and infrared sauna in our Oakbrook Terrace recovery space. A dedicated hour to complement your tissue work.',
   },
 ];
 let inquiries = structuredClone(sampleInquiries);

@@ -40,26 +40,28 @@ SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_
 
 ## What exists
 
-| Route                  | Purpose                                                                     |
-| ---------------------- | --------------------------------------------------------------------------- |
-| `/`                    | Services, approach, recovery, couples workshop, original testimonials, FAQs |
-| `/manual-therapy/`     | Assessment, tissue techniques, movement education, original explainer       |
-| `/contrast-therapy/`   | Cold plunge, hot plunge, infrared sauna, original photos and explainer      |
-| `/mentorship-program/` | Practitioner program overview and inquiry pathway                           |
-| `/couples-workshop/`   | Original workshop offering, equipment, published price                      |
-| `/book/`               | Distinct new/returning/contrast/workshop booking pathways                   |
-| `/contact/`            | Clearly labeled non-sending inquiry-form prototype                          |
-| `/admin/`              | Fictional-data operations-dashboard concept; no authentication or database  |
-| `/privacy/`            | Draft plain-language website information, not approved legal policy         |
-| `/404.html`            | Branded not-found page                                                      |
+| Route                  | Purpose                                                                      |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| `/`                    | Services, approach, recovery, couples workshop, original testimonials, FAQs  |
+| `/manual-therapy/`     | Assessment, tissue techniques, movement education, original explainer        |
+| `/contrast-therapy/`   | Cold plunge, hot plunge, infrared sauna, original photos and explainer       |
+| `/mentorship-program/` | Practitioner program overview and inquiry pathway                            |
+| `/couples-workshop/`   | Original workshop offering, equipment, published price                       |
+| `/book/`               | Live Vagaro booking for available services with Josh or Casey                |
+| `/contact/`            | General inquiry form with Turnstile verification and practice-owned delivery |
+| `/admin/`              | Fictional-data operations-dashboard concept; no authentication or database   |
+| `/privacy/`            | Draft plain-language website information, not approved legal policy          |
+| `/404.html`            | Branded not-found page                                                       |
 
 ## Intentional proof-of-concept limits
 
-No real inquiry is sent or saved. The admin concept has no real accounts, permissions, or persisted client records. No Supabase project was created. The current Webflow site and DNS have not been changed.
+The contact page uses a Cloudflare Turnstile challenge and Worker to verify general inquiries before forwarding them to a Google Form owned by the practice. Cloudflare and Google process the inquiry; the site does not put responses in its public demo dashboard. Visitors are asked not to include medical or sensitive health information. The admin concept has no real accounts, permissions, or persisted client records. No Supabase project was created. The current Webflow site and DNS have not been changed.
 
-The public source does not provide confirmed practitioner biographies, street address, phone, email, social URLs, or a Jane booking URL. These are not invented. Vagaro and the first-contrast Calendly URL are retained as legacy destinations, subject to client confirmation. The source link labeled a couples workshop opens an event whose metadata calls it a contrast trial; that link is preserved in the audit/config but withheld from visitor CTAs. Workshop CTAs lead to the inquiry preview until the correct destination is supplied.
+The owner confirmed that visits are at 17W755 Butterfield Road, Oakbrook Terrace, IL 60181; Oswego is used for billing only. The public Vagaro listing confirms the business phone, address, and both providers. The booking page uses a live, business-wide Vagaro widget and a direct-link fallback. Vagaro, not this site, handles appointments and resulting client records. New clients arrange a call using the contact methods in Vagaro's first-session listing, then book there with Josh or Casey.
 
-Do not call this production-ready until the remaining business, legal, inquiry, booking, and access gates in the launch checklist are resolved. The GitHub Pages POC is intentionally public so stakeholders can review it, but remains non-indexable. Public access does not authorize real submissions, production data, Supabase, or a change to the live domain.
+The public source still does not provide approved practitioner biographies, email, social URLs, or a couples-workshop booking destination. The older contrast and workshop Calendly links remain in source provenance/config but are not used as booking CTAs. Workshop CTAs use the public business phone until a bookable offer is confirmed.
+
+Do not call this production-ready until the remaining business, legal, inquiry, booking, and access gates in the launch checklist are resolved. The GitHub Pages POC is intentionally public so stakeholders can review it, but remains non-indexable. ADR-010 covers this general-inquiry path only; it does not authorize production client records, Supabase, or a change to the live domain.
 
 ## Source and ownership
 

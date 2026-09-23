@@ -4,7 +4,7 @@
 
 The current dashboard is a static prototype with fictional records. It may demonstrate prospective content, inquiry, resource, and booking-management views, but it has no authentication, Supabase database, real roles, notification pipeline, or permission enforcement. It must not accept, display, or imply storage of real client data.
 
-The authorized POC is public source plus a public GitHub Pages URL under `awaisqazi/total-tissue-and-fitness`. It remains non-indexable and review-only in capability. Public visibility is not authentication, confidentiality, or production approval; commit no secrets, private business material, form submissions, or real client records. The original domain remains on Webflow.
+The authorized POC is public source plus a public GitHub Pages URL under `awaisqazi/total-tissue-and-fitness`. It remains non-indexable. Under ADR-010, the contact page sends general inquiries through a Cloudflare Turnstile-validating Worker to a Google Form owned by the practice; the site and demo dashboard do not store those responses. Public visibility is not authentication, confidentiality, or production approval; commit no secrets, private business material, form submissions, or real client records. The original domain remains on Webflow.
 
 ## Recommended production model
 
@@ -49,10 +49,15 @@ Named accounts, MFA, recovery contacts, and quarterly access review are required
 
 ## Inquiry operations
 
+- The contact destination is a Google Form in Joshua Bruning's `info@totaltissueandfitness.com` account. New-response email notifications are on. Review responses in that account; never copy real responses into the public dashboard or repository. The site form requests name, email, inquiry category, optional profession, and a general message. It tells visitors to omit medical or sensitive health details.
+- Google Forms' built-in new-response email contains a link to view the answers, not the answers themselves. The owner chose to keep this native notification rather than add a custom email script.
+- The site sends to a Cloudflare Worker, which verifies Turnstile before forwarding. Store `TURNSTILE_SECRET` and `GOOGLE_FORM_ID` as Worker secrets; never put them in the repository, Pages variables, or client output. The public Worker URL is `PUBLIC_CONTACT_ENDPOINT` in the Pages build. The Google entry IDs are in `workers/contact/index.js`; if questions are deleted/recreated, update the mapping and test delivery. Keep the phone fallback available.
+- A direct request to the public Google Form bypasses the Worker and Turnstile. Monitor Form responses and spam; this control only covers the site's inquiry endpoint.
+- The account owner must set who monitors the inbox, a response target, retention and deletion rules, access removal, and an approved privacy policy before production launch.
 - Collect only the fields necessary to route and answer the inquiry. The captured mentorship form uses name, email, profession, message, and a terms checkbox.
 - Decide whether free-text messages may contain health information; instruct users accordingly and choose the form/provider workflow to match the decision.
 - Document recipients, backup recipient, response target, spam handling, retention, deletion, export, and access removal.
-- Use server-side validation and rate limiting/honeypot. Monitor delivery failure without putting message contents into analytics or general logs.
+- Keep server-side Turnstile validation active. Monitor delivery failure without putting message contents into analytics or general logs; decide whether rate limiting is needed after observing traffic.
 - Test production delivery after every provider, domain, sender, environment, or form-schema change.
 
 ## Booking operations

@@ -2,7 +2,7 @@
 
 ## Architecture
 
-Astro statically renders the marketing pages. No React framework or Webflow runtime is required. Minimal client scripts handle mobile navigation dismissal, click-to-load YouTube players, the non-sending inquiry preview, the fictional dashboard UI, the scroll-reveal motion layer (`src/scripts/reveal.ts` + `src/styles/motion.css`), and the home hero loop control (`src/scripts/hero-video.ts`). Motion is progressive: without JavaScript or under `prefers-reduced-motion` every element stays static and visible. Main content, FAQ disclosures, navigation, original video controls, and external links work without client JavaScript.
+Astro statically renders the marketing pages. No React framework or Webflow runtime is required. Minimal client scripts handle mobile navigation dismissal, click-to-load YouTube players, contact submission, the fictional dashboard UI, the scroll-reveal motion layer (`src/scripts/reveal.ts` + `src/styles/motion.css`), and the home hero loop control (`src/scripts/hero-video.ts`). Motion is progressive: without JavaScript or under `prefers-reduced-motion` every element stays static and visible. Main content, FAQ disclosures, navigation, original video controls, and external links work without client JavaScript.
 
 `src/layouts/BaseLayout.astro` owns page HTML, metadata, noindex state, typography imports, navigation and footer. `src/styles/global.css` owns design tokens, layout and responsive rules. `src/data/site.ts` is the source of service summaries, brand/location facts, media references, FAQs and booking destinations.
 
@@ -36,13 +36,13 @@ If replacing testimonial images, obtain text versions for equivalent screen-read
 
 ### Forms and dashboard
 
-The current contact form is a **preview**, not a delivery system. Do not change its copy to claim a message was sent. The dashboard is a public static concept with fictional records and no authentication boundary. All demo data may be inspected in the page source. Never add real data to it.
+The contact page loads Cloudflare Turnstile and sends its five fields and token to the configured Worker endpoint. `workers/contact/index.js` validates the token against Siteverify, checks the expected hostname and action, then forwards fields to the Google Form owned by `info@totaltissueandfitness.com`. The public site key and Worker URL live in `src/data/contactForm.ts` or `PUBLIC_CONTACT_ENDPOINT`; `TURNSTILE_SECRET` and `GOOGLE_FORM_ID` are Worker secrets, never client variables. The response appears in the Google account, with new-response email notifications enabled. Keep the phone fallback. The Google destination stays out of visitor-facing page output, though the Worker endpoint is inspectable. The public Google Form can still be used directly if its URL becomes known. The dashboard is a public static concept with fictional records and no authentication boundary. Never add real inquiry data to it.
 
 For the future client-owned Supabase implementation, follow `docs/OPERATIONS.md` and the future integration reference. Use an approved role matrix, server-enforced authorization/RLS, authenticated sessions, protected writes, spam controls, and tested delivery. Do not use browser-only role toggles as security.
 
 ## Quality checks
 
-`npm run validate` checks TypeScript/Astro diagnostics, production generation, built internal URLs/fragments/assets, required metadata, source runtime removal, and relevant demo contracts. Browser QA should cover 390px mobile, 768px tablet, desktop, keyboard navigation, mobile menu dismissal, FAQs, video activation, form validation/non-delivery, and dashboard interactions.
+`npm run validate` checks TypeScript/Astro diagnostics, production generation, built internal URLs/fragments/assets, required metadata, source runtime removal, and relevant demo contracts. Browser QA should cover 390px mobile, 768px tablet, desktop, keyboard navigation, mobile menu dismissal, FAQs, video activation, contact validation and test delivery, and dashboard interactions.
 
 Use Chromium and Safari where available. Record browsers actually tested; never say all browsers were tested from one Chromium session. Do not submit real third-party bookings during QA.
 

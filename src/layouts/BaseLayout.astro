@@ -17,7 +17,7 @@ interface Props {
   noindex?: boolean;
 }
 const {
-  title = site.name + ' | Manual & Contrast Therapy in Oswego, IL',
+  title = site.name + ' | Manual & Contrast Therapy in Oakbrook Terrace, IL',
   description = site.description,
   noindex = false,
 } = Astro.props;
@@ -73,7 +73,16 @@ const isPublic = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
         },
         url: new URL(withBase('/'), Astro.site).href,
         description,
-        areaServed: { '@type': 'City', name: 'Oswego, Illinois' },
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '17W755 Butterfield Road',
+          addressLocality: 'Oakbrook Terrace',
+          addressRegion: 'IL',
+          postalCode: '60181',
+          addressCountry: 'US',
+        },
+        telephone: site.phone,
+        areaServed: { '@type': 'City', name: 'Oakbrook Terrace, Illinois' },
       }).replace(/</g, '\\u003c')}
     />
   </head>

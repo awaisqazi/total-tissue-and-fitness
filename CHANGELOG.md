@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-09-22 — Vagaro branding and booking page polish
+
+- Uploaded a Synaptyx Manual Therapy logo to Vagaro and set it as the business logo; it now appears on the public Vagaro listing and in the embedded booking widget.
+- Confirmed Vagaro's widget button already uses Synaptyx blue (`#70C1F6`) and added a matching accent frame around the site's booking widget.
+- Updated the site's social sharing card to say Oakbrook Terrace instead of Oswego.
+
+## 2026-09-22 — Verified contact delivery
+
+- Published a general inquiry form in Joshua Bruning's practice Google account and enabled response email notifications. A nonpersonal test submission reached the form.
+- Added a native site form with Cloudflare Turnstile and a Worker that validates tokens before forwarding inquiries. Kept the Google destination out of page output, added a phone fallback and a sensitive-health-information warning. The fictional dashboard remains disconnected.
+- Documented the two-provider inquiry path, its direct Google Form bypass limitation, and the remaining privacy and retention decisions (ADR-010). Worker and Pages deployment status is tracked separately.
+- Kept Google Forms' native link-only response emails as requested; no custom email script or add-on was added.
+
+## 2026-09-22 — Vagaro booking and visit location
+
+- Added Vagaro's live business-wide booking widget for all currently bookable services with Josh or Casey, plus direct-link and phone fallbacks. Mentorship CTAs now lead to Vagaro's consultation listing; workshop CTAs call the business.
+- Replaced the outdated Jane transition notice on the website with the first-session call requirement. Updated Vagaro's first-session description to direct clients to book there after the call, preserving its existing team contact methods.
+- Corrected visitor-facing location copy and structured data to 17W755 Butterfield Road, Oakbrook Terrace, IL 60181. Oswego remains the billing address only.
+- Updated booking guidance, privacy copy, and project records; the dashboard remains a fictional demo.
+
 ## 2026-09-08 — Synaptyx Manual Therapy rebrand and polish
 
 - Rebranded to Synaptyx Manual Therapy (ADR-008): Synaptyx mark lockup, blue/near-black palette, Inter type, favicon/touch icon/social card, and “formerly Total Tissue & Fitness” notices (announcement bar, home transition section, FAQ, footer, structured data).

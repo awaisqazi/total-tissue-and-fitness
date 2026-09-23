@@ -1,5 +1,23 @@
 # QA record — September 8, 2026
 
+The September 8 sections below record the original POC release. The September 22 section records the current Vagaro changes.
+
+## September 22, 2026 — Vagaro branding update
+
+- Uploaded a 1200 × 800 Synaptyx logo image to Vagaro's Venue Gallery and set it as LOGO. It replaced the SMT placeholder on the public listing and in the embedded widget.
+- The Vagaro widget builder showed the existing custom button color `#70C1F6`. Chrome displayed that blue booking button inside the site's newly blue-edged widget frame.
+- Regenerated the sharing card with Oakbrook Terrace and inspected both local image assets. No booking or payment was made during this check.
+- Vagaro's marketplace listing retains its shared layout and red Book Now control. The site's direct Vagaro link is the fallback when a browser does not render the embedded widget.
+
+## September 22, 2026 — Vagaro booking update
+
+- Root and GitHub Pages base-path `npm run validate` each passed: Astro check, 10-page build, local link/fragment/asset check, and seven Node tests. `npm run format:check` passed. An unused import hint found during the first pass was removed.
+- The generated Vagaro widget rendered its public service menu in Chrome. Starting a returning-client booking exposed both Josh Bruning and Casey Thayer in the provider picker; no appointment was completed.
+- The first-session service editor showed both providers enabled. Its description was changed from Jane to Vagaro booking after the required call, retaining the existing team contact methods, and the new text appeared in the public widget after reload.
+- At 390 px width, the Vagaro widget rendered on mobile and document scroll width equaled the viewport width. The direct Vagaro link and business phone remain visible fallbacks.
+- The owner confirmed 17W755 Butterfield Road, Oakbrook Terrace, IL 60181 for visits and Oswego for billing only. The public Vagaro listing showed that visit address and the business phone.
+- The provider's own online visibility and booking rules determine which selected service categories appear publicly. No test booking, payment, or client record was created during the booking check.
+
 ## Automated verification
 
 - Astro type checking and static generation succeeded for 10 HTML pages plus robots and sitemap endpoints.
@@ -28,8 +46,8 @@
 ## External destinations and unverified cases
 
 - Calendly endpoints responded; the couples source link’s event metadata mismatched its label, so it is withheld from public CTAs pending confirmation.
-- Vagaro automated requests encountered anti-bot protection. Availability remains unconfirmed; no booking was created.
-- No current Jane URL, practitioner bios, contact details, or social account URLs were supplied in the public source.
+- At the September 8 release, Vagaro automated requests encountered anti-bot protection. The September 22 browser check above supersedes that booking-menu limitation; no booking was created.
+- At the September 8 release, practitioner bios, contact details, and social account URLs were not supplied in the public source. The September 22 Vagaro listing confirmed the public business phone and provider names.
 - Firefox, Edge-specific behavior, assistive-technology user testing, formal WCAG certification, and live backend/email/payment flows were not tested.
 - No production DNS/domain cutover, live inquiry delivery, Supabase roles, or client-account authentication is part of this POC.
 

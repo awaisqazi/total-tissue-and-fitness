@@ -1043,6 +1043,11 @@ div[id] {
   font-size: 13px;
   margin: 0;
 }
+.booking-notice a,
+.booking-help a {
+  color: var(--accent);
+  text-decoration: underline;
+}
 .booking-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1066,6 +1071,46 @@ div[id] {
 }
 .booking-card .button {
   margin-top: auto;
+}
+.booking-intro {
+  padding-top: 0;
+  padding-bottom: 80px;
+}
+.booking-live {
+  border-top: 1px solid var(--line);
+  padding-top: 80px;
+}
+.booking-live-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.booking-live-heading h2 {
+  margin-bottom: 14px;
+}
+.booking-live-heading p:last-child {
+  max-width: 64ch;
+  margin-bottom: 0;
+}
+.booking-live-heading .text-link {
+  flex-shrink: 0;
+}
+.vagaro-widget-shell {
+  min-height: 700px;
+  padding: 16px 16px 24px;
+  border-radius: var(--radius);
+  border: 1px solid #70c1f666;
+  border-top: 5px solid var(--accent);
+  background: #fff;
+  color: #101010;
+  overflow: hidden;
+  box-shadow: 0 24px 70px #0008;
+}
+.booking-help {
+  margin-top: 20px;
+  font-size: 13px;
 }
 .secondary-note {
   padding-bottom: 90px;
@@ -1130,6 +1175,10 @@ div[id] {
   }
   .booking-grid {
     grid-template-columns: 1fr;
+  }
+  .booking-live-heading {
+    align-items: flex-start;
+    flex-direction: column;
   }
   .page-hero {
     padding-block: 30px 60px;
@@ -1421,6 +1470,10 @@ div[id] {
 .inquiry-panel textarea {
   resize: vertical;
   min-height: 120px;
+}
+.inquiry-panel .cf-turnstile {
+  max-width: 100%;
+  margin-bottom: 20px;
 }
 .inquiry-panel input::placeholder,
 .inquiry-panel textarea::placeholder {
