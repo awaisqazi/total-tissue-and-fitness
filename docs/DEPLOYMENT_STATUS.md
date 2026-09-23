@@ -11,10 +11,10 @@ The user authorized a public GitHub repository and public GitHub Pages POC. The 
 
 **Status: published and verified.** The repository is PUBLIC, HTTPS is enforced, and GitHub Actions completed successfully.
 
-- Published site-code commit: `a37d1f9cb87b7667df45d8f466198d021a5d7c51`.
-- Successful workflow: [35809049255](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/35809049255), including `npm ci`, Astro check, static build, link checks, and eleven tests. The earlier contact integration also deployed successfully in [35808707411](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/35808707411).
+- Published site-code commit: `c7646a0236acd044d54405fefa5073064bdc2624`.
+- Successful workflow: [35809795030](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/35809795030), including `npm ci`, Astro check, static build, link checks, and eleven tests. The earlier contact integration also deployed successfully in [35808707411](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/35808707411).
 - Live contact page serves the Turnstile widget and points to the practice-owned Cloudflare Worker. The Worker rejected an invalid token with HTTP 403. A nonpersonal live-page submission showed success and increased Joshua's Google Form response count from one to two.
-- Live contact and booking routes retain page-level `noindex`; the contact HTML contains no Google Forms URL, and the booking route serves the Vagaro widget, service links, and Gift Cards link.
+- Live contact and booking routes retain page-level `noindex`; the contact HTML contains no Google Forms URL. The live booking route shows one continuous white section, the Vagaro Services/Gift Cards/Book Now widget, and secondary About/Staff links without duplicate Services or Gift Cards cards.
 - The public POC retains a fictional dashboard. The contact form now sends general inquiries through Cloudflare to the Joshua-owned Google Form. `totaltissueandfitness.com` and its DNS are unchanged.
 
 ## Previous published release
