@@ -46,7 +46,7 @@ const CARDS = [
     id: 'manual-therapy',
     lines: ['Understand your body.', 'Move with purpose.'],
     sub: 'Hands-on tissue work and movement education.',
-    photo: 'images/optimized/recovery-space.webp',
+    photo: 'images/optimized/treatment-table.webp',
     out: 'social-manual-therapy.jpg',
   },
   {

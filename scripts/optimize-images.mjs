@@ -12,8 +12,16 @@ for (const [source, dest, width] of [
     .webp({ quality: 82 })
     .toFile(`${dir}/optimized/${dest}`);
 }
+// Treatment-table crop from the right half of the recovery-space photo, without the wall sign.
+await sharp(`${dir}/6625ad2dacfc4c76e4383baa_EGC_6179.jpg`)
+  .extract({ left: 985, top: 120, width: 813, height: 1080 })
+  .resize({ width: 1200, withoutEnlargement: true })
+  .webp({ quality: 82 })
+  .toFile(`${dir}/optimized/treatment-table.webp`);
 await sharp(`${dir}/66269d3731c576e8399b078a_Total-Tissue---fitness--LOGO.png`)
   .resize({ width: 420, withoutEnlargement: true })
   .webp({ lossless: true })
   .toFile(`${dir}/optimized/total-tissue-logo.webp`);
-console.log('Optimized 3 facility photographs and the original logo. Originals preserved.');
+console.log(
+  'Optimized 3 facility photographs, the treatment-table crop, and the original logo. Originals preserved.',
+);

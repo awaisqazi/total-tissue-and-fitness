@@ -38,6 +38,7 @@ export const media = {
   socialMentorship: '/images/synaptyx/social-mentorship.jpg',
   socialBook: '/images/synaptyx/social-book.jpg',
   facility: '/images/optimized/recovery-space.webp',
+  treatmentTable: '/images/optimized/treatment-table.webp',
   plunge: '/images/optimized/plunge.webp',
   sauna: '/images/optimized/sauna.webp',
   poster: '/images/6625ab15d06cde3819d95ae7_jb-total-background-video-poster-00001.jpg',
@@ -60,7 +61,7 @@ export const services = [
     description:
       'Individual assessment, hands-on soft tissue work, and movement education. An approach built around your body and your goals.',
     href: '/manual-therapy/',
-    image: media.facility,
+    image: media.treatmentTable,
     tags: ['Soft tissue work', 'Movement education'],
   },
   {
@@ -71,7 +72,7 @@ export const services = [
     description:
       'Cold plunge, hot plunge, and infrared sauna in our Oakbrook Terrace recovery space. A dedicated hour to complement your tissue work.',
     href: '/contrast-therapy/',
-    image: media.sauna,
+    image: media.facility,
     tags: ['Cold plunge', 'Hot plunge', 'Infrared sauna'],
   },
   {

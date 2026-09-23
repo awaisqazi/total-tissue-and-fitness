@@ -2,6 +2,7 @@
 
 ## 2026-09-22 — Link-preview cards
 
+- Manual Therapy now uses a treatment-table crop (`optimized/treatment-table.webp`) on its service card, page header and link card; the Contrast Therapy sign photo moves to the Contrast Therapy service card.
 - Shared links now show a designed Synaptyx preview card, with page-specific cards for Manual Therapy, Contrast Therapy, Mentorship and Booking, plus a square version of the main card for manual posting.
 
 ## 2026-09-22 — Engagement pass
