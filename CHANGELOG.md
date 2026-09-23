@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-22 — Vagaro sections and integrated gift cards
+
+- Added Gift Cards to the Vagaro website widget and replaced the generated embed; Services and Book Now remain available.
+- Added links from the booking page to Vagaro's live About, Staff, Services, and Gift Cards sections.
+- Restyled the booking module as a pale blue panel around the white Vagaro widget, with Synaptyx blue accents and responsive navigation cards.
+
 ## 2026-09-22 — Vagaro branding and booking page polish
 
 - Uploaded a Synaptyx Manual Therapy logo to Vagaro and set it as the business logo; it now appears on the public Vagaro listing and in the embedded booking widget.
@@ -12,6 +18,7 @@
 - Added a native site form with Cloudflare Turnstile and a Worker that validates tokens before forwarding inquiries. Kept the Google destination out of page output, added a phone fallback and a sensitive-health-information warning. The fictional dashboard remains disconnected.
 - Documented the two-provider inquiry path, its direct Google Form bypass limitation, and the remaining privacy and retention decisions (ADR-010). Worker and Pages deployment status is tracked separately.
 - Kept Google Forms' native link-only response emails as requested; no custom email script or add-on was added.
+- Deployed the Worker in Joshua's Cloudflare account and the site to GitHub Pages at commit `d8b9a7d` (workflow 35808707411). The Worker rejected an invalid token; a nonpersonal inquiry from the live page reached the Form, raising its response count from one to two.
 
 ## 2026-09-22 — Vagaro booking and visit location
 

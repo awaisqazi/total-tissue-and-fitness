@@ -47,7 +47,7 @@ SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_
 | `/contrast-therapy/`   | Cold plunge, hot plunge, infrared sauna, original photos and explainer       |
 | `/mentorship-program/` | Practitioner program overview and inquiry pathway                            |
 | `/couples-workshop/`   | Original workshop offering, equipment, published price                       |
-| `/book/`               | Live Vagaro booking for available services with Josh or Casey                |
+| `/book/`               | Live Vagaro booking and gift cards; links to About, Staff, and Services      |
 | `/contact/`            | General inquiry form with Turnstile verification and practice-owned delivery |
 | `/admin/`              | Fictional-data operations-dashboard concept; no authentication or database   |
 | `/privacy/`            | Draft plain-language website information, not approved legal policy          |
@@ -57,7 +57,7 @@ SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_
 
 The contact page uses a Cloudflare Turnstile challenge and Worker to verify general inquiries before forwarding them to a Google Form owned by the practice. Cloudflare and Google process the inquiry; the site does not put responses in its public demo dashboard. Visitors are asked not to include medical or sensitive health information. The admin concept has no real accounts, permissions, or persisted client records. No Supabase project was created. The current Webflow site and DNS have not been changed.
 
-The owner confirmed that visits are at 17W755 Butterfield Road, Oakbrook Terrace, IL 60181; Oswego is used for billing only. The public Vagaro listing confirms the business phone, address, and both providers. The booking page uses a live, business-wide Vagaro widget and a direct-link fallback. Vagaro, not this site, handles appointments and resulting client records. New clients arrange a call using the contact methods in Vagaro's first-session listing, then book there with Josh or Casey.
+The owner confirmed that visits are at 17W755 Butterfield Road, Oakbrook Terrace, IL 60181; Oswego is used for billing only. The public Vagaro listing confirms the business phone, address, and both providers. The booking page uses a live, business-wide Vagaro widget with Services, Gift Cards, and Book Now tabs, plus links to its About, Staff, Services, and Gift Cards sections. Vagaro, not this site, handles appointments, gift card checkout, and resulting client records. New clients arrange a call using the contact methods in Vagaro's first-session listing, then book there with Josh or Casey.
 
 The public source still does not provide approved practitioner biographies, email, social URLs, or a couples-workshop booking destination. The older contrast and workshop Calendly links remain in source provenance/config but are not used as booking CTAs. Workshop CTAs use the public business phone until a bookable offer is confirmed.
 

@@ -1077,8 +1077,28 @@ div[id] {
   padding-bottom: 80px;
 }
 .booking-live {
-  border-top: 1px solid var(--line);
-  padding-top: 80px;
+  border: 1px solid #b9d5e7;
+  border-top: 5px solid var(--accent);
+  border-radius: 24px;
+  background: #edf4f8;
+  color: #101820;
+  padding: clamp(24px, 5vw, 60px);
+  margin-bottom: 110px;
+  box-shadow: 0 28px 80px #0006;
+}
+.booking-live p:not(.eyebrow) {
+  color: #405361;
+}
+.booking-live .eyebrow,
+.booking-live .text-link,
+.booking-live .booking-help a {
+  color: #175d89;
+}
+.booking-live a:hover {
+  color: #0c4a70;
+}
+.booking-live a:focus-visible {
+  outline-color: #175d89;
 }
 .booking-live-heading {
   display: flex;
@@ -1097,16 +1117,57 @@ div[id] {
 .booking-live-heading .text-link {
   flex-shrink: 0;
 }
+.vagaro-destinations {
+  margin-bottom: 26px;
+}
+.vagaro-destinations-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.vagaro-destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.vagaro-destinations-grid a {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  padding: 17px 18px;
+  border: 1px solid #cbdce6;
+  border-radius: 14px;
+  background: #fff;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+.vagaro-destinations-grid a:hover {
+  border-color: #4b9bd0;
+  transform: translateY(-2px);
+}
+.vagaro-destinations-grid strong {
+  font-size: 14px;
+}
+.vagaro-destinations-grid strong span {
+  color: #175d89;
+  font-weight: 500;
+}
+.vagaro-destinations-grid a > span {
+  color: #506371;
+  font-size: 12px;
+  line-height: 1.4;
+}
 .vagaro-widget-shell {
   min-height: 700px;
-  padding: 16px 16px 24px;
-  border-radius: var(--radius);
-  border: 1px solid #70c1f666;
-  border-top: 5px solid var(--accent);
+  padding: 8px 8px 16px;
+  border-radius: 16px;
+  border: 1px solid #cbdce6;
   background: #fff;
   color: #101010;
   overflow: hidden;
-  box-shadow: 0 24px 70px #0008;
+  box-shadow: 0 14px 36px #1424331a;
 }
 .booking-help {
   margin-top: 20px;
@@ -1180,6 +1241,9 @@ div[id] {
     align-items: flex-start;
     flex-direction: column;
   }
+  .vagaro-destinations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .page-hero {
     padding-block: 30px 60px;
   }
@@ -1238,6 +1302,15 @@ div[id] {
     gap: 15px;
   }
   .booking-notice p {
+    font-size: 11px;
+  }
+  .booking-live {
+    margin-bottom: 70px;
+  }
+  .vagaro-destinations-grid a {
+    padding: 14px;
+  }
+  .vagaro-destinations-grid a > span {
     font-size: 11px;
   }
   .page-lead {

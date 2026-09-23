@@ -2,6 +2,13 @@
 
 The September 8 sections below record the original POC release. The September 22 section records the current Vagaro changes.
 
+## September 22, 2026 — Vagaro section and theme update
+
+- Vagaro's widget builder showed Gift Cards enabled with Services and Book Now; after saving, its generated HTML changed and was placed on `/book/`.
+- In Chrome, the embedded widget displayed Services, Gift Cards, and Book Now. Opening Gift Cards showed live categories. The public About, Staff, Services, and Gift Cards destinations loaded for this business.
+- The pale blue booking panel, four destination cards, and white widget inset were visually checked on desktop and at 390 px width. At 390 px there was no horizontal document overflow. No booking or gift card purchase was completed.
+- The browser's in-app preview sometimes left the third-party iframe blank; direct Vagaro links remain visible above and below it. Chrome rendered the same embed successfully.
+
 ## September 22, 2026 — Vagaro branding update
 
 - Uploaded a 1200 × 800 Synaptyx logo image to Vagaro's Venue Gallery and set it as LOGO. It replaced the SMT placeholder on the public listing and in the embedded widget.
