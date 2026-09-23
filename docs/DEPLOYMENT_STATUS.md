@@ -1,4 +1,4 @@
-# Proof-of-concept publication status — September 8, 2026
+# Proof-of-concept publication status — September 22, 2026
 
 ## Current authorized target
 
@@ -6,16 +6,21 @@ The user authorized a public GitHub repository and public GitHub Pages POC. The 
 
 - Repository: `https://github.com/awaisqazi/total-tissue-and-fitness`
 - Pages: `https://awaisqazi.github.io/total-tissue-and-fitness/`
-- Build environment: `SITE_URL=https://awaisqazi.github.io`, `BASE_PATH=/total-tissue-and-fitness`, `PUBLIC_SITE_INDEXABLE=false`
+- Build environment: `SITE_URL=https://awaisqazi.github.io`, `BASE_PATH=/total-tissue-and-fitness`, `PUBLIC_SITE_INDEXABLE=false`, `PUBLIC_CONTACT_ENDPOINT=https://synaptyx-contact.shiny-paper-ae5f.workers.dev/`
 - Automation: `.github/workflows/deploy.yml`, validation and automatic deployment from `main` using Node 24
 
 **Status: published and verified.** The repository is PUBLIC, HTTPS is enforced, and GitHub Actions completed successfully.
 
-- Published site-code commit: `4b28a79dd46a6ce6ee94ba54223491e9ad7ea2e4`
-- Successful workflow: [34257990834](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/34257990834)
-- Deployed verification: all 10 HTML routes, 19 image/video/style/script/icon URLs, canonical URLs, page-level noindex, sitemap, robots endpoint, and branded HTTP 404 passed HTTPS checks.
-- Live browser: original gold branding and homepage layout verified; no broken loaded images or horizontal overflow at desktop width. Manual Therapy navigation and active state worked. Dashboard filtering showed the two expected fictional new inquiries.
-- The public POC retains fictional dashboard data and a non-sending form. `totaltissueandfitness.com` and its DNS are unchanged.
+- Published site-code commit: `a37d1f9cb87b7667df45d8f466198d021a5d7c51`.
+- Successful workflow: [35809049255](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/35809049255), including `npm ci`, Astro check, static build, link checks, and eleven tests. The earlier contact integration also deployed successfully in [35808707411](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/35808707411).
+- Live contact page serves the Turnstile widget and points to the practice-owned Cloudflare Worker. The Worker rejected an invalid token with HTTP 403. A nonpersonal live-page submission showed success and increased Joshua's Google Form response count from one to two.
+- Live contact and booking routes retain page-level `noindex`; the contact HTML contains no Google Forms URL, and the booking route serves the Vagaro widget, service links, and Gift Cards link.
+- The public POC retains a fictional dashboard. The contact form now sends general inquiries through Cloudflare to the Joshua-owned Google Form. `totaltissueandfitness.com` and its DNS are unchanged.
+
+## Previous published release
+
+- September 8 site-code commit: `4b28a79dd46a6ce6ee94ba54223491e9ad7ea2e4`; successful workflow [34257990834](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/34257990834).
+- That release verified all 10 HTML routes, 19 asset URLs, canonical URLs, page-level noindex, sitemap, robots endpoint, branded HTTP 404, browser navigation, and fictional dashboard filtering. It had a non-sending inquiry preview and the earlier gold branding.
 
 ## Historical private Sites attempt
 
