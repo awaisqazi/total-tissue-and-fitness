@@ -26,6 +26,20 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 
 ---
 
+### ADR-015 — Serve the business domain from GitHub Pages and enable indexing
+
+- **Date:** 2026-10-03
+- **Status:** Accepted
+- **Goal:** Replace the Webflow site at `totaltissueandfitness.com` with the refreshed Synaptyx Manual Therapy site without changing the domain, so existing links, search listings, and printed material keep working.
+- **Decision:** Keep the GitHub Pages deployment from `awaisqazi/total-tissue-and-fitness` and attach the custom domain `www.totaltissueandfitness.com` (apex redirects to `www`, matching the Webflow-era canonical). The workflow builds with `SITE_URL=https://www.totaltissueandfitness.com`, `BASE_PATH=/`, `PUBLIC_SITE_INDEXABLE=true`. At GoDaddy, the only records that change are the `@` A record (Webflow `198.202.211.1` → the four GitHub Pages addresses) and the `www` CNAME (`cdn.webflow.com` → `awaisqazi.github.io`); Google Workspace MX, SPF, Google site verification, `pay`, `_domainconnect`, and `_webflow` records stay. `docs/DNS_EXPORT_2026-10-03.md` records the pre-cutover state for rollback. The contact Worker accepts both the production origin and the GitHub Pages origin during the transition and verifies Turnstile tokens for either hostname.
+- **Rationale:** DNS is at GoDaddy, not Webflow, so the swap is two records and a repo setting; no new hosting account or billing is needed. Indexing is enabled because the site replaces the only indexed version of the business; leaving `noindex` on the live domain would remove the business from search. `www` stays canonical so Google's existing listings remap without URL changes.
+- **Tradeoffs:** The site is hosted under a developer-owned GitHub account; the business owns the domain and can repoint it at any time, but moving the repository to a business-owned GitHub account is still recommended. GitHub Pages has no server-side redirects, so old Webflow URLs without a matching route 404 (the audit in `docs/CUTOVER_CONTENT_AUDIT_2026-10-03.md` lists them). `_headers` in `public/` has no effect on GitHub Pages. The GitHub Pages POC URL now redirects to the domain, so it no longer works as a separate preview.
+- **Affected:** `.github/workflows/deploy.yml`, repo Pages settings (custom domain), `workers/contact/index.js` (origins/hostnames) and its test, GoDaddy DNS, `CLAUDE.md`, `README.md`, `docs/DEPLOYMENT.md`, `docs/OPERATIONS.md`, `docs/DEPLOYMENT_STATUS.md`, `docs/DNS_EXPORT_2026-10-03.md`.
+- **Validation:** `SITE_URL=https://www.totaltissueandfitness.com BASE_PATH=/ PUBLIC_SITE_INDEXABLE=true npm run validate` (build, link checks, 11 tests) with canonicals, `robots.txt` and sitemap pointing at the domain; Worker tests (5) pass for both origins. Post-cutover DNS, HTTPS, route, and form checks are recorded in `docs/DEPLOYMENT_STATUS.md`.
+- **Unresolved:** The deployed Worker lives in a Cloudflare account not available to the build machine; redeploying it and adding `www.totaltissueandfitness.com` to the Turnstile widget's hostnames is required before the contact form works on the domain (owner: whoever holds that Cloudflare login; phone fallback remains). Removing the custom domain from the Webflow project and the eventual Webflow cancellation are for Josh once the new site is confirmed. Transfer of the repository to a business-owned GitHub account: Josh and Awais.
+
+---
+
 ### ADR-014 — Prioritize training offers alongside manual therapy
 
 - **Date:** 2026-09-23

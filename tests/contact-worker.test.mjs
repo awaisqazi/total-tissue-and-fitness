@@ -2,10 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import worker from '../workers/contact/index.js';
 
-const origin = 'https://awaisqazi.github.io';
+const origin = 'https://www.totaltissueandfitness.com';
 const env = { TURNSTILE_SECRET: 'test-secret', GOOGLE_FORM_ID: 'test-form' };
 
-function inquiry(token = 'test-token') {
+function inquiry(token = 'test-token', requestOrigin = origin) {
   const data = new FormData();
   data.set('name', 'Synaptyx QA Test');
   data.set('email', 'synaptyx-qa@example.com');
@@ -15,7 +15,7 @@ function inquiry(token = 'test-token') {
   data.set('cf-turnstile-response', token);
   return new Request('https://contact.example.workers.dev/', {
     method: 'POST',
-    headers: { Origin: origin },
+    headers: { Origin: requestOrigin },
     body: data,
   });
 }
@@ -42,7 +42,11 @@ test('a verified inquiry reaches the configured Google Form', async () => {
   globalThis.fetch = async (url, options) => {
     destinations.push(String(url));
     if (destinations.length === 1)
-      return Response.json({ success: true, hostname: 'awaisqazi.github.io', action: 'contact' });
+      return Response.json({
+        success: true,
+        hostname: 'www.totaltissueandfitness.com',
+        action: 'contact',
+      });
     assert.match(String(options.body), /entry\.2023836652=Synaptyx\+QA\+Test/);
     assert.match(String(options.body), /entry\.671168868=/);
     return new Response('Your inquiry has been recorded');
@@ -72,12 +76,30 @@ test('a token for another action cannot forward an inquiry', async () => {
   let calls = 0;
   globalThis.fetch = async () => {
     calls += 1;
-    return Response.json({ success: true, hostname: 'awaisqazi.github.io', action: 'other' });
+    return Response.json({
+      success: true,
+      hostname: 'www.totaltissueandfitness.com',
+      action: 'other',
+    });
   };
   try {
     const response = await worker.fetch(inquiry(), env);
     assert.equal(response.status, 403);
     assert.equal(calls, 1);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('the GitHub Pages origin still works during the domain transition', async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (url) =>
+    String(url).includes('siteverify')
+      ? Response.json({ success: true, hostname: 'awaisqazi.github.io', action: 'contact' })
+      : new Response('Your inquiry has been recorded');
+  try {
+    const response = await worker.fetch(inquiry('test-token', 'https://awaisqazi.github.io'), env);
+    assert.equal(response.status, 200);
   } finally {
     globalThis.fetch = originalFetch;
   }

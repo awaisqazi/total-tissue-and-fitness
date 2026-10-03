@@ -4,7 +4,7 @@
 
 The current dashboard is a static prototype with fictional records. It may demonstrate prospective content, inquiry, resource, and booking-management views, but it has no authentication, Supabase database, real roles, notification pipeline, or permission enforcement. It must not accept, display, or imply storage of real client data.
 
-The authorized POC is public source plus a public GitHub Pages URL under `awaisqazi/total-tissue-and-fitness`. It remains non-indexable. Under ADR-010, the contact page sends general inquiries through a Cloudflare Turnstile-validating Worker to a Google Form owned by the practice; the site and demo dashboard do not store those responses. Public visibility is not authentication, confidentiality, or production approval; commit no secrets, private business material, form submissions, or real client records. The original domain remains on Webflow.
+The site is public source under `awaisqazi/total-tissue-and-fitness`, deployed by GitHub Pages to `https://www.totaltissueandfitness.com/` and indexable (ADR-015). Under ADR-010, the contact page sends general inquiries through a Cloudflare Turnstile-validating Worker to a Google Form owned by the practice; the site and demo dashboard do not store those responses. Public visibility is not authentication, confidentiality, or production approval; commit no secrets, private business material, form submissions, or real client records. Webflow no longer serves the domain but is kept recoverable; see `docs/DNS_EXPORT_2026-10-03.md`.
 
 ## Recommended production model
 
@@ -43,8 +43,8 @@ Named accounts, MFA, recovery contacts, and quarterly access review are required
 4. Run the documented local checks and generate a preview.
 5. Review the preview at mobile/tablet/desktop sizes and test affected links/forms.
 6. Obtain content-owner approval for business facts, clinical claims, brand changes, or legal language.
-7. For the POC, merge/push to `main`; the Node 24 GitHub Pages workflow validates and deploys with `SITE_URL=https://awaisqazi.github.io`, `BASE_PATH=/total-tissue-and-fitness`, and `PUBLIC_SITE_INDEXABLE=false`.
-8. Confirm workflow and Pages success, then smoke-test the deployed base-path URL and record exact evidence in `docs/DEPLOYMENT_STATUS.md`.
+7. Merge/push to `main`; the Node 24 GitHub Pages workflow validates and deploys with `SITE_URL=https://www.totaltissueandfitness.com`, `BASE_PATH=/`, and `PUBLIC_SITE_INDEXABLE=true`.
+8. Confirm workflow and Pages success, then smoke-test `https://www.totaltissueandfitness.com/` and record exact evidence in `docs/DEPLOYMENT_STATUS.md`.
 9. Roll back to the previous known-good deployment when a production form, booking path, critical route, or security/privacy behavior fails.
 
 ## Inquiry operations

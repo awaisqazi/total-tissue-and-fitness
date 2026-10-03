@@ -23,8 +23,8 @@ This repository is the source of truth for the Synaptyx Manual Therapy Astro web
 - Keep the POC dashboard static, visibly demonstrative, and populated exclusively with fictional data.
 - The `/book/` route uses Vagaro's live, business-wide widget and a direct-link fallback under ADR-009. Vagaro owns booking data and availability. Under ADR-010, the contact page sends general inquiries through a Cloudflare Turnstile-validating Worker to a Joshua-owned Google Form; the dashboard remains a fictional demo. Regenerate the exact vendor HTML from Vagaro Settings > Booking Widget after changing widget settings, and verify both providers and mobile layout before publishing.
 - Do not create or connect Supabase during the POC. A later production system must use a client-owned Supabase project and an approved variable-role/RLS design.
-- The authorized POC delivery target is the public GitHub repository `awaisqazi/total-tissue-and-fitness` and GitHub Pages URL `https://awaisqazi.github.io/total-tissue-and-fitness/`. Keep `PUBLIC_SITE_INDEXABLE=false`; public reachability is not production approval.
-- Preserve GitHub Pages base-path behavior. Validate with `SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_SITE_INDEXABLE=false npm run validate` before merging a deployable change.
+- Under ADR-015 the public GitHub repository `awaisqazi/total-tissue-and-fitness` deploys through GitHub Pages to the business domain `https://www.totaltissueandfitness.com/` (apex redirects to `www`), with `PUBLIC_SITE_INDEXABLE=true` and `BASE_PATH=/`. The earlier POC URL `https://awaisqazi.github.io/total-tissue-and-fitness/` redirects there. `docs/DNS_EXPORT_2026-10-03.md` is the rollback record for the two Webflow DNS records.
+- Keep `withBase` and base-path support working so the site can still be hosted under a subpath. Validate with `SITE_URL=https://www.totaltissueandfitness.com BASE_PATH=/ PUBLIC_SITE_INDEXABLE=true npm run validate` (and, for the subpath case, `SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_SITE_INDEXABLE=false npm run validate`) before merging a deployable change.
 - `.github/workflows/deploy.yml` is expected to validate and deploy `main` using Node 24. Keep deployment documentation aligned if the workflow or target changes.
 
 ## Required change record
@@ -63,7 +63,7 @@ For a routine copy correction or dependency patch with no durable design/archite
 - Do not create a developer-owned Supabase project for production. The client must own the project, billing, recovery access, and administrator accounts.
 - Do not remove redirects, old-domain support, policies, or accessible fallbacks merely because current pages still load.
 - Do not publish placeholders such as `TBD`, `#` links, fake practitioner records, or guessed contact details.
-- Do not enable indexing, connect other demo features, replace fictional dashboard data, configure Supabase, or point the original domain at GitHub Pages without a later explicit decision. The contact form is connected only under ADR-010.
+- Do not connect other demo features, replace fictional dashboard data, or configure Supabase without a later explicit decision. Indexing and the domain cutover are authorized by ADR-015; the contact form is connected only under ADR-010.
 
 ## Maintaining the living record
 

@@ -4,7 +4,7 @@ A proof-of-concept migration of the public Total Tissue & Fitness Webflow websit
 
 The project includes the marketing website, locally archived source content/media, a clearly labeled static operations-dashboard concept, and a documented path to a future client-owned Supabase backend.
 
-The public proof of concept is live at <https://awaisqazi.github.io/total-tissue-and-fitness/>. Source and maintenance documentation are at <https://github.com/awaisqazi/total-tissue-and-fitness>. Publication and live checks passed; see [publication status](docs/DEPLOYMENT_STATUS.md).
+The site is deployed from GitHub Pages to <https://www.totaltissueandfitness.com/> (ADR-015; the earlier POC URL <https://awaisqazi.github.io/total-tissue-and-fitness/> redirects there). Source and maintenance documentation are at <https://github.com/awaisqazi/total-tissue-and-fitness>. Publication and live checks passed; see [publication status](docs/DEPLOYMENT_STATUS.md).
 
 ## Start here
 
@@ -35,7 +35,7 @@ npm run preview    # Inspect the production build locally
 To validate the exact GitHub Pages build, provide all three build-time variables to the full validation command:
 
 ```sh
-SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_SITE_INDEXABLE=false npm run validate
+SITE_URL=https://www.totaltissueandfitness.com BASE_PATH=/ PUBLIC_SITE_INDEXABLE=true npm run validate
 ```
 
 ## What exists

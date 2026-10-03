@@ -2,22 +2,22 @@
 
 ## Current POC delivery model
 
-The website is a static Astro build (`output: 'static'`) whose deployable public files are `dist/`. The authorized POC target is the public GitHub repository `awaisqazi/total-tissue-and-fitness`, deployed through GitHub Pages at <https://awaisqazi.github.io/total-tissue-and-fitness/>.
+The website is a static Astro build (`output: 'static'`) whose deployable public files are `dist/`. The public GitHub repository `awaisqazi/total-tissue-and-fitness` deploys through GitHub Pages to the custom domain <https://www.totaltissueandfitness.com/> (ADR-015). The former POC URL <https://awaisqazi.github.io/total-tissue-and-fitness/> redirects there.
 
-The POC URL is separate from the current Webflow domain. Neither DNS nor Webflow publishing has been modified. The earlier private Sites attempt failed during callback registration and is retained in `DEPLOYMENT_STATUS.md` as history; ADR-007 supersedes the prior private-only delivery rule. Do not create another Sites project for this POC.
+DNS for `totaltissueandfitness.com` is managed at GoDaddy (Josh's account). On 2026-10-03 the `@` A record and `www` CNAME were moved from Webflow to GitHub Pages; every other record (Google Workspace MX, SPF, Google verification, `pay`, `_domainconnect`, `_webflow`) is unchanged. `docs/DNS_EXPORT_2026-10-03.md` holds the pre-cutover export for rollback. Webflow is not cancelled. The earlier private Sites attempt failed during callback registration and is retained in `DEPLOYMENT_STATUS.md` as history; ADR-007 supersedes the prior private-only delivery rule. Do not create another Sites project for this POC.
 
 ## Configuration
 
-Use `.env.example` as the variable reference. Pass the following variables in the shell for config and validation commands, as shown below. `SITE_URL` sets the Pages origin and `BASE_PATH` sets the project subpath. The authorized POC values are:
+Use `.env.example` as the variable reference. Pass the following variables in the shell for config and validation commands, as shown below. `SITE_URL` sets the Pages origin and `BASE_PATH` sets the project subpath. The production values in `.github/workflows/deploy.yml` are:
 
 ```text
-SITE_URL=https://awaisqazi.github.io
-BASE_PATH=/total-tissue-and-fitness
-PUBLIC_SITE_INDEXABLE=false
+SITE_URL=https://www.totaltissueandfitness.com
+BASE_PATH=/
+PUBLIC_SITE_INDEXABLE=true
 PUBLIC_CONTACT_ENDPOINT=https://synaptyx-contact.shiny-paper-ae5f.workers.dev/
 ```
 
-`PUBLIC_SITE_INDEXABLE=false` emits noindex/nofollow on each page and a robots disallow file. Crawlers only use robots.txt at the origin root, so the file under a GitHub project subpath is not an indexing control; the page-level noindex directives apply to this POC. Keep it false for the public POC. Only use `true` after production approval; admin and privacy-draft pages remain noindex.
+`PUBLIC_SITE_INDEXABLE=false` emits noindex/nofollow on each page and a robots disallow file. Crawlers only use robots.txt at the origin root, so the file under a GitHub project subpath is not an indexing control; the page-level noindex directives apply to this POC. It is `true` in production under ADR-015; admin and privacy-draft pages remain noindex. Use `false` for any preview deployment.
 
 Static hosting has no runtime secret configuration in this build. `PUBLIC_CONTACT_ENDPOINT` is a public Worker URL; set it in the Pages build only after the Worker has been deployed and tested. Store `TURNSTILE_SECRET` and `GOOGLE_FORM_ID` as Cloudflare Worker secrets. Do not put private keys in `PUBLIC_` variables. Future Supabase public project URL/publishable keys may enter the client; service-role credentials must remain server-only.
 
@@ -35,7 +35,7 @@ If the Worker is unavailable, leave the endpoint unset so the site disables its 
 4. Run the complete validation with the same environment used by Pages:
 
    ```sh
-   SITE_URL=https://awaisqazi.github.io BASE_PATH=/total-tissue-and-fitness PUBLIC_SITE_INDEXABLE=false npm run validate
+   SITE_URL=https://www.totaltissueandfitness.com BASE_PATH=/ PUBLIC_SITE_INDEXABLE=true npm run validate
    ```
 
 5. Run focused browser QA under `/total-tissue-and-fitness/`.
@@ -46,7 +46,9 @@ If the Worker is unavailable, leave the endpoint unset so the site disables its 
 10. Smoke-test the deployed homepage, assets, navigation, representative routes, Turnstile-protected contact submission with a clearly marked nonpersonal test identity, fictional dashboard, 404 behavior, canonical/base-path output, and `noindex`/robots state.
 11. Record the verified deployment commit, workflow run, URL, and checks in `CHANGELOG.md` and `docs/DEPLOYMENT_STATUS.md`.
 
-## Production cutover — deferred
+## Production cutover
+
+Completed on 2026-10-03 under ADR-015 for the website records only. The paragraphs below remain the checklist for any future host or domain change.
 
 Before cutover, the business must confirm branding, address/contact/practitioner data, Vagaro service and provider settings, workshop offer/price, image rights, legal policy, production inquiry workflow, account ownership, and role permissions. See LAUNCH_CHECKLIST.md.
 

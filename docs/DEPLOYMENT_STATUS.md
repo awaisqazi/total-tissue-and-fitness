@@ -1,6 +1,16 @@
-# Proof-of-concept publication status — September 22, 2026
+# Publication status
 
-## Current authorized target
+## Production domain — October 3, 2026
+
+Under ADR-015 the GitHub Pages deployment serves the business domain. Repo Pages setting: custom domain `www.totaltissueandfitness.com`. Build environment: `SITE_URL=https://www.totaltissueandfitness.com`, `BASE_PATH=/`, `PUBLIC_SITE_INDEXABLE=true`, same `PUBLIC_CONTACT_ENDPOINT`. GoDaddy DNS: `@` A → GitHub Pages (185.199.108–111.153), `www` CNAME → `awaisqazi.github.io`; all other records unchanged (`docs/DNS_EXPORT_2026-10-03.md`). Fill in the verified commit, workflow run, HTTPS enforcement, and smoke-test evidence below once the cutover is confirmed.
+
+- Verified commit / workflow run: _pending_
+- HTTPS certificate issued and enforced: _pending_
+- Contact Worker redeployed with the new origin and Turnstile hostname added: _pending (Cloudflare account access required)_
+
+## Proof-of-concept publication — September 22, 2026 (superseded target)
+
+### Previously authorized target
 
 The user authorized a public GitHub repository and public GitHub Pages POC. The published targets are:
 

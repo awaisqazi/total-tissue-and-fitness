@@ -1,4 +1,10 @@
-const siteOrigin = 'https://awaisqazi.github.io';
+// Production domain plus the GitHub Pages origin, which still serves the site
+// until the custom domain redirect is confirmed (ADR-015).
+const siteOrigins = new Set([
+  'https://www.totaltissueandfitness.com',
+  'https://awaisqazi.github.io',
+]);
+const siteHostnames = new Set(['www.totaltissueandfitness.com', 'awaisqazi.github.io']);
 const allowedInterests = new Set([
   'My first visit',
   'Manual Therapy',
@@ -36,7 +42,7 @@ function field(data, key) {
 export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin');
-    if (origin !== siteOrigin) return new Response(null, { status: 403 });
+    if (!siteOrigins.has(origin)) return new Response(null, { status: 403 });
     if (request.method === 'OPTIONS') return reply(origin, 204, {});
     if (request.method !== 'POST') return reply(origin, 405, { error: 'method' });
     if (Number(request.headers.get('Content-Length') || 0) > 16_384)
@@ -82,11 +88,7 @@ export default {
       );
       if (!verification.ok) return reply(origin, 502, { error: 'verification' });
       const result = await verification.json();
-      if (
-        !result.success ||
-        result.hostname !== 'awaisqazi.github.io' ||
-        result.action !== 'contact'
-      )
+      if (!result.success || !siteHostnames.has(result.hostname) || result.action !== 'contact')
         return reply(origin, 403, { error: 'verification' });
 
       const answers = new URLSearchParams({
