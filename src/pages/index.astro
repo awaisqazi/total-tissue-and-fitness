@@ -2,6 +2,12 @@
 import { withBase } from '../lib/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { media, practitionerProgram, services, site } from '../data/site';
+import {
+  featuredTestimonials,
+  instagramUrl,
+  testimonialTally,
+  testimonialWall,
+} from '../data/testimonials';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import Video from '../components/Video.astro';
@@ -9,13 +15,11 @@ import { readdirSync } from 'node:fs';
 const gallery = readdirSync('public/images').filter(
   (name) => name.startsWith('65f1fc8') && name.endsWith('.webp'),
 );
-const testimonials = [
-  {
-    name: 'John',
-    quote: "The knowledge and professionalism... I'm dealing with someone who does their research",
-  },
-  { name: 'Mike', quote: 'It feels fantastic...It feels released, and overall feels better' },
-];
+// Three wall rows, each offset so the same fragment never lines up across rows.
+const wallRows = [0, 1, 2].map((row) =>
+  testimonialWall.slice(row * 8).concat(testimonialWall.slice(0, row * 8)),
+);
+const emphasise = (text: string) => text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 ---
 
 <BaseLayout>
@@ -300,20 +304,37 @@ const testimonials = [
       </div>
     </div>
   </section>
-  <section class="section surface-section" id="testimonial">
-    <div class="container">
+  <section class="section surface-section testimonial-section" id="testimonial">
+    <div class="testimonial-wall" aria-hidden="true">
+      {
+        wallRows.map((row, i) => (
+          <div class={`wall-row wall-row-${i}`}>
+            {[0, 1].map(() => (
+              <div class="wall-track">
+                {row.map((fragment) => (
+                  <span set:html={emphasise(fragment)} />
+                ))}
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div><div class="container">
       <div class="section-heading">
         <div>
           <p class="eyebrow">CLIENT STORIES</p><h2>
             Real people.<br /><span class="gradient-text">Their own words.</span>
           </h2>
         </div><p>
-          Shared by clients during our years as Total Tissue & Fitness. Everyone’s experience is
-          their own.
+          <a class="tally-link" href={instagramUrl} target="_blank" rel="noopener noreferrer"
+            ><strong>{testimonialTally}</strong> written client testimonials shared on&nbsp;Instagram&nbsp;↗</a
+          >
+          Comments and messages clients have posted over the years, quoted as written. Everyone’s experience
+          is their own.
         </p>
       </div><div class="testimonial-grid snap-row">
         {
-          testimonials.map((t) => (
+          featuredTestimonials.map((t) => (
             <figure class="story-card">
               <>
                 <span class="quote-mark" aria-hidden="true">
@@ -322,10 +343,12 @@ const testimonials = [
                 <blockquote>{t.quote}</blockquote>
                 <figcaption>
                   <span class="avatar" aria-hidden="true">
-                    {t.name[0]}
+                    {(t.handle ?? 'c')[0].toUpperCase()}
                   </span>
-                  <span class="story-name">{t.name}</span>
-                  <span class="label-tag">Total Tissue client</span>
+                  <span class="story-name">{t.handle ? `@${t.handle}` : 'Client'}</span>
+                  <span class="label-tag">
+                    {t.channel} · {t.year}
+                  </span>
                 </figcaption>
               </>
             </figure>
