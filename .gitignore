@@ -9,3 +9,6 @@ dist/
 # Instagram research contains client handles and health details; never commit (public repo)
 docs/INSTAGRAM_TESTIMONIALS_*.md
 docs/instagram-media/
+
+# Marketing drafts produced by agents; not site source
+docs/social-kit/

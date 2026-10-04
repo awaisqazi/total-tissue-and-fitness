@@ -87,7 +87,7 @@ test('canonical, social metadata and sitemap respect the deployment origin and b
 test('source testimonial names and compatibility anchors are retained', () => {
   const html = read('dist/index.html');
   assert.ok(html.includes('Hear it from Mike'));
-  assert.ok(html.includes('written client testimonials shared on Instagram'));
+  assert.match(html, /written client testimonials shared on(?:&nbsp;| )Instagram/);
   // The ambient wall is decorative; the featured quotes carry the content.
   assert.match(html, /class="testimonial-wall" aria-hidden="true"/);
   for (const id of ['free-offer', 'testimonial', 'faq', 'returning-client'])
