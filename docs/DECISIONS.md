@@ -26,6 +26,17 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 
 ---
 
+### CHG-2026-10-03-footer-dashboard-link — Remove the dashboard-concept link from the footer
+
+- **Date:** 2026-10-03
+- **Goal:** Keep the fictional `/admin/` dashboard demo out of the live business site's navigation now that the domain serves production visitors (ADR-015).
+- **Change and rationale:** The footer's "Dashboard concept" link was removed at the owner's request (Josh, 2026-10-03). The route itself remains, still fictional, noindex and excluded from the sitemap, so stakeholders with the URL can review it; it is simply no longer offered to visitors.
+- **Affected:** `src/components/Footer.astro`, every route's footer.
+- **Validation:** `SITE_URL=https://www.totaltissueandfitness.com BASE_PATH=/ PUBLIC_SITE_INDEXABLE=true npm run validate`; `dist/index.html` contains no `/admin/` link.
+- **Unresolved:** Whether to retire the `/admin/` demo route entirely (owner: Josh).
+
+---
+
 ### ADR-015 — Serve the business domain from GitHub Pages and enable indexing
 
 - **Date:** 2026-10-03
