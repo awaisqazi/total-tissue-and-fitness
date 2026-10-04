@@ -26,6 +26,17 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 
 ---
 
+### CHG-2026-10-03-gallery-lightbox — Open gallery testimonials in a lightbox instead of a new tab
+
+- **Date:** 2026-10-03
+- **Goal:** Keep visitors on the home page when they view the archived Total Tissue testimonial screenshots; the previous links opened the raw WebP in a new tab (owner feedback).
+- **Change and rationale:** The nine gallery links now open a native `<dialog>` lightbox (`#lightbox`, `src/scripts/lightbox.ts`) with the image, a "n / 9" counter, previous/next/close buttons, arrow-key navigation, backdrop click to close, and focus returned to the thumbnail on close. Escape, focus trapping and page inertness come from the browser's modal dialog. Without JavaScript the links still open the image directly. Thumbnail alt text no longer says "Open for full size".
+- **Affected:** `/` gallery disclosure; `src/pages/index.astro`, `src/scripts/lightbox.ts` (new), `src/styles/global.css`.
+- **Validation:** `SITE_URL=https://www.totaltissueandfitness.com BASE_PATH=/ PUBLIC_SITE_INDEXABLE=true npm run validate`; browser-pane check at desktop and 375 px: open, arrow navigation, Escape, focus restoration, dialog fits the viewport, no console errors.
+- **Unresolved:** None.
+
+---
+
 ### ADR-016 — Instagram client testimonials with an ambient quote wall
 
 - **Date:** 2026-10-03

@@ -1491,6 +1491,73 @@ img {
   height: auto;
   border-radius: 10px;
 }
+.testimonial-gallery a {
+  display: block;
+  border-radius: 10px;
+  transition: transform 0.25s ease;
+}
+.testimonial-gallery a:hover,
+.testimonial-gallery a:focus-visible {
+  transform: translateY(-3px);
+}
+/* Gallery lightbox: native dialog so focus, Escape and inertness come from the browser. */
+.lightbox {
+  width: min(92vw, 560px);
+  max-height: calc(100vh - 32px);
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #141414;
+  color: var(--text);
+  overflow: hidden;
+}
+.lightbox::backdrop {
+  background: #101010e0;
+  backdrop-filter: blur(6px);
+}
+.lightbox figure {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  max-height: calc(100vh - 32px);
+}
+.lightbox img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 32px - 62px);
+  object-fit: contain;
+  background: #0d0d0d;
+}
+.lightbox figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.lightbox-controls {
+  display: flex;
+  gap: 6px;
+}
+.lightbox-controls button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #1a1f24;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+.lightbox-controls button:hover,
+.lightbox-controls button:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 .returning-strip {
   margin-block: 0 90px;
   display: flex;

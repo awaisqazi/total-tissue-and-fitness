@@ -370,22 +370,33 @@ const emphasise = (text: string) => text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</
             gallery.map((image, i) => (
               <a
                 href={withBase('/images/' + image)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open original client testimonial image ${i + 1}`}
+                data-lightbox
+                aria-label={`View client testimonial image ${i + 1} of ${gallery.length}`}
               >
                 <img
                   src={withBase('/images/' + image)}
                   width="1200"
                   height="2004"
                   loading="lazy"
-                  alt={`Original Total Tissue client testimonial, image ${i + 1}. Open for full size.`}
+                  alt={`Original Total Tissue client testimonial, image ${i + 1}.`}
                 />
               </a>
             ))
           }
         </div>
-      </details>
+      </details><dialog id="lightbox" class="lightbox" aria-label="Client testimonial image">
+        <figure>
+          <img alt="" />
+          <figcaption>
+            <span class="lightbox-counter" aria-live="polite"></span>
+            <div class="lightbox-controls">
+              <button type="button" class="lightbox-prev" aria-label="Previous image">←</button>
+              <button type="button" class="lightbox-next" aria-label="Next image">→</button>
+              <button type="button" class="lightbox-close" aria-label="Close">×</button>
+            </div>
+          </figcaption>
+        </figure>
+      </dialog>
     </div>
   </section>
   <section class="container returning-strip" id="returning-client">
@@ -397,5 +408,6 @@ const emphasise = (text: string) => text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</
     </div><a class="button button-outline" href={withBase('/book/#returning-client')}
       >Returning client booking →</a
     >
-  </section><FAQ /><CTA /><script src="../scripts/hero-video.ts"></script>
+  </section><FAQ /><CTA /><script src="../scripts/hero-video.ts"></script><script
+    src="../scripts/lightbox.ts"></script>
 </BaseLayout>
