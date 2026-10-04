@@ -4,9 +4,11 @@
 
 Under ADR-015 the GitHub Pages deployment serves the business domain. Repo Pages setting: custom domain `www.totaltissueandfitness.com`. Build environment: `SITE_URL=https://www.totaltissueandfitness.com`, `BASE_PATH=/`, `PUBLIC_SITE_INDEXABLE=true`, same `PUBLIC_CONTACT_ENDPOINT`. GoDaddy DNS: `@` A → GitHub Pages (185.199.108–111.153), `www` CNAME → `awaisqazi.github.io`; all other records unchanged (`docs/DNS_EXPORT_2026-10-03.md`). Fill in the verified commit, workflow run, HTTPS enforcement, and smoke-test evidence below once the cutover is confirmed.
 
-- Verified commit / workflow run: _pending_
-- HTTPS certificate issued and enforced: _pending_
-- Contact Worker redeployed with the new origin and Turnstile hostname added: _pending (Cloudflare account access required)_
+- Verified commit / workflow run: `0948ff8` via [37163-series run](https://github.com/awaisqazi/total-tissue-and-fitness/actions) (privacy notice + footer change); first domain build `957994e`, run [37162918383](https://github.com/awaisqazi/total-tissue-and-fitness/actions/runs/37162918383).
+- DNS: GoDaddy records changed 2026-10-03 ~18:50 CDT; public resolvers (1.1.1.1, 8.8.8.8) returned the GitHub records by ~19:05. GitHub's own resolver held the old Webflow answer until ~19:48, during which `www` was reported as proxied and HTTPS-ineligible, so no certificate was requested. Webflow had sent HSTS (`max-age=31536000`), so returning visitors saw certificate errors for that window rather than the HTTP fallback. Lesson for any future host move: lower the TTL a day ahead and expect an HTTPS gap when the previous host used HSTS.
+- HTTPS: Let's Encrypt certificate for `www.totaltissueandfitness.com` and `totaltissueandfitness.com` approved ~20:05 CDT (expires 2027-01-01); all four GitHub edge addresses served it by ~20:10; **Enforce HTTPS is on**. `http://` and the apex both 301 to `https://www…`.
+- Live checks against the domain: `/`, `/contact/`, `/book/`, `/training/`, `/privacy/` 200 with correct titles and canonicals; `/contrast-therapy` → `/contrast-therapy/` 301; unknown path → branded 404; `robots.txt` allows and lists the sitemap; footer no longer links `/admin/`.
+- Contact Worker: version `c9a8b9c3` deployed to the practice's Cloudflare account on 2026-10-03 with both origins; the Turnstile widget lists `awaisqazi.github.io` and `www.totaltissueandfitness.com`. Preflight from either origin returns 204, unknown origin 403, invalid token 403. A full Turnstile-protected submission from the live domain has not yet been re-run after cutover.
 
 ## Proof-of-concept publication — September 22, 2026 (superseded target)
 

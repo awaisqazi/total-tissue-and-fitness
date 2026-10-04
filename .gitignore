@@ -5,3 +5,7 @@ dist/
 .env.*
 !.env.example
 .DS_Store
+
+# Instagram research contains client handles and health details; never commit (public repo)
+docs/INSTAGRAM_TESTIMONIALS_*.md
+docs/instagram-media/
