@@ -29,14 +29,14 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 ### ADR-016 — Instagram client testimonials with an ambient quote wall
 
 - **Date:** 2026-10-03
-- **Status:** Accepted (client consent pending)
+- **Status:** Accepted (owner approved the quoted clients on 2026-10-03)
 - **Goal:** Show visitors the volume and tone of real client feedback the practice has accumulated on Instagram, replacing the two Webflow-era quotes, without inventing or inflating review claims.
 - **Decision:** `src/data/testimonials.ts` holds five featured quotes, a 24-fragment "wall", the Instagram URL and the tally `100+`. The home Client Stories section keeps Mike's video and renders the five quotes in a 3 × 2 grid (snap row on phones) attributed by public Instagram handle, channel and year. Behind the section, three `aria-hidden` rows of client fragments drift horizontally at very low opacity (white 6%, blue 15% for the bolded phrase), masked at the edges, duplicated so the loop is seamless; `prefers-reduced-motion` freezes them (the global rule already disables animations) and they are `pointer-events: none`. A tally link above the quotes reads "100+ written client testimonials shared on Instagram" and opens the account.
 - **Rationale:** The 2026-10-03 Instagram pass found 112 written testimonial items (~102 people), no Google/Vagaro reviews and no star ratings, so "over 200 reviews" is not supportable; "100+ written client testimonials shared on Instagram" is. Quotes are verbatim except for trimming; punctuation spacing in one comment was normalised. Selection excludes anything naming a medical condition, a minor, a full name or a phone number, and holds back specific outcome claims ("pain gone") for practitioner review, consistent with the existing hold on Amanda's quote. The wall is decorative, so screen readers get only the five quotes, and it carries no claim the featured quotes do not.
 - **Tradeoffs:** Attribution by handle is public information the clients chose, but they have not been asked; the owner should confirm each. Three animated rows add negligible CPU (transform-only) but are a design departure from the otherwise still page; opacity is tuned so body text on the cards stays legible. John's Webflow-era quote is dropped (the test that required "John" now checks the tally and the video).
 - **Affected:** `/` Client Stories section; `src/data/testimonials.ts` (new), `src/pages/index.astro`, `src/styles/global.css`, `tests/site.test.mjs`, content map. Source notes: `docs/INSTAGRAM_TESTIMONIALS_2026-10-03.md` (gitignored; contains client handles and health details).
 - **Validation:** `SITE_URL=https://www.totaltissueandfitness.com BASE_PATH=/ PUBLIC_SITE_INDEXABLE=true npm run validate` (12 tests); browser-pane check at desktop and 375 px: grid, wall animation running, no horizontal overflow, no console errors.
-- **Unresolved (owner: Josh):** confirm the five quoted clients are comfortable being quoted by handle; decide whether outcome-specific quotes may be used after practitioner review; whether to add a Google Business Profile review count when one exists.
+- **Unresolved (owner: Josh):** decide whether outcome-specific quotes may be used after practitioner review; whether to add a Google Business Profile review count when one exists.
 
 ---
 
