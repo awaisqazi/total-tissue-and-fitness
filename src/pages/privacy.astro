@@ -1,42 +1,67 @@
 ---
 import { withBase } from '../lib/paths';
+import { site } from '../data/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+
+const updated = 'October 3, 2026';
 ---
 
 <BaseLayout
-  title="Website Privacy | Synaptyx Manual Therapy"
-  description="Information about inquiry forms, external booking providers, and video playback on the Synaptyx Manual Therapy website, formerly Total Tissue & Fitness."
+  title="Privacy Notice | Synaptyx Manual Therapy"
+  description="How the Synaptyx Manual Therapy website (formerly Total Tissue & Fitness) handles the information you share through its contact form, booking widget, and video players."
   noindex
 >
   <PageHero
-    eyebrow="WEBSITE INFORMATION"
+    eyebrow="PRIVACY NOTICE"
     title="Privacy & your information"
-    description="This describes the current website data flow and does not replace an approved production privacy policy."
+    description={`How this website handles the information you share with us. Last updated ${updated}.`}
   />
   <article class="container prose section border-top">
-    <h2>Inquiries</h2><p>
-      The contact page uses Cloudflare Turnstile to check submissions. The name, email address,
-      inquiry category, optional profession, and message you enter pass through the practice's
-      inquiry service to the practice so it can respond. This website does not add them to the demo
-      dashboard. Please do not submit medical or other sensitive health information. A full
-      production privacy policy, retention schedule, and deletion process still need owner approval.
-    </p><h2>Booking providers</h2><p>
-      The booking page loads a Vagaro widget for services, gift cards, and appointments. Booking
-      information and gift card checkout are handled by Vagaro, including confirmation. You can also
-      open Vagaro directly from the booking page. Review Vagaro’s privacy policy and terms before
-      entering personal or payment information.
-    </p><h2>Video playback</h2><p>
-      Videos are not loaded from YouTube until you choose to open a video player. Playback connects
-      to YouTube’s privacy-enhanced embed service, which is governed by Google’s policies.
-    </p><h2>Partner dashboard</h2><p>
-      The dashboard is a publicly viewable demonstration containing fictional records. It does not
-      have real accounts or permissions. Changes remain in the current page only and reset when you
-      reload; no records are stored in a database or browser storage.
-    </p><h2>Questions</h2><p>
-      Use the <a href={withBase('/contact/')}>contact page</a> for general questions. Existing booking
-      pathways are listed on the <a href={withBase('/book/')}>booking page</a>. A production privacy
-      contact will be added before the site launches.
+    <h2>Who we are</h2><p>
+      This website is operated by {site.name}, formerly {site.legacyName}, at {site.address}. It
+      describes our services and lets you ask a question or book a session. It is not a patient
+      portal and does not hold treatment records.
+    </p><h2>What we collect and why</h2><p>
+      <strong>Contact form.</strong> When you send an inquiry we receive the name, email address, inquiry
+      category, optional profession, and message you enter. We use them only to reply to you. Submissions
+      are checked by Cloudflare Turnstile to block automated spam, then passed through our inquiry service
+      to a form response sheet that only the practice can read. Please do not include medical or other
+      sensitive health details in the form; we can discuss those by phone or in person.
+    </p><p>
+      <strong>Booking.</strong> The booking page loads a widget from Vagaro, our scheduling provider.
+      Appointment details, account information, and any gift card or payment information you enter are
+      collected and processed by Vagaro under its own privacy policy and terms. We see the appointment
+      details needed to provide your session.
+    </p><p>
+      <strong>Phone calls.</strong> If you call {site.phoneDisplay}, we use your number and the
+      details you give us to respond to your request.
+    </p><p>
+      <strong>Technical data.</strong> Like any website, our hosting provider (GitHub Pages) and Cloudflare
+      may record standard server logs such as IP address, browser type, and pages requested, for security
+      and operation. We do not run analytics or advertising trackers, and we do not sell or share your
+      information for marketing.
+    </p><h2>Cookies and third-party services</h2><p>
+      This site does not set cookies of its own. Third-party services may set cookies or collect
+      usage data when you use them: Vagaro (booking widget), Cloudflare Turnstile (contact form spam
+      check), and YouTube (video playback). Videos load only after you choose to play them and use
+      YouTube's privacy-enhanced player. Each provider's handling of your data is governed by its
+      own policy.
+    </p><h2>How long we keep it</h2><p>
+      Inquiry responses are kept as long as needed to answer you and keep a record of the
+      conversation, after which they are deleted. Booking and payment records are retained by Vagaro
+      according to its policies and any legal requirements that apply to us.
+    </p><h2>Your choices</h2><p>
+      You can ask us what information we hold about you from this website, ask us to correct it, or
+      ask us to delete inquiry messages. Call {site.phoneDisplay} or use the <a
+        href={withBase('/contact/')}>contact page</a
+      >. For booking records, you can also manage your Vagaro account directly.
+    </p><h2>Children</h2><p>
+      This website is intended for adults. We do not knowingly collect information from children
+      through it.
+    </p><h2>Changes</h2><p>
+      We will update this page when the way the website handles information changes, and show the
+      date of the latest update at the top.
     </p>
   </article>
 </BaseLayout>

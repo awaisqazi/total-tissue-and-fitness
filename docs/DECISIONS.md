@@ -26,6 +26,28 @@ This file preserves the public, reviewable reasoning behind the website. It is n
 
 ---
 
+### CHG-2026-10-03-privacy-notice — Replace the pre-launch privacy placeholder with a plain-language notice
+
+- **Date:** 2026-10-03
+- **Goal:** Give visitors on the live domain an accurate notice of what the site does with their information, in place of wording that said a privacy contact "will be added before the site launches".
+- **Change and rationale:** `/privacy/` now states who operates the site, what the contact form, Vagaro widget, phone, and server logs collect and why, which third parties can set cookies (Vagaro, Cloudflare Turnstile, YouTube), that no analytics or ad trackers run, retention in plain terms, and how to ask for access, correction or deletion (phone or contact page; no email is published, per the content map). Every statement is drawn from the implemented data flow (ADR-010, ADR-009) and the owner's confirmed address and phone. The page stays `noindex` and keeps the dated "last updated" line. The owner asked for a fitting notice "for now"; it was drafted without legal counsel and should be reviewed by one before being treated as final.
+- **Affected:** `src/pages/privacy.astro`, `docs/CONTENT_SOURCE_MAP.md`.
+- **Validation:** `SITE_URL=https://www.totaltissueandfitness.com BASE_PATH=/ PUBLIC_SITE_INDEXABLE=true npm run validate`; rendered copy checked for placeholders.
+- **Unresolved:** Legal review of the notice and a retention period for inquiry responses (owner: Josh).
+
+---
+
+### CHG-2026-10-03-jane-cancelled — Jane booking migration cancelled
+
+- **Date:** 2026-10-03
+- **Goal:** Resolve the cutover audit's open question about the old site's "existing clients transition to Jane on November 1, 2026" notice.
+- **Change and rationale:** Josh confirmed on 2026-10-03 that the Jane migration is cancelled for the time being. Vagaro remains the only booking path (ADR-009); the new site is correct to omit Jane, and no copy change is needed.
+- **Affected:** None (record only).
+- **Validation:** Owner statement relayed by Awais.
+- **Unresolved:** If Jane is revived, update `/book/`, the FAQs and `src/data/site.ts` booking destinations (owner: Josh).
+
+---
+
 ### CHG-2026-10-03-footer-dashboard-link — Remove the dashboard-concept link from the footer
 
 - **Date:** 2026-10-03
